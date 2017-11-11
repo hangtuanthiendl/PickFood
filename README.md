@@ -1,2 +1,6 @@
-# PickFood
-Hàng Tuấn Thiên, Đỗ Quốc Trung, Nguyễn Anh Huy Vũ, Lê Văn Cường
+﻿# PickFood
+- Actor:
+Hang Tuan Thien
+Do Quoc Trung
+Le Van Cuong
+Nguyen Anh Huy Vu
