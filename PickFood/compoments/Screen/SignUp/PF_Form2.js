@@ -22,7 +22,15 @@ export default class Logo extends Component<{}> {
                 />
                 <TextInput style={styles.inputBox}
                            underlineColorAndroid='rgba(0,0,0,0)'
-                           placeholder="Password"
+                           placeholder="Số điện thoại"
+                           placeholderTextColor = "#ffffff"
+                           selectionColor="#fff"
+                           keyboardType="email-address"
+                           onSubmitEditing={()=> this.password.focus()}
+                />
+                <TextInput style={styles.inputBox}
+                           underlineColorAndroid='rgba(0,0,0,0)'
+                           placeholder="Mật khẩu"
                            secureTextEntry={true}
                            placeholderTextColor = "#ffffff"
                            ref={(input) => this.password = input}
@@ -43,25 +51,26 @@ const styles = StyleSheet.create({
     },
 
     inputBox: {
-        width:300,
+        width: 500,
+        height: 60,
         backgroundColor:'rgba(255, 255,255,0.2)',
-        borderRadius: 25,
+        borderRadius: 15,
         paddingHorizontal:16,
-        fontSize:16,
+        fontSize:18,
         color:'#ffffff',
         marginVertical: 10
     },
     button: {
         width:300,
-        backgroundColor:'#2ecc71',
+        backgroundColor:'#ffffff',
         borderRadius: 25,
         marginVertical: 10,
         paddingVertical: 13
     },
     buttonText: {
-        fontSize:16,
+        fontSize:25,
         fontWeight:'500',
-        color:'#ffffff',
+        color:'#D91E18',
         textAlign:'center'
     }
 

@@ -14,15 +14,19 @@ export default class PF_SignIn extends Component<{}> {
     signup() {
        // Actions.signup()
     }
-
+    static navigationOptions = {
+        title: null,
+        header: null
+    };
     render() {
+
         return(
             <View style={styles.container}>
                 <Logo/>
                 <Form type="Login"/>
                 <View style={styles.signupTextCont}>
-                    <Text style={styles.signupText}>Don't have an account yet?</Text>
-                    <TouchableOpacity onPress={this.signup}><Text style={styles.signupButton}> Signup</Text></TouchableOpacity>
+                    <Text style={styles.signupText}>Bạn chưa có tài khoản?</Text>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('PF_SignUp')}><Text style={styles.signupButton}> Đăng kí</Text></TouchableOpacity>
                 </View>
             </View>
         )
@@ -30,7 +34,7 @@ export default class PF_SignIn extends Component<{}> {
 }
 const styles = StyleSheet.create({
     container : {
-        backgroundColor:'#27ae60',
+        backgroundColor:'#CF000F',
         flex: 1,
         alignItems:'center',
         justifyContent :'center'
@@ -39,16 +43,16 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         alignItems:'flex-end',
         justifyContent :'center',
-        paddingVertical:16,
+        paddingVertical:15,
         flexDirection:'row'
     },
     signupText: {
         color:'rgba(255,255,255,0.6)',
-        fontSize:16
+        fontSize:20
     },
     signupButton: {
         color:'#ffffff',
-        fontSize:16,
+        fontSize:25,
         fontWeight:'500'
     }
 });

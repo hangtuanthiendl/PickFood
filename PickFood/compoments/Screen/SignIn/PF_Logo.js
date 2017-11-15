@@ -10,9 +10,9 @@ export default class Logo extends Component<{}> {
     render(){
         return(
             <View style={styles.container}>
-                <Image  style={{width:70, height: 70}}
-                        source={require('../../../Images/bg9.jpg')}/>
-                <Text style={styles.logoText}>Pick Food chào bạn!</Text>
+                <Image  style={{width:150, height: 150}}
+                        source={require('../../../Images/01.png')}/>
+                <Text style={styles.logoText}>PICK FOOD</Text>
             </View>
         )
     }
@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     logoText : {
-        marginVertical: 15,
-        fontSize:18,
+        marginVertical: 10,
+        fontSize:35,
         color:'rgba(255, 255, 255, 0.7)'
     }
 });
