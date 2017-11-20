@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import { TabNavigator } from 'react-navigation';
-import PF_Home from '../../PF_Home'
-
+import PF_Home from './PF_Home'
+import PF_List from './Screen/Food/PF_ListFood'
 const MyApp = TabNavigator({
     Home: {
         screen: PF_Home,
+        //screen: PF_List,
     },
 }, {
     tabBarPosition: 'bottom',

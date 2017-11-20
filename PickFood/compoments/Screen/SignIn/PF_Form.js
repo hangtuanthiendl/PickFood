@@ -43,24 +43,24 @@ const styles = StyleSheet.create({
     },
 
     inputBox: {
-        width: 500,
-        height: 60,
+        width: 300,
+        height: 40,
         backgroundColor:'rgba(255, 255,255,0.2)',
         borderRadius: 15,
         paddingHorizontal:16,
-        fontSize:18,
+        fontSize:16,
         color:'#ffffff',
         marginVertical: 10
     },
     button: {
-        width:300,
+        width:200,
         backgroundColor:'#ffffff',
         borderRadius: 25,
         marginVertical: 10,
         paddingVertical: 13
     },
     buttonText: {
-        fontSize:25,
+        fontSize:20,
         fontWeight:'500',
         color:'#D91E18',
         textAlign:'center'

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 export default class PF_Home extends React.Component {
     static navigationOptions = {
-        //tabBarLabel: 'Home',
+        tabBarLabel: 'Home',
         tabBarIcon: ({ tintColor }) => (
             <Image
                 source={require('../Images/Home.png')}
@@ -14,10 +14,11 @@ export default class PF_Home extends React.Component {
 
     render() {
         return (
-            <Button
+           <Button
                 onPress={() => this.props.navigation.navigate('Notifications')}
                 title="Go to notifications"
             />
+            
         );
     }
 }
