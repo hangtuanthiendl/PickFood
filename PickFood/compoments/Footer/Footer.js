@@ -6,14 +6,14 @@ export default class PF_Footer extends Component {
 
                 <Footer>
                     <FooterTab>
-                        <Button>
-                            <Icon name="apps" />
+                        <Button active>
+                            <Icon active name="apps" />
                         </Button>
                         <Button>
                             <Icon name="camera" />
                         </Button>
-                        <Button active>
-                            <Icon active name="navigate" />
+                        <Button >
+                            <Icon  name="navigate" />
                         </Button>
                         <Button>
                             <Icon name="person" />
