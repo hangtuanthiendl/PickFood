@@ -1,6 +1,6 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
-import PF_Home from './PF_Home'
+import PF_Home from '././PF_Home'
 import PF_List from './Screen/Food/PF_ListFood'
 import PF_Routes from "./PF_routes";
 const MyApp = TabNavigator({
@@ -13,12 +13,12 @@ const MyApp = TabNavigator({
     animationEnabled: true,
     tabBarOptions: {
         showIcon: true,
-        activeTintColor: '#e5e5e9',
+        //activeTintColor: '#e5e5e9',
         labelStyle: {
-            fontSize: 25,
+            fontSize: 15,
         },
         style: {
-            backgroundColor: '#D91E18',
+           // backgroundColor: '#D91E18',
         },
     },
 })

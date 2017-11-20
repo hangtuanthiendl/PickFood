@@ -1,31 +1,20 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
-import { TabNavigator } from 'react-navigation';
-export default class PF_Home extends React.Component {
-    static navigationOptions = {
-        tabBarLabel: 'Home',
-        tabBarIcon: ({ tintColor }) => (
-            <Image
-                source={require('../Images/Home.png')}
-                style={[styles.icon, {tintColor: tintColor}]}
-            />
-        ),
-    };
-
+import React, { Component } from 'react';
+import { Container, Header, Content, Footer, StyleProvider } from 'native-base';
+import getTheme from '../native-base-theme/components';
+import material from '../native-base-theme/variables/commonColor.js';
+import PF_Footer from "./Footer/Footer";
+class PF_Home extends React.Component {
     render() {
-        return (
-           <Button
-                onPress={() => this.props.navigation.navigate('Notifications')}
-                title="Go to notifications"
-            />
-            
+         return (
+             <StyleProvider style={getTheme(material)}>
+                <Container >
+                    <Header/>
+                    <Content/>
+                    <PF_Footer/>
+                </Container>
+            </StyleProvider>
         );
     }
 }
 
-const styles = StyleSheet.create({
-    icon: {
-        width: 50,
-        height: 50,
-    },
-});
+export default  PF_Home;
