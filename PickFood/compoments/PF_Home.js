@@ -25,7 +25,7 @@ export default class PF_Home extends React.Component {
 
 const styles = StyleSheet.create({
     icon: {
-        width: 40,
-        height: 40,
+        width: 50,
+        height: 50,
     },
 });

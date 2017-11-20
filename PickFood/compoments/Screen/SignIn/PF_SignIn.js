@@ -48,11 +48,11 @@ const styles = StyleSheet.create({
     },
     signupText: {
         color:'rgba(255,255,255,0.6)',
-        fontSize:20
+        fontSize:16
     },
     signupButton: {
         color:'#ffffff',
-        fontSize:25,
+        fontSize:18,
         fontWeight:'500'
     }
 });
