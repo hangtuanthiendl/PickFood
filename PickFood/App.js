@@ -14,7 +14,7 @@ import PF_Slider from "./compoments/Screen/Slider/PF_Slider";
 export default class App extends Component<{}> {
     render() {
     return (
-        <PF_Home/>
+        <PF_routes/>
     );
   }
 }

@@ -6,16 +6,16 @@ export default class PF_Footer extends Component {
 
                 <Footer>
                     <FooterTab>
-                        <Button active>
+                        <Button active onPress={() => this.props.navigation.navigate('PF_Home')}>
                             <Icon active name="apps" />
                         </Button>
                         <Button>
-                            <Icon name="camera" />
+                            <Icon name="wine" />
                         </Button>
                         <Button >
-                            <Icon  name="navigate" />
+                            <Icon  name="cart" />
                         </Button>
-                        <Button>
+                        <Button onPress={() => this.props.navigation.navigate('PF_SignIn')}>
                             <Icon name="person" />
                         </Button>
                     </FooterTab>

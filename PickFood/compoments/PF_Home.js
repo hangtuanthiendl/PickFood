@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Footer, StyleProvider, Right, Body, Icon, Button, Title,Card, CardItem, Left} from 'native-base';
+import { Container, Header, Content, Footer, StyleProvider, Right, Body, Icon, Button, Title,Card, CardItem, Left, FooterTab} from 'native-base';
 import { Text,View, StyleSheet} from 'react-native';
 import getTheme from '../native-base-theme/components';
 import material from '../native-base-theme/variables/commonColor.js';
@@ -13,6 +13,10 @@ import { Image} from 'react-native';
 const Dimensions = require('Dimensions');
 const { widthsrc } = Dimensions.get('window')
 class PF_Home extends React.Component {
+    static navigationOptions = {
+        title: null,
+        header: null
+    };
     render() {
          return (
              <StyleProvider style={getTheme(material)}>
@@ -82,7 +86,22 @@ class PF_Home extends React.Component {
                         </View>
 
                     </Content>
-                    <PF_Footer/>
+                    <Footer>
+                        <FooterTab>
+                            <Button active onPress={() => this.props.navigation.navigate('PF_Home')}>
+                                <Icon active name="apps" />
+                            </Button>
+                            <Button>
+                                <Icon name="wine" />
+                            </Button>
+                            <Button >
+                                <Icon  name="cart" />
+                            </Button>
+                            <Button onPress={() => this.props.navigation.navigate('PF_SignIn')}>
+                                <Icon name="person" />
+                            </Button>
+                        </FooterTab>
+                    </Footer>
                 </Container>
             </StyleProvider>
         );
