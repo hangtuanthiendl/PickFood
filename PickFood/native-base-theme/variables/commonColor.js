@@ -155,7 +155,7 @@ export default {
 
   // Header
   toolbarBtnColor: "#fff",
-  toolbarDefaultBg: "#D91E18",
+  toolbarDefaultBg: "#373a43",
   toolbarHeight: platform === "ios" ? (isIphoneX ? 88 : 64) : 56,
   toolbarIconSize: platform === "ios" ? 20 : 22,
   toolbarSearchIconSize: platform === "ios" ? 20 : 23,
@@ -164,7 +164,7 @@ export default {
   toolbarInverseBg: "#222",
   toolbarTextColor: "#fff",
   iosStatusbar: "light-content",
-  toolbarDefaultBorder: "#D91E18",
+  toolbarDefaultBorder: "#26282e",
   get statusBarColor() {
     return color(this.toolbarDefaultBg)
       .darken(0.2)

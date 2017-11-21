@@ -1,50 +1,76 @@
-import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import Swiper from 'react-native-swiper' // 1.5.4
+import React, { Component } from 'react'
+import {
+    Text,
+    View,
+    Image,
+    Dimensions
+} from 'react-native'
+import Swiper from 'react-native-swiper';
+const { width } = Dimensions.get('window')
 
-export default class PF_Slider extends Component {
-    render() {
-        return (
-            <Swiper style={styles.wrapper} showsButtons>
-                <View style={styles.slide1}>
-                    <Text style={styles.text}>Swiper</Text>
-                </View>
-                <View style={styles.slide2}>
-                    <Text style={styles.text}>Beautiful</Text>
-                </View>
-                <View style={styles.slide3}>
-                    <Text style={styles.text}>And simple</Text>
-                </View>
-            </Swiper>
-        );
-    }
-}
-
-const styles = StyleSheet.create({
+const styles = {
     wrapper: {
-        height: 100,
-    },
-    slide1: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#9DD6EB'
+        height: 200,
+        //padding: 10,
     },
-    slide2: {
+    slide: {
+        //flex: 1,
+        //justifyContent: 'center',
+        //aspectRatio: 1.5,
+        backgroundColor: '#000000',
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#97CAE5'
-    },
-    slide3: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#92BBD9'
+        width: null,
+        height: 200,
+        resizeMode: 'contain'
     },
     text: {
         color: '#fff',
         fontSize: 30,
         fontWeight: 'bold'
+    },
+    image: {
+        width,
+        flex: 1
+    },
+    paginationStyle: {
+        position: 'absolute',
+        bottom: 10,
+        right: 10
+    },
+    paginationText: {
+        color: 'white',
+        fontSize: 20
     }
-});
+}
+
+const renderPagination = (index, total, context) => {
+    return (
+        <View style={styles.paginationStyle}>
+            <Text style={{ color: 'grey' }}>
+                <Text style={styles.paginationText}>{index + 1}</Text>/{total}
+            </Text>
+        </View>
+    )
+}
+
+export default class extends Component {
+    render () {
+        return (
+            <Swiper
+                    style={styles.wrapper}
+                    //renderPagination={renderPagination}
+                    loop={true}
+            >
+
+                <View style={styles.slide} title={<Text numberOfLines={1} >Big lie behind Nine’s new show</Text>}>
+                     <Image source={require('../../../Images/Slider/01.jpg')}/>
+                </View>
+                 <View style={styles.slide} title={<Text numberOfLines={1}>Why Stone split from Garfield</Text>}>
+                       <Image source={require('../../../Images/Slider/02.jpg')}/>
+                 </View>
+
+            </Swiper>
+        )
+    }
+}
