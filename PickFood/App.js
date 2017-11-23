@@ -7,9 +7,7 @@ import {
   View
 } from 'react-native';
 import PF_routes from "./compoments/PF_routes";
-import PF_Home from "./compoments/PF_Home";
-import PF_Slider from "./compoments/Screen/Slider/PF_Slider";
-//import PF_routesTab from "./compoments/PF_routesTab";
+import PF_Shop from "./compoments/Screen/Shop/PF_Shop";
 
 export default class App extends Component<{}> {
     render() {

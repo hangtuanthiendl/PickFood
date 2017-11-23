@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e3b4f68-3fe5-47fd-bcda-ff1cc5e58d3d" name="Default" comment="" />
+    <list default="true" id="9e3b4f68-3fe5-47fd-bcda-ff1cc5e58d3d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/compoments/Screen/CardNew/PF_CardNew.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/compoments/Screen/Food/PF_ListDrink.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/compoments/Screen/Shop/PF_Shop.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/compoments/Server/FirebaseCon.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/compoments/Server/getData.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/compoments/Styles.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/app/src/main/assets/index.android.bundle.meta" afterPath="$PROJECT_DIR$/android/app/src/main/assets/index.android.bundle.meta" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App.js" afterPath="$PROJECT_DIR$/App.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/app/src/main/assets/index.android.bundle" afterPath="$PROJECT_DIR$/android/app/src/main/assets/index.android.bundle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compoments/PF_Home.js" afterPath="$PROJECT_DIR$/compoments/PF_Home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compoments/PF_Routes.js" afterPath="$PROJECT_DIR$/compoments/PF_Routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compoments/Screen/Food/PF_ListFood.js" afterPath="$PROJECT_DIR$/compoments/Screen/Food/PF_ListFood.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/native-base-theme/variables/commonColor.js" afterPath="$PROJECT_DIR$/native-base-theme/variables/commonColor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,8 +31,8 @@
       <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+            <state relative-caret-position="378">
+              <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
               <folding>
                 <element signature="e#1#42#0" expanded="true" />
               </folding>
@@ -26,28 +43,35 @@
       <file leaf-file-name="PF_Home.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/compoments/PF_Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="1" column="124" lean-forward="false" selection-start-line="1" selection-start-column="124" selection-end-line="1" selection-end-column="124" />
+            <state relative-caret-position="162">
+              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding>
-                <element signature="e#922#1009#0" expanded="false" />
-                <element signature="e#1034#1214#0" expanded="false" />
-                <element signature="e#1265#1359#0" expanded="false" />
-                <element signature="e#1490#2063#0" expanded="false" />
-                <element signature="e#2092#2616#0" expanded="false" />
-                <element signature="e#2147#2580#0" expanded="false" />
-                <element signature="e#2725#3249#0" expanded="false" />
-                <element signature="e#3278#3802#0" expanded="false" />
-                <element signature="e#3333#3766#0" expanded="false" />
+                <element signature="e#912#999#0" expanded="false" />
+                <element signature="e#1024#1204#0" expanded="false" />
+                <element signature="e#1255#1349#0" expanded="false" />
+                <element signature="e#2882#4061#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PF_SignIn.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/compoments/Screen/SignIn/PF_SignIn.js">
+      <file leaf-file-name="PF_CardNew.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compoments/Screen/CardNew/PF_CardNew.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="19" column="6" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="19" selection-end-column="6" />
+            <state relative-caret-position="972">
+              <caret line="36" column="27" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FirebaseCon.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compoments/Server/FirebaseCon.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="37" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -56,8 +80,30 @@
       <file leaf-file-name="PF_routes.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compoments/PF_routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+            <state relative-caret-position="675">
+              <caret line="25" column="3" lean-forward="false" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PF_ListDrink.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compoments/Screen/Food/PF_ListDrink.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PF_ListFood.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compoments/Screen/Food/PF_ListFood.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="341">
+              <caret line="46" column="16" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="66" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -66,8 +112,8 @@
       <file leaf-file-name="commonColor.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/native-base-theme/variables/commonColor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="278" column="31" lean-forward="false" selection-start-line="278" selection-start-column="31" selection-end-line="278" selection-end-column="31" />
+            <state relative-caret-position="565">
+              <caret line="143" column="36" lean-forward="false" selection-start-line="143" selection-start-column="36" selection-end-line="143" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -76,23 +122,9 @@
       <file leaf-file-name="PF_Slider.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compoments/Screen/Slider/PF_Slider.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="8" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PF_Welcome.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/compoments/Screen/Welcome/PF_Welcome.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="135">
+              <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -114,7 +146,12 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Head</find>
+      <find>styles</find>
+      <find>Header</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -129,12 +166,18 @@
         <option value="$PROJECT_DIR$/compoments/PF_routesTab.js" />
         <option value="$PROJECT_DIR$/compoments/Slider/PF_Slider.js" />
         <option value="$PROJECT_DIR$/compoments/Screen/Welcome/PF_Welcome.js" />
-        <option value="$PROJECT_DIR$/native-base-theme/variables/commonColor.js" />
         <option value="$PROJECT_DIR$/compoments/Screen/Slider/PF_Slider.js" />
         <option value="$PROJECT_DIR$/compoments/Screen/Map/MapView.js" />
-        <option value="$PROJECT_DIR$/compoments/PF_routes.js" />
-        <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/compoments/Footer/Footer.js" />
+        <option value="$PROJECT_DIR$/compoments/Screen/CardNew/PF_CardNew.js" />
+        <option value="$PROJECT_DIR$/compoments/Server/FirebaseCon.js" />
+        <option value="$PROJECT_DIR$/compoments/Screen/Food/PF_ListFood.js" />
+        <option value="$PROJECT_DIR$/compoments/Server/getData.js" />
+        <option value="$PROJECT_DIR$/compoments/Screen/Shop/PF_Shop.js" />
+        <option value="$PROJECT_DIR$/App.js" />
+        <option value="$PROJECT_DIR$/native-base-theme/variables/commonColor.js" />
+        <option value="$PROJECT_DIR$/compoments/Screen/Food/PF_ListDrink.js" />
+        <option value="$PROJECT_DIR$/compoments/PF_routes.js" />
         <option value="$PROJECT_DIR$/compoments/PF_Home.js" />
       </list>
     </option>
@@ -160,6 +203,7 @@
     <option name="width" value="1398" />
     <option name="height" value="1038" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -175,10 +219,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -202,48 +242,22 @@
               <item name="PickFood" type="462c0819:PsiDirectoryNode" />
               <item name="compoments" type="462c0819:PsiDirectoryNode" />
               <item name="Screen" type="462c0819:PsiDirectoryNode" />
-              <item name="Map" type="462c0819:PsiDirectoryNode" />
+              <item name="Food" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PickFood" type="b2602c69:ProjectViewProjectNode" />
               <item name="PickFood" type="462c0819:PsiDirectoryNode" />
               <item name="compoments" type="462c0819:PsiDirectoryNode" />
-              <item name="Screen" type="462c0819:PsiDirectoryNode" />
-              <item name="SignIn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PickFood" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PickFood" type="462c0819:PsiDirectoryNode" />
-              <item name="compoments" type="462c0819:PsiDirectoryNode" />
-              <item name="Screen" type="462c0819:PsiDirectoryNode" />
-              <item name="Welcome" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PickFood" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PickFood" type="462c0819:PsiDirectoryNode" />
-              <item name="Images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PickFood" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PickFood" type="462c0819:PsiDirectoryNode" />
-              <item name="Images" type="462c0819:PsiDirectoryNode" />
-              <item name="Slider" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PickFood" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PickFood" type="462c0819:PsiDirectoryNode" />
-              <item name="native-base-theme" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PickFood" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PickFood" type="462c0819:PsiDirectoryNode" />
-              <item name="native-base-theme" type="462c0819:PsiDirectoryNode" />
-              <item name="variables" type="462c0819:PsiDirectoryNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -252,14 +266,18 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\USER\Documents\GitHub\PickFood3\PickFood\Images\Slider" />
-      <recent name="C:\Users\USER\Documents\GitHub\PickFood3\PickFood\Images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\USER\Documents\GitHub\PickFood3\PickFood\compoments\Screen" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\USER\Documents\GitHub\PickFood3\PickFood\compoments\Server" />
+      <recent name="C:\Users\USER\Documents\GitHub\PickFood3\PickFood\compoments" />
+      <recent name="C:\Users\USER\Documents\GitHub\PickFood3\PickFood\Images\Home" />
+      <recent name="C:\Users\USER\Documents\GitHub\PickFood3\PickFood\Images\Slider" />
+      <recent name="C:\Users\USER\Documents\GitHub\PickFood3\PickFood\Images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -371,12 +389,13 @@
       <workItem from="1511161913372" duration="8348000" />
       <workItem from="1511205900721" duration="601000" />
       <workItem from="1511247224474" duration="8431000" />
-      <workItem from="1511288513231" duration="11116000" />
+      <workItem from="1511288513231" duration="11308000" />
+      <workItem from="1511378891063" duration="10849000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33348000" />
+    <option name="totallyTimeSpent" value="44389000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -388,16 +407,16 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12864584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20885417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -421,10 +440,87 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="4" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+          <folding>
+            <element signature="e#1#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/Screen/SignIn/PF_SignIn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="19" column="6" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="19" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/PF_routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/native-base-theme/variables/commonColor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7506">
+          <caret line="278" column="31" lean-forward="false" selection-start-line="278" selection-start-column="31" selection-end-line="278" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/Screen/Slider/PF_Slider.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="8" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/Screen/Welcome/PF_Welcome.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/PF_Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="124" lean-forward="false" selection-start-line="1" selection-start-column="124" selection-end-line="1" selection-end-column="124" />
+          <folding>
+            <element signature="e#912#999#0" expanded="false" />
+            <element signature="e#1024#1204#0" expanded="false" />
+            <element signature="e#1255#1349#0" expanded="false" />
+            <element signature="e#2882#4061#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -457,9 +553,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="14" column="16" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -468,7 +562,7 @@
         <state relative-caret-position="216">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -488,15 +582,10 @@
         <state relative-caret-position="540">
           <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
           <folding>
-            <element signature="e#922#1009#0" expanded="false" />
-            <element signature="e#1034#1214#0" expanded="false" />
-            <element signature="e#1265#1359#0" expanded="false" />
-            <element signature="e#1490#2063#0" expanded="false" />
-            <element signature="e#2092#2616#0" expanded="false" />
-            <element signature="e#2147#2580#0" expanded="false" />
-            <element signature="e#2725#3249#0" expanded="false" />
-            <element signature="e#3278#3802#0" expanded="false" />
-            <element signature="e#3333#3766#0" expanded="false" />
+            <element signature="e#912#999#0" expanded="false" />
+            <element signature="e#1024#1204#0" expanded="false" />
+            <element signature="e#1255#1349#0" expanded="false" />
+            <element signature="e#2882#4061#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -516,15 +605,10 @@
         <state relative-caret-position="189">
           <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
           <folding>
-            <element signature="e#922#1009#0" expanded="false" />
-            <element signature="e#1034#1214#0" expanded="false" />
-            <element signature="e#1265#1359#0" expanded="false" />
-            <element signature="e#1490#2063#0" expanded="false" />
-            <element signature="e#2092#2616#0" expanded="false" />
-            <element signature="e#2147#2580#0" expanded="false" />
-            <element signature="e#2725#3249#0" expanded="false" />
-            <element signature="e#3278#3802#0" expanded="false" />
-            <element signature="e#3333#3766#0" expanded="false" />
+            <element signature="e#912#999#0" expanded="false" />
+            <element signature="e#1024#1204#0" expanded="false" />
+            <element signature="e#1255#1349#0" expanded="false" />
+            <element signature="e#2882#4061#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -533,9 +617,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="7" column="56" lean-forward="false" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -544,7 +626,7 @@
         <state relative-caret-position="216">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -612,15 +694,10 @@
         <state relative-caret-position="81">
           <caret line="3" column="62" lean-forward="false" selection-start-line="3" selection-start-column="62" selection-end-line="3" selection-end-column="62" />
           <folding>
-            <element signature="e#922#1009#0" expanded="false" />
-            <element signature="e#1034#1214#0" expanded="false" />
-            <element signature="e#1265#1359#0" expanded="false" />
-            <element signature="e#1490#2063#0" expanded="false" />
-            <element signature="e#2092#2616#0" expanded="false" />
-            <element signature="e#2147#2580#0" expanded="false" />
-            <element signature="e#2725#3249#0" expanded="false" />
-            <element signature="e#3278#3802#0" expanded="false" />
-            <element signature="e#3333#3766#0" expanded="false" />
+            <element signature="e#912#999#0" expanded="false" />
+            <element signature="e#1024#1204#0" expanded="false" />
+            <element signature="e#1255#1349#0" expanded="false" />
+            <element signature="e#2882#4061#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -628,13 +705,6 @@
     <entry file="file://$PROJECT_DIR$/Images/01.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compoments/Screen/Food/PF_ListFood.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/compoments/PF_routesTab.js">
@@ -670,7 +740,7 @@
         <state relative-caret-position="216">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -685,55 +755,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/native-base-theme/variables/commonColor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="278" column="31" lean-forward="false" selection-start-line="278" selection-start-column="31" selection-end-line="278" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compoments/Screen/Slider/PF_Slider.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="8" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/compoments/Screen/Map/MapView.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compoments/Screen/SignIn/PF_SignIn.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="19" column="6" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="19" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-          <folding>
-            <element signature="e#1#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compoments/PF_routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -747,20 +772,120 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/Screen/SignIn/PF_SignIn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/Screen/Slider/PF_Slider.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/Styles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/Screen/CardNew/PF_CardNew.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="36" column="27" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/Screen/Shop/PF_Shop.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+            <element signature="e#3022#3982#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/Server/getData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/native-base-theme/variables/commonColor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="143" column="36" lean-forward="false" selection-start-line="143" selection-start-column="36" selection-end-line="143" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding>
+            <element signature="e#1#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/Screen/Food/PF_ListFood.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="46" column="16" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="66" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/Screen/Food/PF_ListDrink.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/Server/FirebaseCon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="37" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compoments/PF_routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="25" column="3" lean-forward="false" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/compoments/PF_Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="124" lean-forward="false" selection-start-line="1" selection-start-column="124" selection-end-line="1" selection-end-column="124" />
+        <state relative-caret-position="162">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
-            <element signature="e#922#1009#0" expanded="false" />
-            <element signature="e#1034#1214#0" expanded="false" />
-            <element signature="e#1265#1359#0" expanded="false" />
-            <element signature="e#1490#2063#0" expanded="false" />
-            <element signature="e#2092#2616#0" expanded="false" />
-            <element signature="e#2147#2580#0" expanded="false" />
-            <element signature="e#2725#3249#0" expanded="false" />
-            <element signature="e#3278#3802#0" expanded="false" />
-            <element signature="e#3333#3766#0" expanded="false" />
+            <element signature="e#912#999#0" expanded="false" />
+            <element signature="e#1024#1204#0" expanded="false" />
+            <element signature="e#1255#1349#0" expanded="false" />
+            <element signature="e#2882#4061#0" expanded="false" />
           </folding>
         </state>
       </provider>
