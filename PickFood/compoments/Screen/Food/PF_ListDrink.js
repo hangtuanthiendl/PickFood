@@ -2,22 +2,9 @@ import React, { Component } from 'react';
 import { View, Text, FlatList, Image,TouchableOpacity,TextInput } from 'react-native';
 import Styles from '../../Styles';
 import {firebaseApp} from '../../Server/FirebaseCon';
-import { Card,
-    Container,
-    Header,
-    Item,
-    Input,
-    Icon,
-    Button,
-    Body,
-    Title,
-    Left,
-    Right
-    ,Content
-    ,CardItem, List, ListItem,Thumbnail,Toast  } from 'native-base';
 
 
-export default class ViewGenres extends Component {
+export default class PF_ListDrink extends Component {
     constructor(props){
         super(props)
         this.state ={

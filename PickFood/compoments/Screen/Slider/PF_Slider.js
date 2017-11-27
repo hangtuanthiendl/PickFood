@@ -6,22 +6,19 @@ import {
     Dimensions
 } from 'react-native'
 import Swiper from 'react-native-swiper';
-const { width } = Dimensions.get('window')
+const { heightsrc, widthscr } = Dimensions.get('window');
 
 const styles = {
     wrapper: {
         flex: 1,
-        height: 200,
+        height: 230,
         //padding: 10,
     },
     slide: {
-        //flex: 1,
-        //justifyContent: 'center',
-        //aspectRatio: 1.5,
         backgroundColor: '#000000',
         flex: 1,
-        width: null,
-        height: 200,
+        width: widthscr,
+        height: 230,
         resizeMode: 'contain'
     },
     text: {
@@ -30,7 +27,7 @@ const styles = {
         fontWeight: 'bold'
     },
     image: {
-        width,
+        width: widthscr,
         flex: 1
     },
     paginationStyle: {
@@ -55,20 +52,35 @@ const renderPagination = (index, total, context) => {
 }
 
 export default class extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            startswiper:true,
+        };
+    }
+
+    componentWillMount(){
+        setTimeout(() => {this.setState({startswiper:true})}, 50);
+    }
+
     render () {
         return (
             <Swiper
                     style={styles.wrapper}
-                    //renderPagination={renderPagination}
+                    renderPagination={renderPagination}
                     loop={true}
             >
 
-                <View style={styles.slide} title={<Text numberOfLines={1} >Big lie behind Nine’s new show</Text>}>
+                <View style={styles.slide}>
                      <Image source={require('../../../Images/Slider/01.jpg')}/>
                 </View>
-                 <View style={styles.slide} title={<Text numberOfLines={1}>Why Stone split from Garfield</Text>}>
+                 <View style={styles.slide}>
                        <Image source={require('../../../Images/Slider/02.jpg')}/>
                  </View>
+                <View style={styles.slide}>
+                    <Image source={require('../../../Images/Slider/01.jpg')}/>
+                </View>
 
             </Swiper>
         )

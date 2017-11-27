@@ -10,6 +10,7 @@ export default StyleSheet.create({
     banner: {
        padding: 5,
        alignItems: 'center',
+        height: 100,
     },
     layout: {
         flex: 1,
@@ -84,8 +85,8 @@ export default StyleSheet.create({
         backgroundColor: '#FFF',
         margin: 5,
         elevation: 3,
-        borderRadius: 10,
-        borderWidth: 0.5,
+        borderRadius: 5,
+        //borderWidth: 0.5,
         alignItems: "center"
       },
       imageStyle:{

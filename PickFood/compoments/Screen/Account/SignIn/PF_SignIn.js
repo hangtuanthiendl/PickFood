@@ -4,22 +4,19 @@ import {
     Text,
     View,
     StatusBar ,
-    TouchableOpacity
+    TouchableOpacity,
+    Image
 } from 'react-native';
 
-import Logo from './PF_Logo';
+import Logo from '../Layout/PF_Logo';
 import Form from './PF_Form';
 
 export default class PF_SignIn extends Component<{}> {
     signup() {
        // Actions.signup()
     }
-    static navigationOptions = {
-        title: null,
-        header: null
-    };
-    render() {
 
+    render() {
         return(
             <View style={styles.container}>
                 <Logo/>

@@ -1,18 +1,13 @@
 
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-import PF_routes from "./compoments/PF_routes";
-import PF_Shop from "./compoments/Screen/Shop/PF_Shop";
+import PF_routesTab from "./compoments/routes/PF_routesTab";
+import PF_Home from "./compoments/PF_Home";
 
+import PF_Account from "./compoments/Screen/Account/PF_Account";
 export default class App extends Component<{}> {
     render() {
     return (
-        <PF_routes/>
+        <PF_routesTab/>
     );
   }
 }

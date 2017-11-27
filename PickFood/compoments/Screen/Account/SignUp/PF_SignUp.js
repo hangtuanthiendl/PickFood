@@ -6,11 +6,11 @@ import {
     StatusBar ,
     TouchableOpacity
 } from 'react-native';
-
-import Logo from '../SignIn/PF_Logo';
+import Logo from '../Layout/PF_Logo';
 import Form from './PF_Form2';
 
 export default class PF_SignUp extends Component<{}> {
+
     signup() {
         // Actions.signup()
     }
