@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text,View, StyleSheet, TouchableHighlight, Image} from 'react-native';
-import PF_Slider from "./Screen/Slider/PF_Slider";
+import PF_Slider from "./Screen/Slider/PF_HomeSlider";
 import PF_CardMember from "./Screen/Card/PF_CardMember";
 import { Spinner,Container, Header, Item, Input, Icon, Button, Body,Title, Left, Right,Content, Card, CardItem ,Thumbnail, List,ListItem } from 'native-base';
 import PF_CardDelivery from "./Screen/Card/PF_CardDelivery";
@@ -12,23 +12,24 @@ class PF_Home extends React.Component {
     //static navigationOptions = { header: null };
     render() {
          return (
+             <Container>
+                 <Content>
                     <View style = {{flex: 1, flexDirection: 'column',}}>
-                        <View style = {{flex: 3/8,}}>
+                        <View style = {{flex: 1/2, marginBottom: 4}}>
                             <PF_Slider/>
                         </View>
 
-                        <View style = {{flex: 3/8}}>
+                        <View style = {{flex: 1/2}}>
                             <View style={ao.dong} >
                                 <View style={ao.cot} >
                                     <TouchableHighlight style = {{flex: 1}} onPress={() => this.props.navigation.navigate('PF_ListDrink')}>
                                         <View style = {ao.itemframe} >
                                             <Image
-                                                style = {{width:44, height: 44}}
+                                                style = {{width:44, height: 44, resizeMode: Image.resizeMode.contain}}
                                                 source={require('../Images/Home/013-coffee.png')
                                                 }
                                             />
-
-                                            <Text>Thực đơn</Text>
+                                            <Text>Món Mới!</Text>
                                         </View>
                                     </TouchableHighlight>
                                 </View>
@@ -39,7 +40,6 @@ class PF_Home extends React.Component {
                                             source={require('../Images/Home/001-store-2.png')
                                             }
                                         />
-
                                         <Text>Cửa hàng</Text>
                                     </View>
                                 </View>
@@ -70,8 +70,12 @@ class PF_Home extends React.Component {
                             </View>
 
                         </View>
-                        <PF_CardDelivery style = {{flex: 2/8}}/>
                     </View>
+                     <PF_CardDelivery/>
+                 <PF_CardNew/>
+
+                 </Content>
+             </Container>
         );
     }
 }
@@ -88,18 +92,20 @@ export default  PF_Home;
         cot:
     {
         width: widthsrc/2 -16,
+        //height: 80,
         flex: 1/2,
         flexDirection: 'column',
+        margin: 4,
     }
     , itemframe:
             {
                 backgroundColor: '#fff',
                 borderColor: '#f9f2ff',
-                margin: 4,
+                //margin: 4,
                 flex:1,
                 width: widthsrc/2 -2,
                 borderRadius:4,
-                padding: 10,
+                //padding: 10,
                 alignItems:'center'
             },
         icon: {

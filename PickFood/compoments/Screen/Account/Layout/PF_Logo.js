@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     logoText : {
         marginVertical: 10,
         fontSize:30,
-        color:'rgba(255, 255, 255, 0.7)'
+        color:'#D91E18'
     },
     image:{
         width: 80,

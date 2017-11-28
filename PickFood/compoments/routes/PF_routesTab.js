@@ -1,7 +1,7 @@
 import React from 'react';
 import { TabNavigator,StackNavigator } from 'react-navigation';
 import { StyleSheet, Image, View, Button} from 'react-native';
-import PF_ListDrink from "../Screen/Food/PF_ListDrink";
+import PF_routesShop from "../routes/PF_routesShop";
 import PF_Order from "../Screen/Order/PF_Order";
 import PF_Routes from "../routes/PF_routesHome";
 import PF_Account from "../routes/PF_routesAccountMan";
@@ -21,7 +21,7 @@ export default MyHomeScreen = TabNavigator({
         }
     },
     Drink: {
-        screen: PF_ListDrink,
+        screen: PF_routesShop,
         navigationOptions:{
             tabBarIcon: () => (
                 <Image

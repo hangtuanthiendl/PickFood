@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     Text,
+    TextInput,
     View,
     StatusBar ,
     TouchableOpacity,
@@ -19,11 +20,24 @@ export default class PF_SignIn extends Component<{}> {
     render() {
         return(
             <View style={styles.container}>
-                <Logo/>
-                <Form type="Login"/>
-                <View style={styles.signupTextCont}>
-                    <Text style={styles.signupText}>Bạn chưa có tài khoản?</Text>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('PF_SignUp')}><Text style={styles.signupButton}> Đăng kí</Text></TouchableOpacity>
+                <View style = {{flex: 1/2}}>
+                    <Logo/>
+                </View>
+                <View style = {{flex: 1/2}}>
+                    <Text style = {styles.title}> Email của bạn?</Text>
+                    <Text style = {styles.title2}>Địa chỉ email giúp bạn bảo mật tài khoản, phục hồi mật khẩu và nhận các thông tin ưu đãi dành riêng cho bạn</Text>
+
+                    <View style = {styles.button}>
+                        <Image  style={{width: 35, height: 35, resizeMode: Image.resizeMode.contain}}
+                                source={require('../../../../Images/Mail alt.png')}/>
+                        <TextInput style={styles.inputBox}
+                           underlineColorAndroid='rgba(0,0,0,0)'
+                           placeholder="Email"
+                           placeholderTextColor = "#ffffff"
+                           selectionColor="#fff"
+                           keyboardType="email-address"
+                        />
+                    </View>
                 </View>
             </View>
         )
@@ -31,7 +45,7 @@ export default class PF_SignIn extends Component<{}> {
 }
 const styles = StyleSheet.create({
     container : {
-        backgroundColor:'#CF000F',
+        backgroundColor:'#fff',
         flex: 1,
         alignItems:'center',
         justifyContent :'center'
@@ -51,5 +65,33 @@ const styles = StyleSheet.create({
         color:'#ffffff',
         fontSize:18,
         fontWeight:'500'
-    }
+    },
+    inputBox: {
+        flex: 5/8,
+        color: '#D91E18',
+        borderBottomColor: '#D91E18',
+        borderBottomRadius: 3,
+        borderBottomWidth: 1,
+        paddingLeft: 10,
+        paddingRight: 10,
+    },
+    title: {
+        color: '#D91E18',
+        fontSize: 19,
+        fontWeight: 'bold',
+        paddingLeft: 15,
+        paddingRight: 15,
+    },
+    title2: {
+        fontSize: 14,
+        paddingLeft: 15,
+        paddingRight: 15,
+    },
+    button:
+        {
+            margin: 10,
+            flexDirection: 'row',
+            alignItems: 'center',
+            backgroundColor: '#fff',
+        },
 });

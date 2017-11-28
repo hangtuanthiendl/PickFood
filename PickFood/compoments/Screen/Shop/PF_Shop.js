@@ -4,7 +4,7 @@ import { Spinner,Container, Header, Item, Input, Icon, Button, Text, Body,Title,
 import Styles from '../../Styles';
 import {firebaseApp} from '../../Server/FirebaseCon.js';
 import Swiper from 'react-native-swiper';
-//import GetData from '../../Sever/getData.js'
+import GetData from '../../Server/getData'
 export default class PF_Shop extends Component {
     constructor(props){
         super(props)
@@ -33,7 +33,7 @@ export default class PF_Shop extends Component {
             return (
                 <View style = {{flexDirection: 'row'}}>
                     <Icon name = 'alarm'style={{fontSize: 20, color: '#2ecc71'}}></Icon>
-                    <Text note style = {{color : '#2ecc71'}}>Má»Ÿ Cá»­a</Text>
+                    <Text note style = {{color : '#2ecc71'}}>Đóng cửa</Text>
                 </View>
             )
         }else {
@@ -46,7 +46,7 @@ export default class PF_Shop extends Component {
     _renderItemTop = ({item}) => {
         return (
             <Card  >
-                <CardItem button onPress={()=> {this.props.navigation.navigate('MH_Detail', {data : item.key})}}>
+                <CardItem button onPress={()=> {this.props.navigation.navigate('PF_DetailShop', {data : item.key})}}>
                     <Left>
                         <Thumbnail square size={80} source={{ uri : item.imageShop} } />
                         <Body>
