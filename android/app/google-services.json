@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "946298715975",
+    "firebase_url": "https://gongcha-86b26.firebaseio.com",
+    "project_id": "gongcha-86b26",
+    "storage_bucket": "gongcha-86b26.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946298715975:android:f3ae3424db7ebd8e",
+        "android_client_info": {
+          "package_name": "com.goodfooder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946298715975-0rg35o7qtf4reobg1qvijdbs7rumt3qv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.goodfooder",
+            "certificate_hash": "9576d248a7693ea9154be5c05957b03bbb5504b8"
+          }
+        },
+        {
+          "client_id": "946298715975-6uijk18nbhhu88dacc8oj7rck565lalg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp4Dpm9J75XcAz1IyovFuKrgOX_-UPhgU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946298715975-6uijk18nbhhu88dacc8oj7rck565lalg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

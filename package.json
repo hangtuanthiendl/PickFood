@@ -1,0 +1,47 @@
+{
+	"name": "GoodFooder",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"start": "node node_modules/react-native/local-cli/cli.js start",
+		"test": "jest"
+	},
+	"dependencies": {
+		"eslint": "^4.11.0",
+		"firebase": "^4.6.2",
+		"lodash": "^4.17.4",
+		"moment": "^2.20.0",
+		"native-base": "^2.3.3",
+		"react": "16.0.0",
+		"react-native": "0.50.3",
+		"react-native-action-button": "^2.8.3",
+		"react-native-collapsing-toolbar": "^1.0.0-beta.7",
+		"react-native-elements": "^0.18.5",
+		"react-native-fbsdk": "^0.6.3",
+		"react-native-firebase": "^3.1.0",
+		"react-native-flexi-radio-button": "^0.2.2",
+		"react-native-linear-gradient": "^2.3.0",
+		"react-native-modal": "^4.1.1",
+		"react-native-modalbox": "^1.4.2",
+		"react-native-nested-scroll-view": "^5.0.2",
+		"react-native-push-notification": "^3.0.2",
+		"react-native-ratings": "^4.1.0",
+		"react-native-snap-carousel": "^3.4.0",
+		"react-native-swiper": "^1.5.13",
+		"react-native-tab-navigator": "^0.3.4",
+		"react-native-vector-icons": "^4.4.2",
+		"react-navigation": "^1.0.0-beta.21",
+		"react-redux": "^5.0.6",
+		"redux": "^3.7.2",
+		"redux-persist": "^5.4.0"
+	},
+	"devDependencies": {
+		"babel-jest": "21.2.0",
+		"babel-preset-react-native": "4.0.0",
+		"jest": "21.2.1",
+		"react-test-renderer": "16.0.0"
+	},
+	"jest": {
+		"preset": "react-native"
+	}
+}
