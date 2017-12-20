@@ -92,6 +92,7 @@ class ModalShop extends Component {
         const {params} = this.props.navigation.state;                 
         this.state = {
             keyItemShop: params.keyItemShop,
+            valueChange: params.valueProduct,
             valueProduct: params.valueProduct,
             dataItem: null,
             keyItem: params.keyItem,
@@ -157,7 +158,7 @@ class ModalShop extends Component {
     addItem = () =>{
         this.setState({
             valueItem: this.state.valueItem + 1,
-            priceItem: (parseInt(this.state.priceItem) + parseInt(this.state.valueProduct)).toString()
+            priceItem: (parseInt(this.state.priceItem) + parseInt(this.state.valueProduct)).toString(),
         })
     }
     minusItem = () =>{
@@ -166,7 +167,7 @@ class ModalShop extends Component {
         } else{
             this.setState({
                 valueItem: this.state.valueItem - 1,
-                priceItem: (parseInt(this.state.priceItem)  - parseInt(this.state.valueProduct)).toString()
+                priceItem: (parseInt(this.state.priceItem)  - parseInt(this.state.valueProduct)).toString(),
             })
         }
       
@@ -181,13 +182,10 @@ class ModalShop extends Component {
             value: this.state.valueItem,
             ice : this.state.ice,
             size : this.state.sizes,
-            sugar : this.state.sugar
+            sugar : this.state.sugar,
+            keyItem: this.state.keyItem
         }
-        //this.props.dispatchInfoItemShopUpdate(callback)
-        //console.log('asdasdas',, this.props.inforitemshop)
-      //  GetData.saveStateCart(this.state.keyItemShop, this.props.infouser.uid, this.state.keyItem)                
-        //GetData.saveDataCash(this.state.keyItemShop,this.props.infouser.uid, this.state.keyItem, callback  )
-        GetData.saveDataCart(this.state.keyItemShop,this.props.infouser.uid, this.state.keyItem, callback  )
+        GetData.saveDataCart(this.state.keyItemShop,this.props.infouser.uid, callback  )
         this.setState({ 
             keyItem: null,
             nameItem: null,
@@ -230,7 +228,7 @@ class ModalShop extends Component {
                    <Image style = {styles.item} source={{ uri : this.state.imageItem} } />
                     <View style = {styles.center}>
                     <Text  style = {styles.titleItem} numberOfLines = {1}>{this.state.nameItem}</Text>
-                   <Text note style = {styles.backgroundPrice} numberOfLines = {1}>{Currency.convertNumberToCurrency(this.state.valueProduct)  + ' VNĐ'}</Text>
+                   <Text note style = {styles.backgroundPrice} numberOfLines = {1}>{Currency.convertNumberToCurrency(this.state.valueChange)  + ' VNĐ'}</Text>
                    </View>
                    </View>
                 <View style = {styles.itemBuy}>
@@ -321,7 +319,7 @@ class ModalShop extends Component {
              </Form>
            </Content>
            <Footer style = {{backgroundColor : '#ecf0f1', height: 50}}>      
-              <Button iconLeft style = {{alignSelf: 'center', justifyContent: 'space-between', backgroundColor: '#54A8DD',flexDirection: 'row'}} onPress = {this.onAddtoCart}>
+              <Button iconLeft style = {{alignSelf: 'center', justifyContent: 'space-between', backgroundColor: '#54A8DD',flexDirection: 'row'}} onPress = {this.onAddtoCart.bind(this)}>
                    <Icon name='md-basket' style = {{fontSize: 25, color: '#FFF'}}/>
                    <Text style = {{fontSize: 15, color:'#FFF'}}>Thêm vào giỏ </Text>
                    <Text style = {{fontSize: 15, color:'#FFF'}}>{Currency.convertNumberToCurrency(this.state.priceItem) + ' VNĐ'}</Text>

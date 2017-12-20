@@ -9,9 +9,9 @@ class GetData {
    static removeCartItem(key,uid){
     firebase.database().ref().child(`CartItem/${uid}/${key}`).remove();    
    }
-  static saveDataCart (key,uid,id, callback) {
+  static saveDataCart (key,uid, callback) {
     //callback['infor'] = mang
-    firebase.database().ref().child(`CartItem/${uid}/${key}/${id}`).set(callback);
+    firebase.database().ref().child(`CartItem/${uid}/${key}`).push(callback);
    }
    static saveDataCash (uid, callback) {
     //callback['infor'] = mang
@@ -107,7 +107,7 @@ class GetData {
        firebase.database().ref(`Shop/${uid}`).once('value', (shopinfo) => {callback(shopinfo.val())})
     }
     static getDataCart (keyshop, uid, callback){
-       firebase.database().ref(`CartItem/${uid}/${keyshop}`).on('value', (snap)=>{
+       firebase.database().ref(`CartItem/${uid}/${keyshop}`).once('value', (snap)=>{
          let items =[];
          let arrayPrice = [];
          snap.forEach((child) => {

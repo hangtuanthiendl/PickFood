@@ -75,14 +75,14 @@ renderItemHistory: {
     backgroundColor: 'rgb(84, 168, 221)',
     height: undefined,
     width:undefined,
-    marginRight: 5,
     color: '#FFF',
     padding: 10,
-    marginTop: 5,
+    margin: 5,
     borderRadius: 10,
     textAlign: 'center',
     //textDecorationLine: 'underline',
     fontWeight: 'bold',
     alignSelf: 'center'
 },
+
 });

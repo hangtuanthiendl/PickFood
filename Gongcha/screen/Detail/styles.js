@@ -95,6 +95,19 @@ export default StyleSheet.create({
         //textDecorationLine: 'underline',
         fontWeight: 'bold',
     },
+    backgroundPrice1: {
+      backgroundColor: 'rgb(84, 168, 221)',
+        height: undefined,
+        width:undefined,
+        margin: 5,
+        color: '#FFF',
+        padding: 10,
+        borderRadius: 10,
+        textAlign: 'center',
+        //textDecorationLine: 'underline',
+        fontWeight: 'bold',
+        alignSelf: 'center'
+     },
       item:{
           height: 130,
           width: 85,
@@ -217,5 +230,14 @@ export default StyleSheet.create({
       },
       statusBar: {
         height: 24,
+      },
+      titleHotSale: {
+        fontSize : 15,
+        fontWeight: 'bold',
+      },
+      titleadress: {
+        fontSize: 13,
+        fontStyle: 'normal',
+        color: 'grey'
       },
 });

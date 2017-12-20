@@ -33,8 +33,25 @@ class History extends Component {
             })
         })
     }
+    checkState(state){
+        switch(state){
+            case 0: return 'Chờ xác nhận'
+            case 1: return 'Đã xác nhận'
+            case 2: return 'Đã nhận hàng'
+            case 3: return 'Đã hủy'
+        }
+    }
+    checkColor(color){
+        switch(color){
+            case 0: return 'grey'
+            case 1: return '#039BE5'
+            case 2: return '#2ecc71'
+            case 3: return '#c0392b'
+        }
+    }
     _renderItem = ({item})=>{
-        const color = item.state == 1 ? '#039BE5' :  'grey'
+        const color = this.checkColor(item.state)
+        const nameState = this.checkState(item.state)
         return (
             <View>       
             <View style = {styles.renderItemHistory}>               
@@ -69,7 +86,7 @@ class History extends Component {
                 <Thumbnail small source={{uri: this.props.infouser.photoURL}}/>
                 <View style = {styles.marginLeftItem}>
                 <Text>{this.props.infouser.displayName}</Text>
-                <Text note style = {{color}}>{item.state == 1 ? 'Đã thanh toán' : 'Đã hủy'}</Text>
+                <Text note style = {{color}}>{nameState}</Text>
                 </View>
                 </View>
             </View>

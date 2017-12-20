@@ -24,7 +24,7 @@ class DetailHistory extends Component {
             total: '',
             checkout: null, 
             listItemHistory: null,
-            seconds: 5
+            seconds: 2
         }
         this.handleAppStateChange = this.handleAppStateChange.bind(this);        
     }
@@ -42,31 +42,63 @@ class DetailHistory extends Component {
             })
         })
         AppState.addEventListener('change', this.handleAppStateChange);
-        
     }
       componentWillUnmount() {
         AppState.removeEventListener('change', this.handleAppStateChange);
       }
     
       handleAppStateChange(appState) {
-        if (appState === 'background' && this.state.state == 1) {
-          let date = new Date(Date.now() + (this.state.seconds * 1000));
-          PushNotification.localNotificationSchedule({
-            title: 'Thông báo',
-            message: "Mời quý khách đến quầy nhận hàng",
-            date,
-          });
+            if (appState = 'background'){
+                this.checkNofication()
+            }
+    }
+      checkNofication(){
+        if(this.state.state === 1){
+            let date = new Date(Date.now() + (this.state.seconds * 1000));
+            PushNotification.localNotification({
+              id: '1',
+              title: 'Thông báo',
+              message: "Đơn hàng của bạn đã được xác nhận",
+              date,
+            });
+            PushNotification.cancelLocalNotifications({id: '2'});
+
+          } else if (this.state.state === 2){
+            let date = new Date(Date.now() + (this.state.seconds * 1000));
+            PushNotification.localNotification({
+              id:'2',
+              title: 'Thông báo',
+              message: "Mời bạn đến quầy nhận hàng",
+              date,
+            });
+            PushNotification.cancelLocalNotifications({id: '1'});
         }
       }
+      checkState(state){
+        switch(state){
+            case 0: return 'Chờ xác nhận'
+            case 1: return 'Đã xác nhận'
+            case 2: return 'Đã nhận hàng'
+            case 3: return 'Đã hủy'
+        }
+    }
+    checkColor(color){
+        switch(color){
+            case 0: return 'grey'
+            case 1: return '#039BE5'
+            case 2: return '#2ecc71'
+            case 3: return '#c0392b'
+        }
+    }
     _renderItem = ({item})=>{
         return (
                 <View style = {{backgroundColor: '#FFF' , flexDirection: 'row'}}>                               
                <View style = {{marginLeft: 5, flex: 1}}>
-               <Text numberOfLines = {1} style ={styles.titleHotSale}>{item.nameItem +' x' + item.value + '=' + Currency.convertNumberToCurrency(item.valueProduct) +'đ' }</Text>
+               <Text numberOfLines = {1} style ={styles.titleHotSale}>{item.nameItem +' x' + item.value + '=' + Currency.convertNumberToCurrency((item.valueProduct*item.value)) +'đ' }</Text>
                <Text numberOfLines = {1} style ={styles.titleadress}>{item.ice +',' + item.size + ','+ item.sugar}</Text>
                <View>
                      {item.info != null ? (item.info.map((e, i) => <Text note key={"key"+i}
-                      style = {styles.titleItem} numberOfLines = {1}>{e.name + ' x1' + ' = ' + Currency.convertNumberToCurrency(e.price) + 'đ'}</Text>)) : null}
+                      numberOfLines = {1}>{e.name + ' x1' + ' = ' + Currency.convertNumberToCurrency(e.price) + 'đ'}</Text>)) : null}
                  </View>
                 </View>
                 <Text note style = {styles.backgroundPrice}>{'Tổng: '+Currency.convertNumberToCurrency(item.total) +'đ'}</Text>                     
@@ -75,7 +107,8 @@ class DetailHistory extends Component {
     }
     render() {
         const {idItem , timeIn, checkout, nameItem, state, total} = this.state 
-        const color = state == 1 ? '#039BE5' :  'grey'        
+        const color = this.checkColor(state)
+        const nameState = this.checkState(state)
         return (
             <Container style = {styles.container}>
                 <Header androidStatusBarColor = 'rgb(184, 47, 64)' style = {{backgroundColor: 'rgb(184, 47, 64)', justifyContent: 'space-between'}}>
@@ -106,7 +139,7 @@ class DetailHistory extends Component {
                 <Thumbnail small source={{uri: this.props.infouser.photoURL}}/>
                 <View style = {styles.marginLeftItem}>
                 <Text>{this.props.infouser.displayName}</Text>
-                <Text note style = {{color}}>{state == 1 ? 'Đã thanh toán' : 'Đã hủy'}</Text>
+                <Text note style = {{color}}>{nameState}</Text>
                 </View>
                 </View>
                 </View> 

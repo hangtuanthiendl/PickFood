@@ -113,7 +113,7 @@ export const TabBar = TabNavigator({
         navigationOptions:{
             tabBarIcon: ({ tintColor }) => (
                 <Icon
-                  name="md-cart" style={{fontSize: 28, color: tintColor}}
+                  name="md-list-box" style={{fontSize: 28, color: tintColor}}
                 />
               ),
         }

@@ -23,27 +23,21 @@ class ModalCart extends Component {
         GetData.getDataCart(params.keyItemShop,this.props.infouser.uid, (dataCart)=>{
             var arrayKey = [];
             var arrayPrice = [];
+            const reducer = (accumulator, currentValue) => accumulator + currentValue;
+            var totalPrice
             if (dataCart != 0) {
                 dataCart.forEach(e =>{
                     arrayPrice.push(parseInt(e.total))
                     arrayKey.push(e.key)
                   })         
-                  const reducer = (accumulator, currentValue) => accumulator + currentValue;
-                  let totalPrice = arrayPrice.reduce(reducer)   
-                  this.setState({
-                    dataCart: dataCart,
-                    totalPrice: totalPrice,
-                    dataKey : arrayKey
-                    //detailCart : dataCart.info
-                })
+                  totalPrice = arrayPrice.reduce(reducer)                   
             }
-          
+            this.setState({
+                dataCart: dataCart,
+                totalPrice: totalPrice,
+            })
         })
-        //GetData.getItemCash(params.keyItemShop,this.props.infouser.uid, (data)=>{
-            //this.setState({
-            //    dataTest: data
-            //})
-       // })
+       
     }
     componentWillUnmount(){
         this.setState({
@@ -54,9 +48,6 @@ class ModalCart extends Component {
     }
     onCash = () =>{
         const {params} = this.props.navigation.state;                         
-        //this.state.dataKey.forEach(e =>{
-      //   GetData.setStateCart(params.keyItemShop, this.props.infouser.uid, e)                
-        //})
         let now = new Date()
         let callback = {
             total: this.state.totalPrice,
@@ -75,23 +66,17 @@ class ModalCart extends Component {
    }
     _renderItemCart = ({item}) => { 
         return (
-            <List transparent style ={{backgroundColor: '#FFF'}} >
-            <ListItem button >                 
-            <Left>
-             <Body>
-                 <Text  style = {styles.titleItem} numberOfLines = {1}>{item.nameItem}</Text>
-                 <Text note style = {styles.backgroundPrice} numberOfLines = {1}>{Currency.convertNumberToCurrency(item.total) + ' VNĐ'}</Text>
-                 <View>
-                     {item.info != null ? (item.info.map((e, i) => <Text key={"key"+i}
-                      style = {styles.titleItem} numberOfLines = {1}>{e.name}</Text>)) : null}
-                 </View>
-            </Body>
-             </Left>
-             <Right>
-             <Image style = {styles.item} source={{ uri : item.imageItem} } />
-             </Right>
-             </ListItem>
-            </List>   
+            <View style = {{backgroundColor: '#FFF' , flexDirection: 'row'}}>                               
+            <View style = {{marginLeft: 5, flex: 1}}>
+            <Text numberOfLines = {1} style ={styles.titleHotSale}>{item.nameItem +' x' + item.value + '=' + Currency.convertNumberToCurrency((item.valueProduct*item.value)) +'đ' }</Text>
+            <Text numberOfLines = {1} style ={styles.titleadress}>{item.ice +', ' + item.sugar + ', '+ item.size}</Text>
+            <View>
+                  {item.info != null ? (item.info.map((e, i) => <Text note key={"key"+i}
+                   numberOfLines = {1}>{e.name + ' x1' + ' = ' + Currency.convertNumberToCurrency(e.price) + 'đ'}</Text>)) : null}
+              </View>
+             </View>
+             <Text note style = {styles.backgroundPrice1}>{'Tổng: '+Currency.convertNumberToCurrency(item.total) +'đ'}</Text>                     
+           </View>      
         );
       }
     render() {
@@ -116,6 +101,7 @@ class ModalCart extends Component {
                   this.state.dataCart && <FlatList
                 data = { this.state.dataCart}
                 renderItem={this._renderItemCart} 
+                ItemSeparatorComponent = {() => {return (<View style = {{height: 5}}/>)}}
                 removeClippedSubviews={true}
                 extraData= {this.state}                             
                 showsVerticalScrollIndicator ={false}
