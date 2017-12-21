@@ -43,9 +43,11 @@ class Login extends Component {
 				let userinfoFalse = {
 					displayName: currentUser.displayName,
 					email: currentUser.email,
-					phoneNumber: "123",
+					phoneNumber: "Chưa cập nhật",
 					photoURL: currentUser.photoURL,
-					uid: currentUser.uid,				
+					uid: currentUser.uid,
+					birthday: "Chưa cập nhật",
+					sex : "Chưa cập nhật",				
 				}
 				firebase.database().ref().child('User').once('value', (snap)=>{
 					if(snap.hasChild(currentUser.uid)){
@@ -56,6 +58,8 @@ class Login extends Component {
 								phoneNumber: item.phoneNumber,
 								photoURL: item.photoURL,
 								uid: item.uid,	
+								birthday: item.birthday,
+                                sex : item.sex,		
 							}
 							this.props.dispatchInfoUserUpdate(userinfoTrue)
 						})

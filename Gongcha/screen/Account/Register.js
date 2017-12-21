@@ -33,7 +33,9 @@ class Register extends Component {
                     email: this.state.email,
                     phoneNumber: this.state.phone,
                     photoURL: 'http://www.vince-inc.com/vincent/wp-content/uploads/2011/11/no_image.jpg',
-                    uid: currentUser.uid,                
+                    uid: currentUser.uid,  
+                    birthday: "Chưa cập nhật",
+					sex : "Chưa cập nhật",	              
                 }
 				firebase.database().ref().child('User').once('value', (snap)=>{
                     if(snap.hasChild(currentUser.uid)){
@@ -43,7 +45,9 @@ class Register extends Component {
 								email: item.email,
 								phoneNumber: item.phoneNumber,
 								photoURL: item.photoURL,
-								uid: item.uid,	
+                                uid: item.uid,
+                                birthday: item.birthday,
+                                sex : item.sex,		
 							}
 							this.props.dispatchInfoUserUpdate(userinfoTrue)
 						})

@@ -163,7 +163,6 @@ dependencies {
     compile 'com.google.android.gms:play-services-maps:11.6.0'
     // Firebase dependencies
     compile "com.google.android.gms:play-services-base:11.6.0"
-    compile "com.google.firebase:firebase-core:11.6.0"
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile "com.android.support:support-compat:25.3.1"
     compile "com.android.support:animated-vector-drawable:25.3.1"
@@ -172,6 +171,7 @@ dependencies {
     compile "com.google.firebase:firebase-auth:11.6.0"
     compile "com.google.firebase:firebase-database:11.6.0"
     compile "com.google.firebase:firebase-messaging:11.6.0"
+    compile "com.google.firebase:firebase-storage:11.6.0"
 
 }
 
