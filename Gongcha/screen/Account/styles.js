@@ -234,5 +234,15 @@ textinbuttonfb:
       },
       listItemStyle: {
         flexDirection: 'column'
-      }
+      },
+      modal:{
+        height: undefined,
+        width: 350,
+        marginTop: 200,
+        padding: 10,
+        alignSelf: 'center',
+        backgroundColor:'white',
+        margin:10,
+        borderRadius:10,
+      },
 });

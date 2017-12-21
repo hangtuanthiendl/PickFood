@@ -135,6 +135,7 @@ class Register extends Component {
                 <Icon name="md-mail-open" style = {{color: 'rgb(184, 181, 182)'}} />
                 <Input style = {{color: 'white'}} 
                        placeholder='Địa chỉ Email của bạn'
+                       returnKeyType='next'
                        underlineColorAndroid = 'transparent'
                        placeholderTextColor= 'rgb(184, 181, 182)'  
                        onChangeText={(email) => this.setState({ email })}
@@ -145,6 +146,7 @@ class Register extends Component {
                 <Input style = {{color: 'white'}} 
                        placeholder='Mật khẩu của bạn'
                        underlineColorAndroid = 'transparent'
+                       returnKeyType='next'
                        placeholderTextColor= 'rgb(184, 181, 182)'  
                        onChangeText={(password) => this.setState({ password })}
                        value={this.state.password}
@@ -155,6 +157,8 @@ class Register extends Component {
             <Input style = {{color: 'white'}} 
                    placeholder='Số điện thoại của bạn'
                    underlineColorAndroid = 'transparent'
+                   keyboardType='numeric'
+                   returnKeyType='next'
                    placeholderTextColor= 'rgb(184, 181, 182)'  
                    onChangeText={(phone) => this.setState({ phone })}
                    value={this.state.phone} />
@@ -163,6 +167,7 @@ class Register extends Component {
             <Icon name="md-contact" style = {{color: 'rgb(184, 181, 182)'}} />
             <Input style = {{color: 'white'}} 
                    placeholder='Tên hiện thị'
+                   returnKeyType='next'
                    underlineColorAndroid = 'transparent'
                    placeholderTextColor= 'rgb(184, 181, 182)'  
                    onChangeText={(name) => this.setState({ name })}

@@ -10,7 +10,7 @@ import Login from './screen/Account/Login';
 import Register from './screen/Account/Register';
 import Setting from './screen/Account/Setting';
 import Detail from './screen/Detail/Detail';
-import MapView from './screen/Map/MapView';
+import Map from './screen/Map/Map';
 import ModalShop from './screen/Detail/ModalShop'
 import MainRouter from './screen/Main/MainRouter'
 import TabRegister from './screen/Account/TabRegister'
@@ -66,7 +66,7 @@ export const ShopStack = StackNavigator({
 })
 export const MapStack = StackNavigator({
     MH_Map : {
-        screen: MapView,
+        screen: Map,
         navigationOptions:{
             header: null
         }
@@ -119,7 +119,7 @@ export const TabBar = TabNavigator({
         }
     },
     Map: {
-        screen: MapView,
+        screen: Map,
         navigationOptions: {
             tabBarIcon: ({tintColor}) => (
                 <Icon name= 'md-map' style ={{fontSize: 28, color:tintColor}}/>

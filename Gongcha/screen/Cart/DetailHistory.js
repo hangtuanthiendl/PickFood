@@ -6,7 +6,6 @@ import GetData from '../../Sever/getData'
 import LinearGradient from 'react-native-linear-gradient';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
-import { Rating } from 'react-native-elements';
 import {connect} from 'react-redux';
 import firebase from 'react-native-firebase';
 import PushNofication from './PushNofication';

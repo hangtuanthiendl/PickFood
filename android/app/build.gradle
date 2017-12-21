@@ -152,9 +152,15 @@ dependencies {
     compile project(':react-native-nested-scroll-view')
     compile project(':react-native-vector-icons')
     compile project(':react-native-push-notification')
+    compile project(':react-native-image-picker')
     compile ('com.google.android.gms:play-services-gcm:11.6.0') {
         force = true;
     }
+    compile(project(':react-native-maps')){
+        exclude group: 'com.google.android.gms', module: 'play-services-base'
+        exclude group: 'com.google.android.gms', module: 'play-services-maps'
+    }
+    compile 'com.google.android.gms:play-services-maps:11.6.0'
     // Firebase dependencies
     compile "com.google.android.gms:play-services-base:11.6.0"
     compile "com.google.firebase:firebase-core:11.6.0"

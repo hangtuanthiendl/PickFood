@@ -7,7 +7,7 @@ import styles from './styles';
 import SearchBar from '../../SearchBar';
 import LinearGradient from 'react-native-linear-gradient';
 import antrua from '../../Image/antrua.jpg'
-import { Rating } from 'react-native-elements';
+//import Rating  from 'react-native-ratings';
 export default class MainRouter extends Component {
     constructor(props){
         super(props)
@@ -72,17 +72,7 @@ export default class MainRouter extends Component {
                <Text numberOfLines = {1} style ={styles.titleHotSale}>{item.nameShop}</Text>
                <Text  numberOfLines = {1} style ={styles.titleadress}>{item.addressShop}</Text>
                <View style = {{flexDirection: 'row'}}>
-               <Rating
-               //showRating
-               type="star"
-               fractions={1}
-               startingValue={3.6}
-               readonly
-               ratingBackgroundColor = 'transparent'
-               imageSize={20}
-              // onFinishRating={this.ratingCompleted}
-               style={{ paddingVertical: 10 }}
-             />
+               
                 <Text  numberOfLines = {1} style ={{ fontSize: 13,
                 fontStyle: 'normal', paddingVertical: 10}}>(180)</Text>
                </View>
@@ -109,18 +99,7 @@ export default class MainRouter extends Component {
                 fontStyle: 'normal'}}>(180)</Text>
                </View>
                <View style = {{flexDirection: 'row' , alignItems: 'center'}}>
-               <Rating
-               //showRating
-               type="star"
-               fractions={1}
-               startingValue={3.6}
-               readonly
-               ratingBackgroundColor = 'transparent'
-               imageSize={10}
-              // onFinishRating={this.ratingCompleted}
-               style={{
-                paddingRight: 5, alignSelf: 'center' }}
-             />
+             
                 <Text  numberOfLines = {1} style ={{ alignSelf: 'center', fontSize: 10,
                 fontStyle: 'normal'}}>(180)</Text>
                </View>
