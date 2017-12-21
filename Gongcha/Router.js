@@ -171,6 +171,8 @@ export const Root = StackNavigator({
     ModalShop: {screen : ModalShop},
     ModalCart: {screen : ModalCart},
     DetailHistory: {screen : DetailHistory},   
+    Setting: {screen : Setting},   
+
 },
 {
     initialRouteName: "CheckLogin",

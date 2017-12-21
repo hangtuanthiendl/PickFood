@@ -48,10 +48,10 @@ class DetailHistory extends Component {
       }
     
       handleAppStateChange(appState) {
-            if (appState = 'background'){
-                this.checkNofication()
-            }
-    }
+        if (appState = 'background'){
+            this.checkNofication()
+        }
+}
       checkNofication(){
         if(this.state.state === 1){
             let date = new Date(Date.now() + (this.state.seconds * 1000));

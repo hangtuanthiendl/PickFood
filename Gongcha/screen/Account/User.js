@@ -66,31 +66,17 @@ class User extends Component {
       </ImageBackground>
         <View>
         <View style= {styles.wraper}>
+        <TouchableNativeFeedback>
         <View style={styles.headerCateroryDetail}>
         <View style = {styles.row}>
         <Icon name = 'ios-cash' style = {styles.viewicon}/>
-        <Text style={styles.viewmore}>Đơn mua</Text>
+        <Text style={styles.viewmore}>Ví PF</Text>
         </View>
-         <TouchableNativeFeedback>
          <View style ={{flexDirection: 'row', alignItems: 'center'}}>
-         <Text note style = {{textAlign: 'center', alignSelf: 'center'}}>Xem lịch sử mua hàng</Text>
+         <Text style = {styles.titleUser}>Xem ví của tôi</Text>
+         </View>
          </View>
          </TouchableNativeFeedback>
-         </View>
-         <View style ={styles.viewcontent}>
-          <View>
-            <Icon name = 'ios-create-outline' style = {{alignSelf: 'center', fontSize: 40}}/>
-            <Text note>Chờ xác nhận</Text>
-          </View>
-          <View>
-            <Icon name = 'ios-bookmarks-outline' style = {{alignSelf: 'center', fontSize: 40}}/>
-            <Text note>Chờ giao</Text>
-          </View>
-          <View>
-            <Icon name = 'ios-card-outline' style = {{alignSelf: 'center', fontSize: 40}}/>
-            <Text note>Đã thanh toán</Text>
-          </View>
-         </View>
           </View>
         </View>
         <TouchableNativeFeedback>
@@ -100,7 +86,7 @@ class User extends Component {
         <Text style={styles.viewmore}>Ưa thích</Text>
         </View>
          <View style ={{flexDirection: 'row', alignItems: 'center'}}>
-         <Text note style = {{textAlign: 'center', alignSelf: 'center'}}>Xem sản phẩm đã thích</Text>
+         <Text  style = {styles.titleUser}>Xem cửa hàng đã thích</Text>
          </View>
          </View>
          </TouchableNativeFeedback>
@@ -111,17 +97,17 @@ class User extends Component {
         <Text style={styles.viewmore}>Mới xem</Text>
         </View>
          <View style ={{flexDirection: 'row', alignItems: 'center'}}>
-         <Text note style = {{textAlign: 'center', alignSelf: 'center'}}>Sản phẩm xem gần đây</Text>
+         <Text  style = {styles.titleUser}>Sản phẩm xem gần đây</Text>
          </View>
          </View>
          </TouchableNativeFeedback>
-         <TouchableNativeFeedback>
+         <TouchableNativeFeedback onPress = {() => this.props.navigation.navigate('Setting')}>
          <View style={styles.headerCateroryDetail}>
         <View style = {styles.row}>
         <Icon name = 'md-person' style = {styles.viewicon5}/>
         <Text style={styles.viewmore}>Tài khoản</Text>
         </View>  
-        <Text note style = {{textAlign: 'center', alignSelf: 'center'}}>Xem tài khoản của tôi</Text>
+        <Text  style = {styles.titleUser}>Xem tài khoản của tôi</Text>
          </View>
          </TouchableNativeFeedback>
          <TouchableNativeFeedback onPress = {() => this.signOut()}>
@@ -130,7 +116,7 @@ class User extends Component {
         <Icon name = 'md-log-out' style = {styles.viewicon6}/>
         <Text style={styles.viewmore}>Đăng xuất</Text>
         </View>
-         <Text note style = {{textAlign: 'center', alignSelf: 'center'}}>Đăng xuất tài khoản</Text>
+         <Text  style = {styles.titleUser}>Đăng xuất tài khoản</Text>
         </View>
          </TouchableNativeFeedback>
       </Content>

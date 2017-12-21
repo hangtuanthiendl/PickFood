@@ -20,6 +20,14 @@ export default StyleSheet.create({
         borderBottomWidth: 0.5,
         justifyContent: 'space-between'
       },
+    headerViewSetting: {
+        padding: 10,
+        backgroundColor: '#FFF',
+        borderColor: '#CFD8DC',
+        borderTopWidth: 0.5,
+        borderBottomWidth: 0.5,
+        justifyContent: 'space-between'
+    },
       viewmore: {
         fontStyle: 'normal',
         alignSelf: 'center',
@@ -32,6 +40,13 @@ export default StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'center',
         fontSize: 24
+    },
+    containerLogo:{
+		justifyContent: 'center',
+		flexDirection: 'row',
+  },
+    titleUser: {
+        textAlign: 'center', alignSelf: 'center', fontStyle: 'normal', fontSize: 13
     },
     viewicon1:{
         color: '#FF6C66',
@@ -192,6 +207,11 @@ textinbuttonfb:
     header: {
         alignItems: 'flex-start',
         justifyContent: 'flex-end',
+        height: height / 3.5
+      },
+    header1: {
+        alignItems: 'center',
+        justifyContent: 'center',
         height: height / 3.5
       },
     linearGradiant: {
