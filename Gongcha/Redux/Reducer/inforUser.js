@@ -7,7 +7,7 @@ export default function infouserReducer(state = initialState, action) {
     state = action.infouser
       return state
     case CLEAR_USER:
-    state = []
+    state = null
       return state
     default:
       return state

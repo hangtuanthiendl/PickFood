@@ -32,7 +32,10 @@ import {
 class User extends Component {
   constructor(props) {
     super(props);      
-    
+    this.state = {
+      image: this.props.infouser.photoURL,
+      name: this.props.infouser.displayName
+    }
   }
   signOut() {
     console.log('asdadsa', this.props.infouser.phoneNumber)
@@ -57,9 +60,9 @@ class User extends Component {
       <LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']}  style={styles.header}>             
       <View style = {styles.icon}>
             <TouchableOpacity transparent >
-            <Thumbnail large style = {styles.avatar} source = {{uri : this.props.infouser.photoURL}} />
+            <Thumbnail large style = {styles.avatar} source = {{uri : this.state.image}} />
             </TouchableOpacity>
-            <Text style={{fontWeight: 'bold', color: '#FFF'}}>{this.props.infouser.displayName}</Text>
+            <Text style={{fontWeight: 'bold', color: '#FFF'}}>{this.state.name}</Text>
           </View> 
       </LinearGradient>
      

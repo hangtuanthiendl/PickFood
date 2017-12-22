@@ -107,7 +107,7 @@ export const TabBar = TabNavigator({
         navigationOptions:{
             tabBarLabel: 'Home',
             tabBarIcon: ({ tintColor }) => (
-                <Icon name='ios-home' style={{fontSize: 28, color: tintColor}}/>
+                <Icon name='ios-home-outline' style={{fontSize: 28, color: tintColor}}/>
               ),
         }
     },
@@ -117,7 +117,7 @@ export const TabBar = TabNavigator({
             tabBarLabel: 'Order',
             tabBarIcon: ({ tintColor }) => (
                 <Icon
-                  name="md-list-box" style={{fontSize: 28, color: tintColor}}
+                  name="ios-list-box-outline" style={{fontSize: 28, color: tintColor}}
                 />
               ),
         }
@@ -127,7 +127,7 @@ export const TabBar = TabNavigator({
         navigationOptions: {
             tabBarLabel: 'Map',
             tabBarIcon: ({tintColor}) => (
-                <Icon name= 'md-map' style ={{fontSize: 28, color:tintColor}}/>
+                <Icon name= 'ios-map-outline' style ={{fontSize: 28, color:tintColor}}/>
             ),
         }
     },
@@ -137,7 +137,7 @@ export const TabBar = TabNavigator({
             tabBarLabel: 'Accout',
             tabBarIcon: ({ tintColor }) => (
                 <Icon
-                  name="md-contact" style={{fontSize: 28, color: tintColor}}
+                  name="ios-contact-outline" style={{fontSize: 28, color: tintColor}}
                 />
               ),
         }
@@ -157,7 +157,7 @@ export const TabBar = TabNavigator({
             borderTopColor: '#bdc3c7',
             borderTopWidth: 0.5
         },
-        inactiveTintColor: '#bdc3c7',
+        inactiveTintColor: 'black',
         activeTintColor: '#e53935',
         indicatorStyle  : {
             backgroundColor :'#ecf0f1'
