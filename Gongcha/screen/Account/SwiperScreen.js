@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Text, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native'
 import Swiper from 'react-native-swiper'
-import {connect} from 'react-redux'
 
- class Example extends Component {
+export default class SiwperScreen extends Component {
     
     Click(){
         try{
             AsyncStorage.setItem('key',JSON.stringify(true))
-           // this.props.navigation.navigate('MH2');
+            this.props.navigation.navigate('CheckLogin');
         }
         catch(e){
             console.log(e);
@@ -70,11 +69,3 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     }
 });
-
-function mapStateToProps(state){
-    return{
-        mychecks:state.check,
-    }
-  }
-  
-  export default connect(mapStateToProps)(Example);
