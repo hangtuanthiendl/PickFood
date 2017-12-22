@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, FlatList, Image} from 'react-native';
+import { Alert,View, StyleSheet, FlatList, Image} from 'react-native';
 import { Badge,Spinner,Container, Header, Item, Input, Icon, Separator,Button, Text, Body,Title, Left, Right,Content, Card, CardItem ,Thumbnail, List,ListItem, Footer,FooterTab, Radio, CheckBox   } from 'native-base';
 import {connect} from 'react-redux'
 import GetData from '../../Sever/getData'
 import styles from './styles'
 import Currency from '../../Util/Currency'
 import moment from 'moment';
+import {NavigationActions }from 'react-navigation';
 class ModalCart extends Component {
     constructor(props){
         super(props)
@@ -62,7 +63,20 @@ class ModalCart extends Component {
         }
         GetData.saveDataCash(this.props.infouser.uid, callback)
         GetData.removeCartItem(params.keyItemShop,this.props.infouser.uid)        
-        this.props.navigation.goBack()
+        Alert.alert(
+            null,
+            'Thanh toán thành công, bạn có thể kiểm tra đơn hàng ở lịch sử đặt hàng',
+            [
+              {text: 'Có', onPress: () =>   this.props.navigation.dispatch(NavigationActions.reset({
+                index: 0,
+                actions: [
+                  NavigationActions.navigate({ routeName: 'History'})
+                ]
+              })
+            )},
+            ],
+            { cancelable: false }
+          )
    }
     _renderItemCart = ({item}) => { 
         return (

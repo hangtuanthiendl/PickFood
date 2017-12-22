@@ -191,4 +191,8 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     margin: 20
 },
+containerLogo:{
+  justifyContent: 'center',
+  flexDirection: 'row',
+},
 });

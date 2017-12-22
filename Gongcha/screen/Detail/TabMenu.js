@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal,StyleSheet, View, Image, TouchableOpacity,Dimensions, FlatList,ActivityIndicator, SectionList, TouchableNativeFeedback } from "react-native";
+import {Alert, Modal,StyleSheet, View, Image, TouchableOpacity,Dimensions, FlatList,ActivityIndicator, SectionList, TouchableNativeFeedback } from "react-native";
 import {
     Radio,
     CheckBox,
@@ -159,7 +159,22 @@ class Menu extends Component {
            
           })  
       }
-    
+     onBuyItem(item) {
+        Alert.alert(
+            null,
+            'Bạn thất sự muốn mua ' + item.nameItem,
+            [
+              {text: 'Không', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+              {text: 'Có', onPress: () => this.props.navigation.navigate('ModalShop',{keyItem : item.key,
+                nameItem: item.nameItem,
+                imageItem: item.imageItem,
+                priceItem: item.priceItem,
+                valueProduct: item.priceItem,
+                keyItemShop: this.props.keyItemShop})},
+            ],
+            { cancelable: false }
+          )
+     }
       _renderMenuItem = ({item}) => {       
         return (
             <View>
@@ -172,12 +187,7 @@ class Menu extends Component {
              </View>
             </View>
              <View style = {{height: undefined, width : undefined, alignSelf: 'center'}} >  
-            <TouchableNativeFeedback onPress = {()=> this.props.navigation.navigate('ModalShop',{keyItem : item.key,
-                nameItem: item.nameItem,
-                imageItem: item.imageItem,
-                priceItem: item.priceItem,
-                valueProduct: item.priceItem,
-                keyItemShop: this.props.keyItemShop})}>
+            <TouchableNativeFeedback onPress = {()=> this.onBuyItem(item)}>
             <Text note style = {styles.backgroundAdd} numberOfLines = {1}>Mua Ngay</Text>
             </TouchableNativeFeedback>
              </View>

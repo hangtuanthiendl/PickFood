@@ -52,7 +52,7 @@ class DetailHistory extends Component {
         }
 }
       checkNofication(){
-        if(this.state.state === 1){
+        if(this.state.state === 2){
             let date = new Date(Date.now() + (this.state.seconds * 1000));
             PushNotification.localNotification({
               id:'2',

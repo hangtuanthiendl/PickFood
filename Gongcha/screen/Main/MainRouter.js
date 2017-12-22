@@ -36,7 +36,7 @@ export default class MainRouter extends Component {
     }
     _renderCategory = ({item})=>{
         return (
-            <TouchableNativeFeedback>
+            <TouchableNativeFeedback onPress = {() => this.props.navigation.navigate('CategoryMain', {nameItem: item.nameItem})}>
                 <View style = {{borderRadius: 50}}>
                 <ImageBackground source={{uri: item.imageItem}} style={styles.imageitemMall}>
                <LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']}  style={styles.imageitemMall}>
