@@ -7,6 +7,11 @@ export const imageWidth = width;
 export const imageHeight = (imageWidth / 500) *330;
 
 export default StyleSheet.create({
+    loadingCategory: {
+		height: 100,
+		alignSelf: 'center',
+		justifyContent: 'center'
+  },
     wraper:{
         marginTop: 5,
         backgroundColor: '#FFF'

@@ -8,7 +8,8 @@ import Root from '../../Router';
 class CheckLogin extends Component {
     componentWillMount(){
         let array = this.props.infouser
-        array == 0 ? ( this.props.navigation.dispatch(NavigationActions.reset({
+        console.log('inforasdas', this.props.infouser)
+        array == null ? ( this.props.navigation.dispatch(NavigationActions.reset({
             index: 0,
             actions: [
               NavigationActions.navigate({ routeName: 'Login'})
