@@ -104,6 +104,7 @@ export const TabBar = TabNavigator({
     Main: {
         screen: MainRouter,
         navigationOptions:{
+            tabBarLabel: 'Home',
             tabBarIcon: ({ tintColor }) => (
                 <Icon name='md-aperture' style={{fontSize: 28, color: tintColor}}/>
               ),
@@ -112,6 +113,7 @@ export const TabBar = TabNavigator({
     Home:{
         screen: History,
         navigationOptions:{
+            tabBarLabel: 'Order',
             tabBarIcon: ({ tintColor }) => (
                 <Icon
                   name="md-list-box" style={{fontSize: 28, color: tintColor}}
@@ -122,6 +124,7 @@ export const TabBar = TabNavigator({
     Map: {
         screen: Map,
         navigationOptions: {
+            tabBarLabel: 'Map',
             tabBarIcon: ({tintColor}) => (
                 <Icon name= 'md-map' style ={{fontSize: 28, color:tintColor}}/>
             ),
@@ -130,6 +133,7 @@ export const TabBar = TabNavigator({
     User:{ 
         screen: User,
         navigationOptions:{
+            tabBarLabel: 'Accout',
             tabBarIcon: ({ tintColor }) => (
                 <Icon
                   name="md-contact" style={{fontSize: 28, color: tintColor}}
@@ -141,14 +145,14 @@ export const TabBar = TabNavigator({
 {   
     initialRouteName: 'Main',
     lazyLoad: true,
-    swipeEnabled: false,
+    swipeEnabled: true,
     animationEnabled: true,
     tabBarPosition : 'bottom',
     tabBarOptions: {
-        showLabel: false,
+        showLabel: true,
         showIcon: true,
         style: {
-            backgroundColor: '#ecf0f1',
+            backgroundColor: '#ffff',
             borderTopColor: '#bdc3c7',
             borderTopWidth: 0.5
         },
@@ -157,7 +161,7 @@ export const TabBar = TabNavigator({
         indicatorStyle  : {
             backgroundColor :'#ecf0f1'
         },
-        pressColor: '#e53935',
+        pressColor: '#ffff',
         pressOpacity: 100,
     }
 }
