@@ -84,5 +84,10 @@ renderItemHistory: {
     fontWeight: 'bold',
     alignSelf: 'center'
 },
+ titleNull: {
+  fontSize: 15,
+  fontStyle: 'normal',
+  color: 'rgb(184, 47, 64)'
+ }
 
 });

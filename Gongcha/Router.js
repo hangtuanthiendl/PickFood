@@ -19,6 +19,7 @@ import CheckLogin from './screen/Account/CheckLogin';
 import ModalCart from './screen/Detail/ModalCart'
 import History from './screen/Cart/History'
 import DetailHistory from './screen/Cart/DetailHistory'
+import CategoryMain from './screen/Main/CategoryMain'
 export const MainStack = StackNavigator({
     MH_Main: {
         screen: MainRouter,
@@ -172,6 +173,8 @@ export const Root = StackNavigator({
     ModalCart: {screen : ModalCart},
     DetailHistory: {screen : DetailHistory},   
     Setting: {screen : Setting},   
+    History: {screen : History},   
+    CategoryMain: {screen: CategoryMain}
 
 },
 {

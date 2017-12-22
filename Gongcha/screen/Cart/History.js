@@ -118,7 +118,7 @@ class History extends Component {
                         }
                         {
                             !this.state.itemHistory && <View style={styles.loadingCategory}>
-                             <Spinner color = '#e53935'/>
+                             <Text style = {styles.titleNull}>Chưa có đơn hàng nào</Text>
                           </View>        
                         }                       
                     </View>                                          
