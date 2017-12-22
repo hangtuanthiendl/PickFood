@@ -94,6 +94,7 @@ row:{
     flexDirection: 'row',
 },
   imagebackground:{
+    paddingTop:30,
     height : height,
     width: width,
     
@@ -101,7 +102,7 @@ row:{
 	containerForm: {
 		padding: 20,
 		justifyContent: 'center',
-    alignItems: 'center',
+        alignItems: 'center',
   },
 	buttonText: {
 		fontSize: 20,
@@ -110,7 +111,7 @@ row:{
 	},
 	button: {
 		justifyContent: 'center',
-		alignItems: 'center',
+        alignItems: 'center',
 	},
 	buttonFB: {
 		justifyContent: 'center',
@@ -184,17 +185,18 @@ button:
     },
 textinbutton:
     {
-        flex: 5/8,
+        flex: 1,
         color: '#D91E18',
-        borderBottomColor: '#D91E18',
+        borderBottomColor: '#ecf0f1',
         //borderBottomRadius: 3,
         borderBottomWidth: 1,
+        alignItems:'center'
     },
 textinbuttonfb:
     {
         color: '#407cd9',
-        flex: 5/8,
-        borderBottomColor: '#407cd9',
+        flex: 1,
+        borderBottomColor: '#ecf0f1',
       //  borderBottomRadius: 3,
         borderBottomWidth: 1,
     },
@@ -244,5 +246,13 @@ textinbuttonfb:
         backgroundColor:'white',
         margin:10,
         borderRadius:10,
+      },
+      textthongbao:{
+        fontSize:12,
+        color:'white',
+        position:'absolute',
+        bottom:50,
+        left:5,
+        right:5,
       },
 });
