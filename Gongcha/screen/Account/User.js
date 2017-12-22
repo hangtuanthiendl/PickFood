@@ -32,16 +32,13 @@ import {
 class User extends Component {
   constructor(props) {
     super(props);      
-    this.state = {
-      image: this.props.infouser.photoURL,
-      name: this.props.infouser.displayName
-    }
   }
   signOut() {
     console.log('asdadsa', this.props.infouser.phoneNumber)
     firebase.auth().signOut().then(() => {
      persistor.purge()
-     this.props.dispatchInfoUserClear()     
+     
+    // this.props.dispatchInfoUserClear()     
     }).catch((error) => {
     });
     this.props.navigation.dispatch(NavigationActions.reset({
@@ -60,9 +57,9 @@ class User extends Component {
       <LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']}  style={styles.header}>             
       <View style = {styles.icon}>
             <TouchableOpacity transparent >
-            <Thumbnail large style = {styles.avatar} source = {{uri : this.state.image}} />
+            <Thumbnail large style = {styles.avatar} source = {this.props.infouser ? {uri: this.props.infouser.photoURL} : null} />
             </TouchableOpacity>
-            <Text style={{fontWeight: 'bold', color: '#FFF'}}>{this.state.name}</Text>
+            <Text style={{fontWeight: 'bold', color: '#FFF'}}>{this.props.infouser ? this.props.infouser.displayName : 'loading...'}</Text>
           </View> 
       </LinearGradient>
      

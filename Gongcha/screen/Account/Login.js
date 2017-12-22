@@ -39,38 +39,38 @@ class Login extends Component {
             // login with credential
         return firebase.auth().signInWithCredential(credential);
 	  })
-	  .then((currentUser) => {		                
-				let userinfoFalse = {
-					displayName: currentUser.displayName,
-					email: currentUser.email,
-					phoneNumber: "123",
-					photoURL: currentUser.photoURL,
-					uid: currentUser.uid,				
-				}
-				firebase.database().ref().child('User').once('value', (snap)=>{
-					if(snap.hasChild(currentUser.uid)){
-						GetData.getUserInfo(currentUser.uid, (item)=>{
-							let userinfoTrue = {
-								displayName: item.displayName,
-								email: item.email,
-								phoneNumber: item.phoneNumber,
-								photoURL: item.photoURL,
-								uid: item.uid,	
-							}
-							this.props.dispatchInfoUserUpdate(userinfoTrue)
-						})
-					} else{
-						GetData.setUserInfo(userinfoFalse)
-						this.props.dispatchInfoUserUpdate(userinfoFalse)
-					}
-				})
-                this.props.navigation.dispatch(NavigationActions.reset({
+	  .then((currentUser) => {
+		    	GetData.getUserInfo(currentUser.uid, (user) =>{
+					if (user){
+						this.props.dispatchInfoUserUpdate(user)
+						this.props.navigation.dispatch(NavigationActions.reset({
                             index: 0,
                             actions: [
                               NavigationActions.navigate({ routeName: 'Tab'})
                             ]
                           })
-						)       
+						)   
+					} else{
+						let userinfo = {
+							displayName: currentUser.displayName,
+							email: currentUser.email,
+							photoURL: currentUser.photoURL,
+							uid: currentUser.uid,
+							phoneNumber: "Chưa cập nhật",
+							sex: 'Chưa cập nhật',
+							birthday: 'Chưa cập nhật',							
+						}
+						GetData.setUserInfo(userinfo)
+						this.props.dispatchInfoUserUpdate(userinfo)
+						this.props.navigation.dispatch(NavigationActions.reset({
+                            index: 0,
+                            actions: [
+                              NavigationActions.navigate({ routeName: 'Tab'})
+                            ]
+                          })
+						)    
+					}
+				})		                   
                     })   
 	  .catch((error) => {
             alert(error);
