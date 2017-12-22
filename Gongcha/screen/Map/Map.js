@@ -63,7 +63,7 @@ import {
             places:null,
             keySearch:'Gong Cha Việt Nam',
             radius:10000,
-            typeMap:'standard',
+            typeMap:'standard'
         }
     }
     componentWillMount(){
@@ -71,24 +71,24 @@ import {
         this.getPlaces();
     };
     MyLocation(){//giai quyet truoc khi tim vi tri cua ban
-        navigator.geolocation.getCurrentPosition((position)=>{
-            this.setState({
-                region:{
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude,
-                    latitudeDelta: 0.5,
-                    longitudeDelta: 0.5,
-                },
-                marker:{
-                    latitude: position.coords.latitude,
-                    longitude:position.coords.longitude,
-                }
-            });
-            this._map.animateToCoordinate(this.state.marker, 1000);
-            }
-            )
-       };
-       getUrlWithParameters(lat,long,radius,type,name,API){
+     navigator.geolocation.getCurrentPosition((position)=>{
+         this.setState({
+             region:{
+                 latitude: position.coords.latitude,
+                 longitude: position.coords.longitude,
+                 latitudeDelta: 0.5,
+                 longitudeDelta: 0.5,
+             },
+             marker:{
+                 latitude: position.coords.latitude,
+                 longitude:position.coords.longitude,
+             }
+         });
+         this._map.animateToCoordinate(this.state.marker, 1000);
+         }
+         )
+    };
+    getUrlWithParameters(lat,long,radius,type,name,API){
         const url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
         const location = `location=${lat},${long}&radius=${radius}`;
         const typeData = `&types=${type}`;
@@ -97,100 +97,101 @@ import {
         return `${url}${location}${typeData}${nameDaTa}${key}`;
    }
    getPlaces(){
-    const url = this.getUrlWithParameters(
-        this.state.region.latitude,
-        this.state.region.longitude,
-        this.state.radius,
-        '',
-        this.state.keySearch,
-        'AIzaSyBxcWN1OUzvCjdsEptKu2wS6YhStLZbWt0'
-    );
-    fetch(url)
-    .then((jsonRequest)=>jsonRequest.json())
-    .then((jsonResponse)=>{
-         console.log(jsonResponse);
-         const arrMarkers = [];
-         jsonResponse.results.map((element,i)=>{
-             arrMarkers.push(
-                <Marker
-                     key={i}
-                     coordinate = {{
-                         latitude:element.geometry.location.lat,
-                         longitude:element.geometry.location.lng,
-                     }}>
-                    <Image
-                     style={{width: 25, height: 25}}
-                     source={{uri: element.icon}}
-                      />
-                     <Callout>
-                         <View style={styles.information}>
-                         <Text style={styles.text_inf}>{element.name}</Text>
-                         <Text style={styles.text_inf}>{element.vicinity}</Text>
-                         </View>
-                     </Callout>
-                </Marker>
-             )
-         })
-         console.log(JSON.stringify(arrMarkers));
-         this.setState({places:arrMarkers});})
-         .catch(function(error) {
-              console.log('There has been a problem with your fetch operation: ' + error.message);
-              });
-        }
-        Go(text){
-            if(text != null){
-                this.setState({
-                    keySearch:text,
-                })
-                this.getPlaces();
-            }
-        }
-        i_100x(){
+       const url = this.getUrlWithParameters(
+           this.state.region.latitude,
+           this.state.region.longitude,
+           this.state.radius,
+           '',
+           this.state.keySearch,
+           'AIzaSyBxcWN1OUzvCjdsEptKu2wS6YhStLZbWt0'
+       );
+       fetch(url)
+       .then((jsonRequest)=>jsonRequest.json())
+       .then((jsonResponse)=>{
+            console.log(jsonResponse);
+            const arrMarkers = [];
+            jsonResponse.results.map((element,i)=>{
+                arrMarkers.push(
+                   <Marker
+                        key={i}
+                        coordinate = {{
+                            latitude:element.geometry.location.lat,
+                            longitude:element.geometry.location.lng,
+                        }}>
+                       <Image
+                        style={{width: 25, height: 25}}
+                        source={{uri: element.icon}}
+                         />
+                        <Callout>
+                            <View style={styles.information}>
+                            <Text style={styles.text_inf}>{element.name}</Text>
+                            <Text style={styles.text_inf}>{element.vicinity}</Text>
+                            </View>
+                        </Callout>
+                   </Marker>
+                )
+            })
+            console.log(JSON.stringify(arrMarkers));
+            this.setState({places:arrMarkers});})
+            .catch(function(error) {
+                 console.log('There has been a problem with your fetch operation: ' + error.message);
+                 });
+   }
+   Go(text){
+    if(text != null){
         this.setState({
-            radius:this.state.radius*10,
+            keySearch:text,
         })
         this.getPlaces();
-        ToastAndroid.showWithGravity(
-        'Quét bán kính: '+ this.state.radius,
-            ToastAndroid.SHORT,
-            ToastAndroid.CENTER
-          );
-        }
-        i_10x(){
-           this.setState({
-               radius:this.state.radius/10,
-           })
-           this.getPlaces();
-           ToastAndroid.showWithGravity(
-            'Quét bán kính: '+ this.state.radius,
-                ToastAndroid.SHORT,
-                ToastAndroid.CENTER
-              );
-        }
-        TypeMap(type){
-           if(this.state.typeMap === 'hybrid'){
-                 this.setState({typeMap:'standard'})
-           }
-           if(this.state.typeMap === 'standard'){
-            this.setState({typeMap:'hybrid'})
-          }
-        }
+    }
+}
+i_100x(){
+this.setState({
+    radius:this.state.radius*10,
+})
+this.getPlaces();
+ToastAndroid.showWithGravity(
+'Quét bán kính: '+ this.state.radius,
+    ToastAndroid.SHORT,
+    ToastAndroid.CENTER
+  );
+}
+i_10x(){
+   this.setState({
+       radius:this.state.radius/10,
+   })
+   this.getPlaces();
+   ToastAndroid.showWithGravity(
+    'Quét bán kính: '+ this.state.radius,
+        ToastAndroid.SHORT,
+        ToastAndroid.CENTER
+      );
+}
+TypeMap(type){
+   if(this.state.typeMap === 'hybrid'){
+         this.setState({typeMap:'standard'})
+   }
+   if(this.state.typeMap === 'standard'){
+    this.setState({typeMap:'hybrid'})
+  }
+}
      render() {
          return (  
              <View style={{flex:1}}>
-                 <MapView
+                 {this.state.region.latitude ? 
+                <MapView
                     ref={(map)=>this._map = map}
-                    mapType={this.state.typeMap}
                     style={{flex:1}}
-                     initialRegion={this.state.region}
-                 >
-                 <Marker coordinate={this.state.marker}>
+                    mapType={this.state.typeMap}
+                    initialRegion={this.state.region}>
+                    <Marker coordinate={this.state.marker}>
                         <View style={styles.radius} >
                             <View style={styles.maker}></View>
                         </View>
-                 </Marker>
-                 </MapView>
-                 <TouchableOpacity
+                    </Marker>
+                     {this.state.places}
+                </MapView>: null}
+                <TouchableOpacity
                     style={styles.btn_MyLocation}
                     onPress={this.MyLocation.bind(this)}
                     >
@@ -198,7 +199,23 @@ import {
                         source={require('../../Image/location.png')}
                     />
                 </TouchableOpacity>
-
+                <View style={styles.view_card}>
+                <DeckSwiper
+                    dataSource={cards}
+                    renderItem={item =>
+                    <Card style={styles.card}>
+                        <CardItem style={styles.card_item} button >
+                           <View>
+                                <Image style={styles.image} source={item.image}>
+                                </Image>
+                                <Text style={styles.km}>{item.km}</Text>
+                                <Text style={styles.adress}>{item.adress}</Text>
+                           </View>
+                        </CardItem>
+                    </Card>
+                    }
+                 />
+            </View>
                 <View style={styles.view_textinput}>
                      <View style={{flex:2}}/>
                      <View style={{flex:5}}>
