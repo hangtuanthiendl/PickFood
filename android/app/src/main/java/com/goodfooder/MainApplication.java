@@ -22,7 +22,6 @@ import com.facebook.react.shell.MainReactPackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage; // <-- Add this line
 import io.invertase.firebase.database.RNFirebaseDatabasePackage; // <-- Add this line
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage; // <-- Add this line
-import io.invertase.firebase.storage.RNFirebaseStoragePackage; // <-- Add this line
 
 import com.facebook.soloader.SoLoader;
 
@@ -57,9 +56,7 @@ public class MainApplication extends Application implements ReactApplication {
             new FBSDKPackage(mCallbackManager),
               new RNFirebaseAuthPackage(),
               new RNFirebaseDatabasePackage(),
-              new RNFirebaseMessagingPackage(), // <-- Add this line,
-              new RNFirebaseStoragePackage() // <-- Add this line
-
+              new RNFirebaseMessagingPackage() // <-- Add this line
 // <-- Add this line
 // <-- Add this line
 

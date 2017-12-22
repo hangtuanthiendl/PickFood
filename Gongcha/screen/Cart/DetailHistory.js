@@ -47,7 +47,7 @@ class DetailHistory extends Component {
       }
     
       handleAppStateChange(appState) {
-        if (appState === 'background'){
+        if (appState = 'background'){
             this.checkNofication()
         }
 }
@@ -55,13 +55,23 @@ class DetailHistory extends Component {
         if(this.state.state === 1){
             let date = new Date(Date.now() + (this.state.seconds * 1000));
             PushNotification.localNotification({
+              id: '1',
+              title: 'Thông báo',
+              message: "Đơn hàng của bạn đã được xác nhận",
+              date,
+            });
+            PushNotification.cancelLocalNotifications({id: '2'});
+
+          } else if (this.state.state === 2){
+            let date = new Date(Date.now() + (this.state.seconds * 1000));
+            PushNotification.localNotification({
               id:'2',
               title: 'Thông báo',
               message: "Mời bạn đến quầy nhận hàng",
               date,
             });
-            AppState.removeEventListener('change', this.handleAppStateChange);
-          } 
+            PushNotification.cancelLocalNotifications({id: '1'});
+        }
       }
       checkState(state){
         switch(state){
