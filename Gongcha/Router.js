@@ -106,7 +106,7 @@ export const TabBar = TabNavigator({
         navigationOptions:{
             tabBarLabel: 'Home',
             tabBarIcon: ({ tintColor }) => (
-                <Icon name='md-aperture' style={{fontSize: 28, color: tintColor}}/>
+                <Icon name='ios-home' style={{fontSize: 28, color: tintColor}}/>
               ),
         }
     },
@@ -149,7 +149,7 @@ export const TabBar = TabNavigator({
     animationEnabled: true,
     tabBarPosition : 'bottom',
     tabBarOptions: {
-        showLabel: true,
+        showLabel: false,
         showIcon: true,
         style: {
             backgroundColor: '#ffff',
@@ -182,7 +182,7 @@ export const Root = StackNavigator({
 
 },
 {
-    initialRouteName: "Login",
+    initialRouteName: "CheckLogin",
     headerMode: "none",
    // mode: 'modal',    
    
