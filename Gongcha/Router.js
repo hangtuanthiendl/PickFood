@@ -178,7 +178,7 @@ export const Root = StackNavigator({
 
 },
 {
-    initialRouteName: "CheckLogin",
+    initialRouteName: "Login",
     headerMode: "none",
    // mode: 'modal',    
    
