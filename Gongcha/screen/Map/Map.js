@@ -4,6 +4,48 @@ import {
  } from 'react-native';
  import MapView, {Marker,Callout} from 'react-native-maps'
  import { Container, Header, DeckSwiper, Card, CardItem, Thumbnail,  Left, Body, Icon,Item, Input } from 'native-base';
+ const cards = [
+    {
+      adress: '175 Tôn Dật Tiên - Quận 7',
+      adressfull:'Khu Panorama, 175 Tôn Dật Tiên, P. Tân Phong, Q.7, TP.HCM',
+      km: '5.2km',
+      phone:'(84.28) 62.706.333',
+      time:'9:30 - 22:00',
+      image: require('../../Image/gongcha1.jpg'),
+    },
+    {
+      adress: '45A Lý Tự Trọng - Quận 1',
+      adressfull:'Gian Hàng B3_28E Vincom B, 45A Lý Tự Trọng,P. Bến Nghé, Q1, TP.HCM',
+      km: '8.5km',
+      phone:'(84.28) 38.277.239',
+      time:'9:30 - 21:30',
+      image: require('../../Image/gongcha2.jpg'),
+    },
+    {
+      adress: '159 Xa Lộ Hà Nội - Quận 2',
+      adressfull:'Căn hộ số 08, tầng 01, Tòa B, Tháp T5, 159 Xa Lộ Hà Nội, P. Thảo Điền, Q.2, TP.HCM',
+      km: '10.4km',
+      phone:'(84.28) 37.442.313',
+      time:'9:30 - 21:30',
+      image: require('../../Image/gongcha3.jpg'),
+    },
+    {
+      adress: '240 Phan Xích Long - Phú Nhuận',
+      adressfull:'240 Phan Xích Long, Phường 7, Quận Phú Nhuận, TP.HCM',
+      km: '15.6km',
+      phone:'(84.28) 35.511.568',
+      time:'9:00-22:30',
+      image: require('../../Image/gongcha4.jpg'),
+    },
+    {
+      adress: '498 An Dương Vương - Quận 5',
+      adressfull:'498 An Dương Vương, Phường 4, Quận 5, TP.HCM',
+      km: '14.3km',
+      phone:'(84.28) 38.301.822',
+      time:'9:00 - 22:00',
+      image: require('../../Image/gongcha5.jpg'),
+    },
+  ];
  export default class Map extends Component {
     constructor(props){
         super(props);
@@ -18,11 +60,15 @@ import {
                 latitude: 10.8671779,
                 longitude:106.8012878,
             },
+            places:null,
+            keySearch:'Gong Cha Việt Nam',
+            radius:10000,
+            typeMap:'standard',
         }
     }
     componentWillMount(){
         this.MyLocation();
-        //this.getPlaces();
+        this.getPlaces();
     };
     MyLocation(){//giai quyet truoc khi tim vi tri cua ban
         navigator.geolocation.getCurrentPosition((position)=>{
@@ -42,11 +88,99 @@ import {
             }
             )
        };
+       getUrlWithParameters(lat,long,radius,type,name,API){
+        const url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
+        const location = `location=${lat},${long}&radius=${radius}`;
+        const typeData = `&types=${type}`;
+        const nameDaTa = `&name=${name}`;
+        const key = `&key=${API}`;
+        return `${url}${location}${typeData}${nameDaTa}${key}`;
+   }
+   getPlaces(){
+    const url = this.getUrlWithParameters(
+        this.state.region.latitude,
+        this.state.region.longitude,
+        this.state.radius,
+        '',
+        this.state.keySearch,
+        'AIzaSyBxcWN1OUzvCjdsEptKu2wS6YhStLZbWt0'
+    );
+    fetch(url)
+    .then((jsonRequest)=>jsonRequest.json())
+    .then((jsonResponse)=>{
+         console.log(jsonResponse);
+         const arrMarkers = [];
+         jsonResponse.results.map((element,i)=>{
+             arrMarkers.push(
+                <Marker
+                     key={i}
+                     coordinate = {{
+                         latitude:element.geometry.location.lat,
+                         longitude:element.geometry.location.lng,
+                     }}>
+                    <Image
+                     style={{width: 25, height: 25}}
+                     source={{uri: element.icon}}
+                      />
+                     <Callout>
+                         <View style={styles.information}>
+                         <Text style={styles.text_inf}>{element.name}</Text>
+                         <Text style={styles.text_inf}>{element.vicinity}</Text>
+                         </View>
+                     </Callout>
+                </Marker>
+             )
+         })
+         console.log(JSON.stringify(arrMarkers));
+         this.setState({places:arrMarkers});})
+         .catch(function(error) {
+              console.log('There has been a problem with your fetch operation: ' + error.message);
+              });
+        }
+        Go(text){
+            if(text != null){
+                this.setState({
+                    keySearch:text,
+                })
+                this.getPlaces();
+            }
+        }
+        i_100x(){
+        this.setState({
+            radius:this.state.radius*10,
+        })
+        this.getPlaces();
+        ToastAndroid.showWithGravity(
+        'Quét bán kính: '+ this.state.radius,
+            ToastAndroid.SHORT,
+            ToastAndroid.CENTER
+          );
+        }
+        i_10x(){
+           this.setState({
+               radius:this.state.radius/10,
+           })
+           this.getPlaces();
+           ToastAndroid.showWithGravity(
+            'Quét bán kính: '+ this.state.radius,
+                ToastAndroid.SHORT,
+                ToastAndroid.CENTER
+              );
+        }
+        TypeMap(type){
+           if(this.state.typeMap === 'hybrid'){
+                 this.setState({typeMap:'standard'})
+           }
+           if(this.state.typeMap === 'standard'){
+            this.setState({typeMap:'hybrid'})
+          }
+        }
      render() {
          return (  
              <View style={{flex:1}}>
                  <MapView
                     ref={(map)=>this._map = map}
+                    mapType={this.state.typeMap}
                     style={{flex:1}}
                      initialRegion={this.state.region}
                  >
@@ -64,6 +198,36 @@ import {
                         source={require('../../Image/location.png')}
                     />
                 </TouchableOpacity>
+
+                <View style={styles.view_textinput}>
+                     <View style={{flex:2}}/>
+                     <View style={{flex:5}}>
+                        <TextInput 
+                            style={styles.textinput}
+                            placeholder={'Gong Cha gần bạn'}
+                            placeholderTextColor="red"
+                            underlineColorAndroid={'transparent'}
+                            onChangeText={(keySearch)=>this.setState({keySearch})}
+                        />    
+                     </View>
+                     <View style={{flex:1}}>
+                        <TouchableOpacity style={styles.go} onPress={()=>this.Go(this.state.keySearch)}>
+                            <Image  source={require('../../Image/detailmap/right-arrow.png')}/>
+                        </TouchableOpacity>
+                    </View>
+                     <View style={{flex:2}}/>  
+                </View>
+                <View style={styles.view_btn_radius}>
+                    <TouchableOpacity style={styles.btn_radius} onPress={()=>{this.i_10x()}}>
+                        <Text style={styles.text_radius}>/10</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.btn_radius} onPress={()=>{this.i_100x()}}>
+                        <Text style={styles.text_radius}>x10</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.btn_radius} onPress={()=>{this.TypeMap(this.state.typeMap)}}>
+                        <Text style={styles.text_radius}>Type</Text>
+                    </TouchableOpacity>
+                </View>
              </View> 
          
          );
