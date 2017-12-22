@@ -5,6 +5,7 @@ import configureStore from './Redux/Store/configStore'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react'
 import {Header, Icon, Input} from 'native-base'
+import SplashScreen from './screen/Account/SplashScreen'
 const {persistor, store} = configureStore()
 //StatusBar.setHidden(true);
 export default class App extends Component {
@@ -12,8 +13,10 @@ export default class App extends Component {
     render() {
         return (
             <Provider store = {store}>
-                <PersistGate persistor={persistor}>               
-                    <Root />
+                <PersistGate persistor={persistor}>          
+                 <SplashScreen>
+                     <Root/>
+                </SplashScreen>   
                 </PersistGate>
             </Provider>
         );

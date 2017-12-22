@@ -127,7 +127,7 @@ class Register extends Component {
         return (
             <StyleProvider style ={getTheme(material)}>    
          <Container>
-             <Tabs>
+             <Tabs locked={true}>
           <Tab heading={ <TabHeading><Text>Đăng ký</Text></TabHeading>}>
           <ImageBackground blurRadius = {10} source = {require('../../Image/backgroundAccount.jpg')} style = {styles.imagebackground} >
             <View style={Styles.containerForm}>
@@ -174,10 +174,13 @@ class Register extends Component {
                    value={this.state.name} />
             </Item>           
         </View>  
-        <Button light block style ={styles.button}
+        
+        <Button rounded light block style ={styles.button}
                         onPress={() => this.goSignUp()}>
                     <Text>Đăng ký</Text>
-                </Button>    
+        </Button>
+        
+        <Text style={styles.textthongbao}>Thông tin của bạn sẽ được bảo mật và không được chia sẻ cho các bên thứ 3 nếu không có sự đồng ý của bạn, cảm ơn bạn!</Text>    
              </ImageBackground>
          </Tab>
           <Tab heading={ <TabHeading><Text>Đăng nhập</Text></TabHeading>}>
@@ -204,7 +207,7 @@ class Register extends Component {
         </Item> 
         </View>  
         <Text style={{ paddingTop: 20,marginRight: 20,fontWeight: 'bold', color: 'white', alignSelf: 'flex-end'}}>Forgot your password?</Text>
-        <Button light block style ={styles.button}
+        <Button  rounded light block style ={styles.button}
                         onPress={() => this.onSignIn()}>
                     <Text>Đăng nhập</Text>
                 </Button>  

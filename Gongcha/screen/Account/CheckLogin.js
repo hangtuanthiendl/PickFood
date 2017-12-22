@@ -8,7 +8,6 @@ import Root from '../../Router';
 class CheckLogin extends Component {
     componentWillMount(){
         let array = this.props.infouser
-       // array.length != 0 ? (<Root/>) : (<Login/>)
         array == 0 ? ( this.props.navigation.dispatch(NavigationActions.reset({
             index: 0,
             actions: [

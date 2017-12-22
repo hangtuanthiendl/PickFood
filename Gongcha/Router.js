@@ -20,6 +20,7 @@ import ModalCart from './screen/Detail/ModalCart'
 import History from './screen/Cart/History'
 import DetailHistory from './screen/Cart/DetailHistory'
 import CategoryMain from './screen/Main/CategoryMain'
+import SplashScreen from './screen/Account/SplashScreen';
 export const MainStack = StackNavigator({
     MH_Main: {
         screen: MainRouter,
@@ -168,6 +169,7 @@ export const TabBar = TabNavigator({
 )
 export const Root = StackNavigator({
     Tab: {screen: TabBar},
+   // Splash:{screen: SplashScreen},
     User: {screen: User},
     Login: {screen: Login},
     Register: {screen: Register},

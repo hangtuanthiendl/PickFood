@@ -10,7 +10,7 @@ import styles from './styles'
 import {infUserUpdate} from '../../Redux/Action/actionCreator';
 import configureStore from '../../Redux/Store/configStore'
 const {persistor, store} = configureStore()
-//StatusBar.setHidden(true);
+StatusBar.setHidden(true);
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -98,14 +98,14 @@ class Login extends Component {
 								<View style={styles.button}>
 									<Image  style={{width: 35, height: 35, flex: 1/8, resizeMode: Image.resizeMode.contain}}
 											source={require('../../Image/mail.png')}/>
-									<Text style={styles.textinbutton}>Đăng nhập bằng Email</Text>
+									<Text style={styles.textinbutton}>  Nhập email của bạn để tiếp tục</Text>
 								</View>
 							</TouchableNativeFeedback>
 							<TouchableNativeFeedback  transparent onPress={() => this.onFacebook()}>
 								<View style={styles.button}>
 									<Image  style={{width: 35, height: 35, flex: 1/8, resizeMode: Image.resizeMode.contain}}
 											source={require('../../Image/fb.png')}/>
-									<Text style={styles.textinbuttonfb}>Đăng nhập bằng Facebook</Text>
+									<Text style={styles.textinbuttonfb}>   Đăng nhập bằng Facebook</Text>
 								</View>
 							</TouchableNativeFeedback>
 					</View>
