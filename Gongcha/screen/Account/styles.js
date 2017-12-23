@@ -104,6 +104,11 @@ row:{
     width: width,
     
   },
+  imagebackgroundSplash:{
+    height : height,
+    width: width,
+    alignItems:'center'
+  },
 	containerForm: {
 		padding: 20,
 		justifyContent: 'center',

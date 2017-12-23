@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { View, Image } from 'react-native'
+import { View, ImageBackground } from 'react-native'
+import Styles from './styles'
+import SlideAnimation from './SlideAnimation'
+import FladeInView from './FladeInView'
 
 export default class SplashScreen extends Component {
     constructor(props) {
@@ -24,7 +27,11 @@ export default class SplashScreen extends Component {
             this.state.done ?
             ({ ...this.props.children }) :
                 (<View>
-                    <Image source={require('../../Image/gongcha4.jpg')}/>
+                    <ImageBackground source={require('../../Image/splash/splash.jpeg')} style={Styles.imagebackgroundSplash}>
+                    <FladeInView/>
+                    <SlideAnimation style = {{width:300, height:200,backgroudColor:'red', position:'absolute'}}/>
+                    </ImageBackground>
+                   
                 </View>)
         );
     }
