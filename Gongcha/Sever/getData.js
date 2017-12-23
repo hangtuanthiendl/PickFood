@@ -119,7 +119,12 @@ class GetData {
         firebase.database().ref().child(`User/${userinfo.uid}`).set(userinfo)
     }
     static getUserInfo(uid, callback){
-        firebase.database().ref(`User/${uid}`).on('value', (userinfo) => {callback(userinfo.val())})
+        firebase.database().ref(`User/${uid}`).on('value', (userinfo) => {
+          if(userinfo.exists())
+            callback(userinfo.val())
+           else
+          callback(false)
+        })
     }
     static getDetailShop(uid, callback) {
        firebase.database().ref(`Shop/${uid}`).once('value', (shopinfo) => {callback(shopinfo.val())})
