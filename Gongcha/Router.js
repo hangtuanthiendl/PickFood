@@ -21,7 +21,8 @@ import History from './screen/Cart/History'
 import DetailHistory from './screen/Cart/DetailHistory'
 import CategoryMain from './screen/Main/CategoryMain'
 import SplashScreen from './screen/Account/SplashScreen';
-import SiwperScreen from './screen/Account/SwiperScreen'
+import SiwperScreen from './screen/Account/SwiperScreen';
+import SearchBar from './screen/Main/SearchBar';
 export const MainStack = StackNavigator({
     MH_Main: {
         screen: MainRouter,
@@ -173,6 +174,7 @@ export const Root = StackNavigator({
    // Splash:{screen: SplashScreen},
     Swiper:{screen:SiwperScreen},
     User: {screen: User},
+    SearchBar:{screen:SearchBar},
     Login: {screen: Login},
     Register: {screen: Register},
     Detail: {screen: Detail},
@@ -186,7 +188,7 @@ export const Root = StackNavigator({
 
 },
 {
-    initialRouteName: "Login",
+    initialRouteName: "CheckLogin",
     headerMode: "none",
    // mode: 'modal',    
    
@@ -198,6 +200,7 @@ export const Root1 = StackNavigator({
     Swiper:{screen:SiwperScreen},
     User: {screen: User},
     Login: {screen: Login},
+    SearchBar:{screen:SearchBar},
     Register: {screen: Register},
     Detail: {screen: Detail},
     CheckLogin: {screen : CheckLogin},

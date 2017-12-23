@@ -128,10 +128,13 @@ class Register extends Component {
         return (
             <StyleProvider style ={getTheme(material)}>    
          <Container>
+             <Content keyboardShouldPersistTaps='always'>
              <Tabs locked={true}>
           <Tab heading={ <TabHeading><Text>Đăng ký</Text></TabHeading>}>
+          <KeyboardAvoidingView behavior = 'padding' style = {{flex: 1}}>
           <ImageBackground blurRadius = {10} source = {require('../../Image/backgroundAccount.jpg')} style = {styles.imagebackground}>
-          <KeyboardAvoidingView behavior = 'padding' >
+          <View style = {styles.viewRef}>
+          <Text style = {styles.textRef}>Để hoàn thành việc trở thành một Picker. Bạn phải điền đầy đủ thông tin bên dưới, chúng tôi đảm bảo thông tin của bạn sẽ được bảo mật</Text>
           <View style={Styles.containerForm}>
             <View style={{flexDirection: 'row',width: height/ 2.2,borderTopLeftRadius: 5,borderTopRightRadius: 5,borderColor: 'white',borderWidth: 0.5, backgroundColor: 'rgba(85, 79, 84,0.2)'}}>
             <Icon name="ios-mail-outline" style = {{fontSize: 25,color: 'rgb(184, 181, 182)', alignSelf: 'center', marginLeft: 5, marginRight: 5}} />
@@ -196,11 +199,17 @@ class Register extends Component {
                         onPress={() => this.goSignUp()}>
                     <Text>Đăng ký</Text>
             </Button> 
-          </KeyboardAvoidingView>
+          </View>
              </ImageBackground>
+             </KeyboardAvoidingView>
+
          </Tab>
           <Tab heading={ <TabHeading><Text>Đăng nhập</Text></TabHeading>}>
+          <KeyboardAvoidingView behavior = 'padding' style = {{flex: 1}}>
+
           <ImageBackground blurRadius = {10} source = {require('../../Image/backgroundAccount.jpg')} style = {styles.imagebackground} >
+            <View style = {styles.viewRef}>
+            <Text style = {styles.textRef}>Để hoàn thành việc đăng nhập. Bạn phải điền đầy đủ thông tin Email, Password. Nếu bạn quên Password có thể bấm vào đây</Text>
             <View style={Styles.containerForm}>
             <View style={{flexDirection: 'row',width: height/ 2.2,borderTopLeftRadius: 5,borderTopRightRadius: 5,borderColor: 'white',borderWidth: 0.5, backgroundColor: 'rgba(85, 79, 84,0.2)'}}>
             <Icon name="ios-mail-outline" style = {{fontSize: 25,color: 'rgb(184, 181, 182)', alignSelf: 'center', marginLeft: 5, marginRight: 5}} />
@@ -209,7 +218,7 @@ class Register extends Component {
                        keyboardType = 'email-address'
                        returnKeyType='next'
                        autoCapitalize= 'none'
-                       onSubmitEditing= {() => this.passwordInput.focus()}
+                       onSubmitEditing= {() => this.passwordLoginInput.focus()}
                        autoCorrect = {false}
                        underlineColorAndroid = 'transparent'
                        placeholderTextColor= 'rgb(184, 181, 182)'  
@@ -220,7 +229,7 @@ class Register extends Component {
             <Icon name="ios-lock-outline" style = {{fontSize: 25,color: 'rgb(184, 181, 182)', alignSelf: 'center', marginLeft: 5, marginRight: 5}} />
             <TextInput style = {{color: 'white', height: 45, width: height/ 2.5, fontSize: 18 }} 
                        onSubmitEditing= {() => this.phoneInput.focus()}
-                       ref = {(Input) => this.passwordInput = Input}
+                       ref = {(Input) => this.passwordLoginInput = Input}
                        placeholder='Mật khẩu của bạn'
                        underlineColorAndroid = 'transparent'
                        returnKeyType='next'
@@ -232,14 +241,19 @@ class Register extends Component {
                         secureTextEntry = {true} />
             </View>
         </View>  
-        <Text style={{ paddingTop: 20,marginRight: 20,fontWeight: 'bold', color: 'white', alignSelf: 'flex-end'}}>Forgot your password?</Text>
         <Button  rounded light block style ={styles.button}
                         onPress={() => this.onSignIn()}>
                     <Text>Đăng nhập</Text>
                 </Button>  
+            </View>
+          
              </ImageBackground>
+             </KeyboardAvoidingView>
           </Tab>
-        </Tabs>     
+        </Tabs>    
+ 
+             </Content>
+            
             </Container>
            </StyleProvider>
         );

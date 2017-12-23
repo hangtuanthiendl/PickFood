@@ -195,4 +195,19 @@ containerLogo:{
   justifyContent: 'center',
   flexDirection: 'row',
 },
+row: {
+  flexDirection: 'row',
+  padding: 10,
+  alignItems: 'center',
+  justifyContent: 'space-between',
+},
+row1: {
+  flexDirection: 'row',
+  padding: 10,
+  height: 50,
+  borderBottomWidth: 0.5,
+  borderColor: 'grey',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+},
 });

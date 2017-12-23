@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native'
+import { View, StyleSheet, Text, TouchableOpacity, Dimensions, AsyncStorage, ImageBackground } from 'react-native'
 import Swiper from 'react-native-swiper'
+import Styles from './styles'
 
 export default class SiwperScreen extends Component {
     
@@ -23,19 +24,27 @@ export default class SiwperScreen extends Component {
                 loop={false}
                 index={0}
             >
-                <View style={styles.slide1}>
-                    <Text style={styles.text}>Hello Trung Do</Text>
+                <View>
+                    <ImageBackground source={require('../../Image/splash/swiper_1.jpg')} style={Styles.imagebackground}>
+                        <Text style={styles.text}>Hello Trung Do</Text>
+                    </ImageBackground>
+                    
                 </View>
-                <View style={styles.slide2}>
-                    <Text style={styles.text}>Beautiful</Text>
+                <View>
+                    <ImageBackground source={require('../../Image/splash/swiper_3.jpg')}style={Styles.imagebackground}>
+                        <Text style={styles.text}>Hello Trung Do</Text>
+                    </ImageBackground>
                 </View>
-                <View style={styles.slide3}>
-                    <TouchableOpacity 
-                        style={{ position: 'absolute', bottom: 20, left: Dimensions.get('window').width - 70, }}
-                        onPress={()=>{this.Click()}}
-                    >
-                        <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Xong</Text>
-                    </TouchableOpacity>
+                <View>
+                    <ImageBackground source={require('../../Image/splash/swiper_2.jpg')}style={Styles.imagebackground}>
+                        <TouchableOpacity 
+                            style={{ position: 'absolute', bottom: 20, left: Dimensions.get('window').width - 70, }}
+                            onPress={()=>{this.Click()}}
+                        >
+                            <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Xong</Text>
+                        </TouchableOpacity>
+                    </ImageBackground>
+                   
                 </View>
             </Swiper>
         );

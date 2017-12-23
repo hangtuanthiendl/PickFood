@@ -9,7 +9,6 @@ import material from '../../../native-base-theme/variables/material';
 import {connect} from 'react-redux';
 import firebase from 'react-native-firebase';
 import Currency from '../../Util/Currency'
-import SearchBar from '../../SearchBar';
 class History extends Component {
     constructor(props){
         super(props)

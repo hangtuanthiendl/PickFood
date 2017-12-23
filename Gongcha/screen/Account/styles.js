@@ -99,12 +99,18 @@ row:{
     flexDirection: 'row',
 },
   imagebackground:{
-    paddingTop:30,
+   // paddingTop:width/ 2.5,
     height : height,
     width: width,
     
   },
+  imagebackgroundSplash:{
+    height : height,
+    width: width,
+    alignItems:'center'
+  },
 	containerForm: {
+        marginTop: 50,
 		padding: 20,
 		justifyContent: 'center',
         alignItems: 'center',
@@ -259,5 +265,15 @@ textinbuttonfb:
         bottom:50,
         left:5,
         right:5,
+      },
+      viewRef:{
+        paddingTop:width/ 3.5,
+      },
+      textRef:{
+        paddingLeft: 10,
+        paddingRight: 10,
+        textAlign: 'center',
+        color : '#FFF',
+        fontSize: 15,
       },
 });

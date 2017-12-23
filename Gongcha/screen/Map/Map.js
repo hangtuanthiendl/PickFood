@@ -131,10 +131,10 @@ import {
                    </Marker>
                 )
             })
-            console.log(JSON.stringify(arrMarkers));
+            //console.log(JSON.stringify(arrMarkers));
             this.setState({places:arrMarkers});})
             .catch(function(error) {
-                 console.log('There has been a problem with your fetch operation: ' + error.message);
+                // console.log('There has been a problem with your fetch operation: ' + error.message);
                  });
    }
    Go(text){

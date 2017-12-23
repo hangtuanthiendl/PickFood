@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { View, Image, TouchableHighlight, TouchableNativeFeedback, ImageBackground, FlatList} from 'react-native';
 import Swiper from 'react-native-swiper';
-import {Container, Content,Spinner,Icon,Text} from 'native-base';
+import {Container, Content,Spinner,Icon,Text,Header, Left,Body,Right,Button,Title} from 'native-base';
 import GetData from '../../Sever/getData';
 import styles from './styles';
-import SearchBar from '../../SearchBar';
 import LinearGradient from 'react-native-linear-gradient';
 import antrua from '../../Image/antrua.jpg'
 //import Rating  from 'react-native-ratings';
@@ -114,7 +113,16 @@ export default class MainRouter extends Component {
         console.log(this.state.itemCategory)
         return (
             <Container style = {styles.container}>
-                <SearchBar name = 'Pick Food' icon = 'ios-search'/>
+                <Header searchBar rounded androidStatusBarColor = 'transparent' style = {{backgroundColor: 'rgb(184, 47, 64)',alignItems: 'center'}}>
+                <Left style ={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Title style ={{paddingLeft: 10, color: '#FFF'}}>Pick Food</Title>        
+                </Left>
+                <Right>
+                <Button transparent onPress = {() => this.props.navigation.navigate('SearchBar')}>
+                    <Icon name= 'ios-search' style ={{fontSize: 27,color: '#FFF'}}/>
+                    </Button>
+                    </Right>   
+             </Header>
                 <Content  showsVerticalScrollIndicator={false}>
                    {
                     this.state.itembanner && <Swiper

@@ -1,4 +1,4 @@
-import { ITEM_SHOP_UPDATE,CLEAR_ITEM_SHOP } from '../Action/nameAction'
+import { ITEM_SHOP_UPDATE,CLEAR_ITEM_SHOP, DELETE_ITEM } from '../Action/nameAction'
 const initialState = []
 
 export default function infoItemShopReducer(state = initialState, action) {
@@ -9,6 +9,8 @@ export default function infoItemShopReducer(state = initialState, action) {
     case CLEAR_ITEM_SHOP:
     state = []
       return state
+    case DELETE_ITEM:
+    return state.filter(item => item !== action.search)
     default:
       return state
   }
