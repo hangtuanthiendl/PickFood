@@ -25,18 +25,29 @@ export default class SiwperScreen extends Component {
                 index={0}
             >
                 <View>
-                    <ImageBackground source={require('../../Image/splash/swiper_1.jpg')} style={Styles.imagebackground}>
-                        <Text style={styles.text}>Hello Trung Do</Text>
+                    <ImageBackground source={require('../../Image/splash/swiper_1.jpg')} style={Styles.imagebackgroundSplash}>
+                        <View style={styles.view_image}>
+                            <Text style={styles.text_tieude}>TÍCH ĐIỂM NGAY,QUÀ TRAO TAY</Text>
+                            <Text style={styles.text_noidung}>Đăng nhập ,PickFood sẽ mang đến bất ngờ cho bạn</Text>
+                        </View>
+                       
                     </ImageBackground>
                     
                 </View>
                 <View>
-                    <ImageBackground source={require('../../Image/splash/swiper_3.jpg')}style={Styles.imagebackground}>
-                        <Text style={styles.text}>Hello Trung Do</Text>
+                    <ImageBackground source={require('../../Image/splash/swiper_3.jpg')}style={Styles.imagebackgroundSplash}>
+                    <View style={styles.view_image}>
+                        <Text style={styles.text_tieude}>CẬP NHẬT TIN TỨC</Text>
+                        <Text style={styles.text_noidung}>Theo dõi thông tin,chương trình mới nhất từ PickFood</Text>
+                    </View>
                     </ImageBackground>
                 </View>
                 <View>
-                    <ImageBackground source={require('../../Image/splash/swiper_2.jpg')}style={Styles.imagebackground}>
+                    <ImageBackground source={require('../../Image/splash/swiper_2.jpg')}style={Styles.imagebackgroundSplash}>
+                      <View style={styles.view_image}>
+                        <Text style={styles.text_tieude}>DANH SÁCH CỬA HÀNG</Text>
+                        <Text style={styles.text_noidung}>PickFood ở quanh bạn.Đến PickFood gần nhất nào!</Text>
+                       </View>
                         <TouchableOpacity 
                             style={{ position: 'absolute', bottom: 20, left: Dimensions.get('window').width - 70, }}
                             onPress={()=>{this.Click()}}
@@ -72,9 +83,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#92BBD9',
     },
-    text: {
+    text_tieude: {
         color: '#fff',
-        fontSize: 30,
+        fontSize: 22,
+        marginTop:10,
         fontWeight: 'bold',
+    },
+    text_noidung: {
+        color: '#fff',
+        fontSize: 15,
+    },
+    view_image:{
+        backgroundColor:'#2e2d2d65',
+        marginTop:Dimensions.get('window').height/2,
+        height:100,
+        width:Dimensions.get('window').width,
+        justifyContent:'center',
+        alignItems:'center',
     }
 });
