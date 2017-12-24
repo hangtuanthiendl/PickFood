@@ -29,7 +29,7 @@ export default class SlideAnimation extends Component {
                     height:Dimensions.get('window').height+400,
                     marginTop,
                     alignItems: 'center',
-                    backgroundColor:'#b1acad4d'}}
+                    backgroundColor:'#2e2d2d65'}}
                 >
                     <Text style={{color:'white',marginTop:10}}>Team DQT 2017</Text>
                 </Animated.View>
