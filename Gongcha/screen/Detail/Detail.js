@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {ToolbarAndroid,LayoutAnimation,View, TouchableOpacity, TextInput, Image, FlatList,StyleSheet, ScrollView,ImageBackground, TouchableHighlight} from 'react-native';
 import styles from './styles';
+import Swiper from 'react-native-swiper';
 import GetData from '../../Sever/getData';
 import ActionButton from 'react-native-action-button';
 import getTheme from '../../../native-base-theme/components';
@@ -40,7 +41,7 @@ export default class Detail extends Component {
             isModalShopVisible: false,
             isModalCartVisible: false,            
             icon: null,
-            
+            itembanner: null,
         }
         _listViewOffset = 1               
     }
@@ -54,6 +55,11 @@ export default class Detail extends Component {
                 address: itemshop.addressShop
             })   
             console.log("sadasdasda", this.state.keyshop)    
+        })
+        GetData.getBanner((itembanner) => {
+            this.setState({
+                itembanner: itembanner
+            })
         })
         Icon.getImageSource('md-close', 24, '#ffffff').then((source) => {
             this.setState({ icon: source })
@@ -132,14 +138,22 @@ export default class Detail extends Component {
                      <Icon name = 'md-add-circle' style = {{fontSize: 25, color : 'rgb(168, 20, 39)'}}/>
                      </TouchableHighlight>
                      </View>
+                     {
+                    this.state.itembanner && <Swiper
+                     style = {styles.wrapperSwiper}
+                     dot={<View style={{backgroundColor: '#FFF', width: 10, height: 10, borderRadius: 7, marginLeft: 7, marginRight: 7}} />}
+                       activeDot={<View style={{backgroundColor: '#e53935', width: 10, height: 10, borderRadius: 7, marginLeft: 7, marginRight: 7}} />}
+                           autoplay={true}>
+                            <Image source = {{uri: this.state.itembanner[0].image}} style={styles.slide}></Image>
+                            <Image source = {{uri: this.state.itembanner[1].image}} style={styles.slide}></Image>
+                            <Image source = {{uri: this.state.itembanner[2].image}} style={styles.slide}></Image>                 
+                        </Swiper>
+                   }
+                   {
+                        !this.state.itembanner && <View style={styles.wrapperSwiper}>
+                        <Spinner color = '#e53935'/>
                       </View>
-                      <View style= {styles.wraper}>
-                    <View style={styles.headerCateroryDetail}>
-                    <Text style={styles.viewmore}>Đánh giá</Text>
-                     <TouchableHighlight>
-                     <Icon name = 'md-add-circle' style = {{fontSize: 25, color : 'rgb(168, 20, 39)'}}/>
-                     </TouchableHighlight>
-                     </View>
+                   }
                       </View>
                       <View style ={{flex: 1 , marginTop: 5}}>
                       <View style={styles.headerCateroryDetail}>

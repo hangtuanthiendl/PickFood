@@ -11,12 +11,37 @@ import CheckLogin from './screen/Account/CheckLogin'
 const {persistor, store} = configureStore()
 //StatusBar.setHidden(true);
 export default class App extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+          done: false,
+        }
+      }
+      componentDidMount(){
+        try{
+         AsyncStorage.getItem('key').then((value)=>{
+            console.log('vu an cut',value);
+           if(value != null){
+              this.setState({
+                done:!this.state.done,
+              })
+           }else{
+           // AsyncStorage.setItem('key',JSON.stringify(true))
+           }
+         })
+       }
+       catch(e){
+         console.log(e);
+       }
+      }
     render() {
         return (
             <Provider store = {store}>
                 <PersistGate persistor={persistor}>          
                  <SplashScreen>
-                      <Root/>
+                     {
+                        !this.state.done? <Root1/> : <Root/>
+                     }
                 </SplashScreen>   
                 </PersistGate>
             </Provider>

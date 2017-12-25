@@ -204,7 +204,14 @@ TypeMap(type){
                     dataSource={cards}
                     renderItem={item =>
                     <Card style={styles.card}>
-                        <CardItem style={styles.card_item} button onPress={()=>{this.props.navigation.navigate('Detail_Screen')}}>
+                        <CardItem style={styles.card_item} button onPress={()=>{this.props.navigation.navigate('Detail_Screen',
+                        {
+                            m_image:item.image,
+                            m_address:item.adressfull,
+                            m_time:item.time,
+                            m_phone:item.phone,
+                        }
+                    )}}>
                            <View>
                                 <Image style={styles.image} source={item.image}>
                                 </Image>

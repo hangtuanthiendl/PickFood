@@ -176,8 +176,8 @@ export const TabBar = TabNavigator({
 }
 )
 export const Root = StackNavigator({
-    Tab: {screen: TabBar},
-   // Splash:{screen: SplashScreen},
+    Tab: {screen: TabBar}, 
+    Detail_Screen:{screen:Detail_Map,},
     Swiper:{screen:SiwperScreen},
     User: {screen: User},
     SearchBar:{screen:SearchBar},
@@ -194,19 +194,16 @@ export const Root = StackNavigator({
 
 },
 {
-    initialRouteName: "Swiper",
+    initialRouteName: "CheckLogin",
     headerMode: "none",
-   // mode: 'modal',    
-   
 })
-
 export const Root1 = StackNavigator({
-    Tab: {screen: TabBar},
-   // Splash:{screen: SplashScreen},
+    Tab: {screen: TabBar}, 
+    Detail_Screen:{screen:Detail_Map,},
     Swiper:{screen:SiwperScreen},
     User: {screen: User},
-    Login: {screen: Login},
     SearchBar:{screen:SearchBar},
+    Login: {screen: Login},
     Register: {screen: Register},
     Detail: {screen: Detail},
     CheckLogin: {screen : CheckLogin},
@@ -221,9 +218,9 @@ export const Root1 = StackNavigator({
 {
     initialRouteName: "Swiper",
     headerMode: "none",
-   // mode: 'modal',    
    
 })
+
 const styles = StyleSheet.create({
     icon: {
       width: 25,

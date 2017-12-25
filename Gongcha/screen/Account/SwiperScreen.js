@@ -2,30 +2,19 @@ import React, { Component } from 'react'
 import { View, StyleSheet, Text, TouchableOpacity, Dimensions, AsyncStorage, ImageBackground } from 'react-native'
 import Swiper from 'react-native-swiper'
 import Styles from './styles'
-
+import {NavigationActions} from 'react-navigation'
 export default class SiwperScreen extends Component {
     
-
-    componentDidMount(){
-        try{
-            AsyncStorage.getItem('key').then((value)=>{
-              console.log('gia tri value', value)
-              if(value != null){
-                this.props.navigation.navigate('CheckLogin');
-              }else{
-                
-              // AsyncStorage.setItem('key',JSON.stringify(true))
-              }
-            })
-          }
-          catch(e){
-            console.log(e);
-          }
-    }
     Click(){
         try{
             AsyncStorage.setItem('key',JSON.stringify(true))
-            this.props.navigation.navigate('CheckLogin');
+            this.props.navigation.dispatch(NavigationActions.reset({
+                index: 0,
+                actions: [
+                  NavigationActions.navigate({ routeName: 'CheckLogin'})
+                ]
+              })
+            )
         }
         catch(e){
             console.log(e);

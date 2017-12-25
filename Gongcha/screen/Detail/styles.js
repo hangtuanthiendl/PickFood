@@ -168,8 +168,8 @@ export default StyleSheet.create({
       },
       wraper:{
           marginTop: 5,
-          height: height / 3,
-          width: null,
+          height: undefined,
+          width: undefined,
           backgroundColor: '#FFF'
       },
       headerCateroryDetail: {
@@ -240,4 +240,18 @@ export default StyleSheet.create({
         fontStyle: 'normal',
         color: 'grey'
       },
+      wrapperSwiper:{
+        backgroundColor: '#FFF',
+        height: height/3.8,
+		    alignItems: 'center',
+	    	justifyContent: 'center'
+         },
+     slide: {
+        alignSelf: 'stretch',
+        height: height/3.8,
+        width: null,
+        position: 'relative',
+        resizeMode: 'cover'
+        
+     },
 });

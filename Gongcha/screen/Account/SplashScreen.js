@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, ImageBackground } from 'react-native'
+import { View, ImageBackground ,AsyncStorage} from 'react-native'
 import Styles from './styles'
 import SlideAnimation from './SlideAnimation'
 import FladeInView from './FladeInView'
+import {NavigationActions} from 'react-navigation'
 
 export default class SplashScreen extends Component {
     constructor(props) {
@@ -16,8 +17,9 @@ export default class SplashScreen extends Component {
             this.setState({
                 done: true,
             })
+            
         }, 3000);
-
+        
     }
     componentWillMount() {
         this.time();
@@ -25,7 +27,7 @@ export default class SplashScreen extends Component {
     render() {
         return (
             this.state.done ?
-            ({ ...this.props.children }) :
+            ({...this.props.children}) :
                 (<View>
                     <ImageBackground source={require('../../Image/splash/splash.jpeg')} style={Styles.imagebackgroundSplash}>
                     <FladeInView/>
