@@ -6,7 +6,7 @@ export default class FladeInView extends Component {
     constructor(props){
         super(props)
         this.state={
-            fladeAmin: new Animated.Value(0),
+            fladeAmin: new Animated.Value(-0.5),
         }
     }
     componentDidMount(){

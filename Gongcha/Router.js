@@ -176,8 +176,8 @@ export const TabBar = TabNavigator({
 }
 )
 export const Root = StackNavigator({
-    Tab: {screen: TabBar},
-   // Splash:{screen: SplashScreen},
+    Tab: {screen: TabBar}, 
+    Detail_Screen:{screen:Detail_Map,},
     Swiper:{screen:SiwperScreen},
     User: {screen: User},
     SearchBar:{screen:SearchBar},
@@ -194,7 +194,7 @@ export const Root = StackNavigator({
 
 },
 {
-    initialRouteName: "Swiper",
+    initialRouteName: "CheckLogin",
     headerMode: "none",
    // mode: 'modal',    
    
