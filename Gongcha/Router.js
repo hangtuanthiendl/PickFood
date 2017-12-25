@@ -194,7 +194,7 @@ export const Root = StackNavigator({
 
 },
 {
-    initialRouteName: "CheckLogin",
+    initialRouteName: "Swiper",
     headerMode: "none",
    // mode: 'modal',    
    

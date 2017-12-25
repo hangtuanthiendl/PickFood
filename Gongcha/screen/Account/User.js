@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet,TouchableOpacity, ImageBackground, TouchableNativeFeedback} from "react-native";
+import {Alert, Platform, StyleSheet,TouchableOpacity, ImageBackground, TouchableNativeFeedback} from "react-native";
 import firebase from 'react-native-firebase';
 import { connect } from 'react-redux'
 import styles from './styles';
@@ -34,10 +34,8 @@ class User extends Component {
     super(props);      
   }
   signOut() {
-    console.log('asdadsa', this.props.infouser.phoneNumber)
     firebase.auth().signOut().then(() => {
      persistor.purge()
-     
     // this.props.dispatchInfoUserClear()     
     }).catch((error) => {
     });
@@ -48,6 +46,17 @@ class User extends Component {
       ]
     })
   )
+ }
+  handerSignOut(){
+    Alert.alert(
+      null,
+      'Bạn có thật sự muốn đằng xuất không ' + this.props.infouser.displayName,
+      [
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'OK', onPress: () => this.signOut()},
+      ],
+      { cancelable: false }
+      )                 
  }
   render() {
     return (
@@ -107,10 +116,10 @@ class User extends Component {
         <Icon name = 'md-person' style = {styles.viewicon5}/>
         <Text style={styles.viewmore}>Tài khoản</Text>
         </View>  
-        <Text  style = {styles.titleUser}>Xem tài khoản của tôi</Text>
+        <Text style = {styles.titleUser}>Xem tài khoản của tôi</Text>
          </View>
          </TouchableNativeFeedback>
-         <TouchableNativeFeedback onPress = {() => this.signOut()}>
+         <TouchableNativeFeedback onPress = {() => this.handerSignOut()}>
          <View style={styles.headerCateroryDetail}>
         <View style = {styles.row}>
         <Icon name = 'md-log-out' style = {styles.viewicon6}/>

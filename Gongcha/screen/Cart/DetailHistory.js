@@ -23,7 +23,8 @@ class DetailHistory extends Component {
             total: '',
             checkout: null, 
             listItemHistory: null,
-            seconds: 2
+            seconds: 2,
+            num: 0
         }
         this.handleAppStateChange = this.handleAppStateChange.bind(this);        
     }
@@ -48,27 +49,29 @@ class DetailHistory extends Component {
     
       handleAppStateChange(appState) {
         if (appState = 'background'){
-            this.checkNofication()
+                this.checkNofication()
         }
 }
       checkNofication(){
-        if(this.state.state === 2){
+        if(this.state.state === 1){
             let date = new Date(Date.now() + (this.state.seconds * 1000));
             PushNotification.localNotification({
               id: '1',
               title: 'Thông báo',
               message: "Đơn hàng của bạn đã được xác nhận",
               date,
+              number: 1
             });
             PushNotification.cancelLocalNotifications({id: '2'});
-
           } else if (this.state.state === 2){
+           // this.setState({ num : this.state.num++})
             let date = new Date(Date.now() + (this.state.seconds * 1000));
             PushNotification.localNotification({
               id:'2',
               title: 'Thông báo',
               message: "Mời bạn đến quầy nhận hàng",
               date,
+              number: 1
             });
             PushNotification.cancelLocalNotifications({id: '1'});
         }
@@ -77,8 +80,9 @@ class DetailHistory extends Component {
         switch(state){
             case 0: return 'Chờ xác nhận'
             case 1: return 'Đã xác nhận'
-            case 2: return 'Đã nhận hàng'
-            case 3: return 'Đã hủy'
+            case 2: return 'Đã xong'
+            case 3: return 'Đã giao hàng'
+            case 4: return 'Đã hủy'
         }
     }
     checkColor(color){
@@ -86,7 +90,8 @@ class DetailHistory extends Component {
             case 0: return 'grey'
             case 1: return '#039BE5'
             case 2: return '#2ecc71'
-            case 3: return '#c0392b'
+            case 3: return '#2ecc71'
+            case 4: return '#c0392b'
         }
     }
     _renderItem = ({item})=>{

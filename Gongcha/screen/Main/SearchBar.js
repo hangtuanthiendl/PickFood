@@ -43,10 +43,10 @@ class Search extends Component {
     return true;
   }
   componentDidMount (){
-    BackHandler.addEventListener('hardwareBackPress', this._BackHandler)
+    //BackHandler.addEventListener('hardwareBackPress', this._BackHandler)
   }
   componentWillUnMount (){
-    BackHandler.removeEventListener('hardwareBackPress', this._BackHandler)
+    //BackHandler.removeEventListener('hardwareBackPress', this._BackHandler)
   }
   getData(){
     GetData.getShopItem((itemShop) => {
