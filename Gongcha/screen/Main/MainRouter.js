@@ -51,7 +51,7 @@ export default class MainRouter extends Component {
             <TouchableNativeFeedback>
                 <View style  = {{backgroundColor: '#FFF'}}>
                 <ImageBackground source={{uri: item.imageItem}} style={styles.imageHotSale}>
-                <View style = {{backgroundColor : 'rgba(255, 255, 255,0.6)'}}>
+                <View style = {{backgroundColor : '#2e2d2d65'}}>
                     <Text numberOfLines ={1} style = {styles.titleNote}>Sale 50%</Text>
                 </View>
                </ImageBackground> 
@@ -195,7 +195,7 @@ export default class MainRouter extends Component {
                      contentContainerStyle={{
                      alignItems:'center', margin:5}}       
                      horizontal={true}
-                     ItemSeparatorComponent = {() => {return (<View style = {{width: 5}}/>)}}
+                     ItemSeparatorComponent = {() => {return (<View style = {{width: 5,}}/>)}}
                      automaticallyAdjustContentInsets={true}                  
                      extraData= {this.state}
                      showsHorizontalScrollIndicator={false}

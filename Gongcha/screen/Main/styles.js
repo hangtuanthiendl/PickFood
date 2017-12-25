@@ -130,7 +130,7 @@ export default StyleSheet.create({
   },
   titleNote: {
     marginLeft: 5,
-    color: '#DC1D25',
+    color: 'white',
     fontStyle : 'normal',
     textAlign: 'center'    
   },
