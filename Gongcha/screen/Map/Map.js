@@ -204,7 +204,7 @@ TypeMap(type){
                     dataSource={cards}
                     renderItem={item =>
                     <Card style={styles.card}>
-                        <CardItem style={styles.card_item} button >
+                        <CardItem style={styles.card_item} button onPress={()=>{this.props.navigation.navigate('Detail_Screen')}}>
                            <View>
                                 <Image style={styles.image} source={item.image}>
                                 </Image>
