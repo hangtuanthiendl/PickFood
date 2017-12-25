@@ -5,6 +5,10 @@ import Styles from './styles'
 import {NavigationActions} from 'react-navigation'
 export default class SiwperScreen extends Component {
     
+<<<<<<< HEAD
+=======
+
+>>>>>>> 18b79a30f184337d14ddb380011271e6df825901
     Click(){
         try{
             AsyncStorage.setItem('key',JSON.stringify(true))
