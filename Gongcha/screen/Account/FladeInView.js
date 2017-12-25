@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {View,Animated,Text,Dimensions} from 'react-native'
+import {View,Animated,Text,Dimensions, ImageBackground} from 'react-native'
 import Styles from './styles'
 
 export default class FladeInView extends Component {
@@ -13,7 +13,7 @@ export default class FladeInView extends Component {
         Animated.timing(
             this.state.fladeAmin,
             {
-                toValue:1,
+                toValue:2,
                 duration:3000,
             }
         ).start();
@@ -25,13 +25,13 @@ export default class FladeInView extends Component {
             <View>
                 <Animated.View
                 style = {{
-                    width:100, 
-                    height:100,
+                    width:500, 
+                    height:500,
                     opacity,
-                    marginTop:200,
-                    backgroundColor:'red'}}
+                    marginTop:40,
+                    }}
                 >
-                    <Text style={{color:'white',marginTop:10}}>PickFood</Text>
+                    <ImageBackground source={require('..//../Image/splash/pickfood.png')} style={{width:500,height:500,}}/>
                 </Animated.View>
             </View>
            

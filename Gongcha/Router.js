@@ -200,30 +200,6 @@ export const Root = StackNavigator({
    
 })
 
-export const Root1 = StackNavigator({
-    Tab: {screen: TabBar},
-   // Splash:{screen: SplashScreen},
-    Swiper:{screen:SiwperScreen},
-    User: {screen: User},
-    Login: {screen: Login},
-    SearchBar:{screen:SearchBar},
-    Register: {screen: Register},
-    Detail: {screen: Detail},
-    CheckLogin: {screen : CheckLogin},
-    ModalShop: {screen : ModalShop},
-    ModalCart: {screen : ModalCart},
-    DetailHistory: {screen : DetailHistory},   
-    Setting: {screen : Setting},   
-    History: {screen : History},   
-    CategoryMain: {screen: CategoryMain}
-
-},
-{
-    initialRouteName: "Swiper",
-    headerMode: "none",
-   // mode: 'modal',    
-   
-})
 const styles = StyleSheet.create({
     icon: {
       width: 25,

@@ -13,7 +13,7 @@ export default class SlideAnimation extends Component {
         Animated.timing(
             this.state.slideAnim,
             {
-                toValue:255,
+                toValue:10,
                 duration:1500,
             }
         ).start();
