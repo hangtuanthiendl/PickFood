@@ -196,7 +196,28 @@ export const Root = StackNavigator({
 {
     initialRouteName: "CheckLogin",
     headerMode: "none",
-   // mode: 'modal',    
+})
+export const Root1 = StackNavigator({
+    Tab: {screen: TabBar}, 
+    Detail_Screen:{screen:Detail_Map,},
+    Swiper:{screen:SiwperScreen},
+    User: {screen: User},
+    SearchBar:{screen:SearchBar},
+    Login: {screen: Login},
+    Register: {screen: Register},
+    Detail: {screen: Detail},
+    CheckLogin: {screen : CheckLogin},
+    ModalShop: {screen : ModalShop},
+    ModalCart: {screen : ModalCart},
+    DetailHistory: {screen : DetailHistory},   
+    Setting: {screen : Setting},   
+    History: {screen : History},   
+    CategoryMain: {screen: CategoryMain}
+
+},
+{
+    initialRouteName: "Swiper",
+    headerMode: "none",
    
 })
 

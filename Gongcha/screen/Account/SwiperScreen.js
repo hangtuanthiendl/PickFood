@@ -6,23 +6,6 @@ import Styles from './styles'
 export default class SiwperScreen extends Component {
     
 
-    componentWillMount(){
-        //this.props.navigation.navigate('CheckLogin');
-        try{
-            AsyncStorage.getItem('key').then((value)=>{
-              console.log('gia tri value', value)
-              if(value != null){
-                this.props.navigation.navigate('CheckLogin');
-              }else{
-                
-               AsyncStorage.setItem('key',JSON.stringify(true))
-              }
-            })
-          }
-          catch(e){
-            console.log(e);
-          }
-    }
     Click(){
         try{
             AsyncStorage.setItem('key',JSON.stringify(true))
