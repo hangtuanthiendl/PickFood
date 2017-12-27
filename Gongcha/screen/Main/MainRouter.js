@@ -63,17 +63,17 @@ export default class MainRouter extends Component {
     }
     _renderHotSale = ({item})=>{
         return (
-            <TouchableNativeFeedback>
-                <View style  = {{backgroundColor: '#FFF'}}>
-                <ImageBackground source={{uri: item.imageItem}} style={styles.imageHotSale}>
-                <View style = {{backgroundColor : '#2e2d2d65'}}>
-                    <Text numberOfLines ={1} style = {styles.titleNote}>Sale 50%</Text>
+            <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key})}}>
+                <View style  = {styles.containerHotSale}>
+                <ImageBackground source={{uri: item.imageShop}} style={styles.imageHotSale}>
+                <View style = {{backgroundColor : 'rgba(255, 255, 255,0.6)'}}>
+                    <Text numberOfLines ={1} style = {styles.titleNote}>{item.dealShop}</Text>
                 </View>
                </ImageBackground> 
                <Text  numberOfLines = {1} style ={styles.titleHotSale}>{item.nameShop}</Text>
                <Text  numberOfLines = {1} style ={styles.titleadress}>{item.addressShop}</Text>
                 </View>              
-            </TouchableNativeFeedback>     
+            </TouchableNativeFeedback>  
         );
     }
     _renderNewShop = ({item})=>{
