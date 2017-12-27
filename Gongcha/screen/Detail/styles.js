@@ -31,6 +31,11 @@ export default StyleSheet.create({
 		alignSelf: 'center',
 		justifyContent: 'center'
   },
+  titleNull: {
+    fontSize: 15,
+    fontStyle: 'normal',
+    color: 'rgb(184, 47, 64)'
+   },
     row:{
         flexDirection: 'row',
         alignItems: 'center'

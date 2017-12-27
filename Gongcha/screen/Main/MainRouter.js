@@ -6,6 +6,8 @@ import GetData from '../../Sever/getData';
 import styles from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import antrua from '../../Image/antrua.jpg'
+import StarRating from 'react-native-star-rating';
+
 //import Rating  from 'react-native-ratings';
 export default class MainRouter extends Component {
     constructor(props){
@@ -13,7 +15,10 @@ export default class MainRouter extends Component {
         this.state = {
             itembanner: null,
             itemCategory:null,
-            itemshop: null
+            itemshop: null,
+            itemHotShop: null,
+            itemNewShop:null,
+            itemRecShop: null,
         }
     }
     componentDidMount() { 
@@ -27,9 +32,19 @@ export default class MainRouter extends Component {
                 itemCategory: itemCategory
             })
         })
-        GetData.getShopItem((itemshop) => {
+        GetData.getNewItem(5,(itemNewShop) => {
             this.setState({
-                itemshop: itemshop
+                itemNewShop: itemNewShop
+            })
+        })
+        GetData.getHotItem(5,(itemHotShop) => {
+            this.setState({
+                itemHotShop: itemHotShop
+            })
+        })
+        GetData.getHotItem(10,(itemRecShop) => {
+            this.setState({
+                itemRecShop: itemRecShop
             })
         })
     }
@@ -51,12 +66,12 @@ export default class MainRouter extends Component {
             <TouchableNativeFeedback>
                 <View style  = {{backgroundColor: '#FFF'}}>
                 <ImageBackground source={{uri: item.imageItem}} style={styles.imageHotSale}>
-                <View style = {{backgroundColor : 'rgba(255, 255, 255,0.6)'}}>
+                <View style = {{backgroundColor : '#2e2d2d65'}}>
                     <Text numberOfLines ={1} style = {styles.titleNote}>Sale 50%</Text>
                 </View>
                </ImageBackground> 
-               <Text style ={styles.titleHotSale}>{item.nameItem}</Text>
-               <Text  numberOfLines = {1} style ={styles.titleadress}>{item.nameItem}</Text>
+               <Text  numberOfLines = {1} style ={styles.titleHotSale}>{item.nameShop}</Text>
+               <Text  numberOfLines = {1} style ={styles.titleadress}>{item.addressShop}</Text>
                 </View>              
             </TouchableNativeFeedback>     
         );
@@ -67,16 +82,30 @@ export default class MainRouter extends Component {
                 <View style = {{flexDirection : 'row', backgroundColor: '#FFF'}}>
                 <Image source={{uri: item.imageShop}} style={styles.imageNewShop}>
                </Image>                
-               <View style = {{marginLeft: 5, flex: 1}}>
+               <View style = {{marginLeft: 5, flex: 1, justifyContent:'center'}}>
                <Text numberOfLines = {1} style ={styles.titleHotSale}>{item.nameShop}</Text>
                <Text  numberOfLines = {1} style ={styles.titleadress}>{item.addressShop}</Text>
-               <View style = {{flexDirection: 'row'}}>
-               
-                <Text  numberOfLines = {1} style ={{ fontSize: 13,
-                fontStyle: 'normal', paddingVertical: 10}}>(180)</Text>
+               <View style = {{width : 70}}> 
+                <StarRating
+                    disabled={true}
+                    maxStars={5}
+                    starSize= {15}
+                    rating={parseInt(item.state)}
+                    starStyle= {{paddingVertical: 5}}
+                    starColor={'#f1c40f'}/>
+                </View>
+                <View style = {{flex: 1,flexDirection: 'row', justifyContent: 'space-between'}}>
+               <View style = {{flexDirection: 'row', alignItems: 'center'}}>
+                   <Icon name = 'alarm' style ={{fontSize: 15, color: '#2ecc71',  paddingRight: 5}} />
+                   <Text  numberOfLines = {1} style ={{ alignSelf: 'center', fontSize: 13,
+                fontStyle: 'normal'}}>{item.timeShop}</Text>
                </View>
-               <Text  numberOfLines = {1} style ={{ fontSize: 13,
-                fontStyle: 'normal', paddingVertical: 10}}>Cafe/Desert</Text>
+               <View style = {{flexDirection: 'row', alignItems: 'center'}}>
+                   <Icon name = 'ios-restaurant-outline' style ={{fontSize: 15, color: '#B82F40',  paddingRight: 5}} />
+                   <Text  numberOfLines = {1} style ={{ alignSelf: 'center', fontSize: 13,
+                fontStyle: 'normal'}}>{item.categoryShop}</Text>
+               </View>
+               </View>
                 </View> 
                 </View>              
             </TouchableNativeFeedback>     
@@ -84,27 +113,27 @@ export default class MainRouter extends Component {
     }
     _renderRecommend = ({item})=>{
         return (
-            <TouchableNativeFeedback>
-                <View           removeClippedSubviews={true} style = {styles.containerRecommend}>
-                <Image source={{uri: item.imageItem}} style={styles.imageRecommend}>
+            <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key})}}>
+                <View  removeClippedSubviews={true} style = {styles.containerRecommend}>
+                <Image source={{uri: item.imageShop}} style={styles.imageRecommend}>
                </Image> 
-               <View >
-               <Text style ={styles.titleHotSale}>{item.nameItem}</Text>
-               <Text  numberOfLines = {1} style ={styles.titleadress}>{item.nameItem}</Text>
+               <View style = {{flex: 1}}>
+               <Text numberOfLines = {1} style ={styles.titleHotSale}>{item.nameShop}</Text>
+               <Text  numberOfLines = {1} style ={styles.titleadress}>{item.addressShop}</Text>
                <View style = {{flex: 1,flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                <View style = {{flexDirection: 'row', alignItems: 'center'}}>
-                   <Icon name = 'ios-heart-outline' style ={{fontSize: 15, color: 'grey',  paddingRight: 5}} />
+                   <Icon name = 'alarm' style ={{fontSize: 15, color: '#2ecc71',  paddingRight: 5}} />
                    <Text  numberOfLines = {1} style ={{ alignSelf: 'center', fontSize: 10,
-                fontStyle: 'normal'}}>(180)</Text>
+                fontStyle: 'normal'}}>{item.timeShop}</Text>
                </View>
-               <View style = {{flexDirection: 'row' , alignItems: 'center'}}>
-             
-                <Text  numberOfLines = {1} style ={{ alignSelf: 'center', fontSize: 10,
-                fontStyle: 'normal'}}>(180)</Text>
+               <View style = {{flexDirection: 'row', alignItems: 'center'}}>
+                   <Icon name = 'ios-restaurant-outline' style ={{fontSize: 15, color: '#B82F40',  paddingRight: 5}} />
+                   <Text  numberOfLines = {1} style ={{ alignSelf: 'center', fontSize: 10,
+                fontStyle: 'normal'}}>{item.categoryShop}</Text>
                </View>
                </View>
+               
                </View>
-              
                 </View>              
             </TouchableNativeFeedback>     
         );
@@ -189,13 +218,13 @@ export default class MainRouter extends Component {
                    </View>
                    <View style ={styles.imageshopMall}>
                    {
-                     this.state.itemCategory &&   <FlatList
-                     data={this.state.itemCategory}
+                     this.state.itemHotShop &&   <FlatList
+                     data={this.state.itemHotShop}
                      removeClippedSubviews={true}     
                      contentContainerStyle={{
                      alignItems:'center', margin:5}}       
                      horizontal={true}
-                     ItemSeparatorComponent = {() => {return (<View style = {{width: 5}}/>)}}
+                     ItemSeparatorComponent = {() => {return (<View style = {{width: 5,}}/>)}}
                      automaticallyAdjustContentInsets={true}                  
                      extraData= {this.state}
                      showsHorizontalScrollIndicator={false}
@@ -203,7 +232,7 @@ export default class MainRouter extends Component {
                      renderItem={this._renderHotSale}/>
                    }
                    {
-                    !this.state.itemCategory && <View style={styles.wrapperSwiper}>
+                    !this.state.itemHotShop && <View style={styles.wrapperSwiper}>
                     <Spinner color = '#e53935'/>
                     </View>
                    }
@@ -240,8 +269,8 @@ export default class MainRouter extends Component {
                    </View>
                    <View  style ={styles.imageshopMall}>
                    {
-                       this.state.itemshop && <FlatList
-                       data={this.state.itemshop}
+                       this.state.itemNewShop && <FlatList
+                       data={this.state.itemNewShop}
                        removeClippedSubviews={true}     
                        contentContainerStyle={{
                          margin: 5}}   
@@ -253,7 +282,7 @@ export default class MainRouter extends Component {
                        renderItem={this._renderNewShop}/>
                    }
                    {
-                    !this.state.itemshop && <View style={styles.wrapperSwiper}>
+                    !this.state.itemNewShop && <View style={styles.wrapperSwiper}>
                     <Spinner color = '#e53935'/>
                     </View>
                    }
@@ -271,8 +300,8 @@ export default class MainRouter extends Component {
                    </View>
                    <View  style ={styles.imageshopMall}>
                    {
-                     this.state.itemCategory &&   <FlatList
-                     data={this.state.itemCategory}
+                     this.state.itemRecShop &&   <FlatList
+                     data={this.state.itemRecShop}
                      removeClippedSubviews={true}     
                      contentContainerStyle={{
                      alignItems:'center', margin:5}}       
@@ -285,7 +314,7 @@ export default class MainRouter extends Component {
                      renderItem={this._renderRecommend}/>
                    }
                    {
-                    !this.state.itemCategory && <View style={styles.wrapperSwiper}>
+                    !this.state.itemRecShop && <View style={styles.wrapperSwiper}>
                     <Spinner color = '#e53935'/>
                     </View>
                    }

@@ -8,6 +8,7 @@ import {Header, Icon, Input} from 'native-base'
 import SplashScreen from './screen/Account/SplashScreen'
 import SiwperScreen from './screen/Account/SwiperScreen'
 import CheckLogin from './screen/Account/CheckLogin'
+import Shop from './screen/Cart/Shop'
 const {persistor, store} = configureStore()
 //StatusBar.setHidden(true);
 export default class App extends Component {
@@ -20,7 +21,6 @@ export default class App extends Component {
       componentDidMount(){
         try{
          AsyncStorage.getItem('key').then((value)=>{
-            console.log('vu an cut',value);
            if(value != null){
               this.setState({
                 done:!this.state.done,
@@ -37,13 +37,14 @@ export default class App extends Component {
     render() {
         return (
             <Provider store = {store}>
-                <PersistGate persistor={persistor}>          
+                <PersistGate persistor={persistor}>   
                  <SplashScreen>
-                     {
-                        !this.state.done? <Root1/> : <Root/>
-                     }
-                </SplashScreen>   
-                </PersistGate>
+                 {
+                  !this.state.done? <Root1/> : <Root/>
+                 }
+                   </SplashScreen>      
+              
+          </PersistGate>
             </Provider>
         );
     }

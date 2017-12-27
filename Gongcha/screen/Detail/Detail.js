@@ -36,12 +36,15 @@ export default class Detail extends Component {
             name: null,
             image:null,
             address: null,
+            phone: null,
+            time:null,
             value: null,
             isActionButtonVisible: false,
             isModalShopVisible: false,
             isModalCartVisible: false,            
             icon: null,
             itembanner: null,
+            categoryShop: null
         }
         _listViewOffset = 1               
     }
@@ -52,7 +55,10 @@ export default class Detail extends Component {
                 keyshop: params.data,
                 name : itemshop.nameShop,
                 image: itemshop.imageShop,
-                address: itemshop.addressShop
+                address: itemshop.addressShop,
+                phone: itemshop.phoneShop,
+                time: itemshop.timeShop,
+                categoryShop: itemshop.categoryShop
             })   
             console.log("sadasdasda", this.state.keyshop)    
         })
@@ -130,7 +136,7 @@ export default class Detail extends Component {
                 </CollapsingToolbarLayout>
               </AppBarLayout>
               <NestedScrollView onScroll = {this._onScroll}>
-                  <TitleShop name = {this.state.name} address = {this.state.address}/>  
+                  <TitleShop name = {this.state.name} address = {this.state.address} phone = {this.state.phone} time =  {this.state.time} />  
                     <View style= {styles.wraper}>
                     <View style={styles.headerCateroryDetail}>
                     <Text style={styles.viewmore}>Hình Ảnh</Text>
@@ -162,7 +168,11 @@ export default class Detail extends Component {
                       <Icon name='md-menu' style ={{fontSize: 25, color: 'rgb(168, 20, 39)'}}/>
                       </TouchableHighlight>
                       </View>
-                      <TabMenu keyItemShop = {this.state.keyshop} navigation = {this.props.navigation}/>
+                      {
+                          this.state.categoryShop === 'Thức uống' ? (<TabMenu keyItemShop = {this.state.keyshop} navigation = {this.props.navigation}/>) : (<View style={styles.loadingCategory}>
+                            <Text style = {styles.titleNull}>Chưa có thực đơn</Text>
+                            </View>)
+                      }
                       </View>                         
              </NestedScrollView>
             </CoordinatorLayout>

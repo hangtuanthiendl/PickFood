@@ -5,6 +5,7 @@ import styles from './styles'
 import GetData from '../../Sever/getData'
 import {connect} from 'react-redux';
 import Currency from '../../Util/Currency'
+import StarRating from 'react-native-star-rating';
 export default class CategoryMain extends Component {
     constructor(props){
         super(props)
@@ -15,7 +16,8 @@ export default class CategoryMain extends Component {
         }
     }
     componentDidMount() { 
-        GetData.getShopItem((itemshop) => {
+        const {params} = this.props.navigation.state
+        GetData.getItemByCategoryShop(params.nameItem, (itemshop) => {
             this.setState({
                 itemshop: itemshop
             })
@@ -27,16 +29,30 @@ export default class CategoryMain extends Component {
                 <View style = {{flexDirection : 'row', backgroundColor: '#FFF'}}>
                 <Image source={{uri: item.imageShop}} style={styles.imageNewShop}>
                </Image>                
-               <View style = {{marginLeft: 5, flex: 1}}>
+               <View style = {{marginLeft: 5, flex: 1, justifyContent:'center'}}>
                <Text numberOfLines = {1} style ={styles.titleHotSale}>{item.nameShop}</Text>
                <Text  numberOfLines = {1} style ={styles.titleadress}>{item.addressShop}</Text>
-               <View style = {{flexDirection: 'row'}}>
-               
-                <Text  numberOfLines = {1} style ={{ fontSize: 13,
-                fontStyle: 'normal', paddingVertical: 10}}>(180)</Text>
+               <View style = {{width : 70}}> 
+                <StarRating
+                    disabled={true}
+                    maxStars={5}
+                    starSize= {15}
+                    rating={parseInt(item.state)}
+                    starStyle= {{paddingVertical: 5}}
+                    starColor={'#f1c40f'}/>
+                </View>
+                <View style = {{flex: 1,flexDirection: 'row', justifyContent: 'space-between'}}>
+               <View style = {{flexDirection: 'row', alignItems: 'center'}}>
+                   <Icon name = 'alarm' style ={{fontSize: 15, color: '#2ecc71',  paddingRight: 5}} />
+                   <Text  numberOfLines = {1} style ={{ alignSelf: 'center', fontSize: 13,
+                fontStyle: 'normal'}}>{item.timeShop}</Text>
                </View>
-               <Text  numberOfLines = {1} style ={{ fontSize: 13,
-                fontStyle: 'normal', paddingVertical: 10}}>Cafe/Desert</Text>
+               <View style = {{flexDirection: 'row', alignItems: 'center'}}>
+                   <Icon name = 'ios-restaurant-outline' style ={{fontSize: 15, color: '#B82F40',  paddingRight: 5}} />
+                   <Text  numberOfLines = {1} style ={{ alignSelf: 'center', fontSize: 13,
+                fontStyle: 'normal'}}>{item.categoryShop}</Text>
+               </View>
+               </View>
                 </View> 
                 </View>              
             </TouchableNativeFeedback>    

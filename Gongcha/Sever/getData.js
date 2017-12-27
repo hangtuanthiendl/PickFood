@@ -194,7 +194,7 @@ class GetData {
       })
     }
     static getNewItem (limit,callback) {
-      firebase.database().ref('Product').limitToLast(limit).on('value', (snap) => {
+      firebase.database().ref('Shop').limitToLast(limit).on('value', (snap) => {
         let items = [];
         snap.forEach((child) => {
           let item = child.val()
@@ -205,7 +205,7 @@ class GetData {
       })
     }
     static getHotItem (limit,callback) {
-      firebase.database().ref('Product').limitToFirst(limit).on('value', (snap) => {
+      firebase.database().ref('Shop').limitToFirst(limit).on('value', (snap) => {
         let items = [];
         snap.forEach((child) => {
           let item = child.val()
@@ -215,9 +215,16 @@ class GetData {
         callback(items.reverse())
       })
     }
-    static pushProduct(productinfo, uid){
-      productinfo['owner'] = uid
-      firebase.database().ref().child('Product').push(productinfo)
+    static getItemByCategoryShop(category,callback){
+      firebase.database().ref('Shop').orderByChild("categoryShop").equalTo(category).on('value', (snap) => {
+        let items = [];
+        snap.forEach((child) => {
+          let item = child.val()
+          item['key'] = child.key
+          items.push(item);
+        });
+        callback(items.reverse())
+      })
     }
     static pushShop(shopinfo){
         firebase.database().ref().child('Shop').push(shopinfo)

@@ -3,7 +3,7 @@ import {
     View, TouchableOpacity,Text, StyleSheet,Switch,Dimensions,Image,TextInput,ToastAndroid
  } from 'react-native';
  import MapView, {Marker,Callout} from 'react-native-maps'
- import { Container, Header, DeckSwiper, Card, CardItem, Thumbnail,  Left, Body, Icon,Item, Input } from 'native-base';
+ import { Container, Header, DeckSwiper, Card, CardItem, Thumbnail,  Left, Body, Icon,Item, Input,Spinner } from 'native-base';
  const cards = [
     {
       adress: '175 Tôn Dật Tiên - Quận 7',
@@ -108,7 +108,7 @@ import {
        fetch(url)
        .then((jsonRequest)=>jsonRequest.json())
        .then((jsonResponse)=>{
-            console.log(jsonResponse);
+            console.log(jsonResponse.status);
             const arrMarkers = [];
             jsonResponse.results.map((element,i)=>{
                 arrMarkers.push(
@@ -178,6 +178,9 @@ TypeMap(type){
      render() {
          return (  
              <View style={{flex:1}}>
+            
+                 {/* <Spinner color = '#e53935'/> */}
+            
                  {this.state.region.latitude ? 
                 <MapView
                     ref={(map)=>this._map = map}

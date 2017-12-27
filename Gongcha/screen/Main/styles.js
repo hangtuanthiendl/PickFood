@@ -90,6 +90,11 @@ export default StyleSheet.create({
 		alignSelf: 'center',
 		justifyContent: 'center'
   },
+  titleNull: {
+    fontSize: 15,
+    fontStyle: 'normal',
+    color: 'rgb(184, 47, 64)'
+   },
   imageshopMall: {
     flex:1,
     height: undefined, 
@@ -126,11 +131,17 @@ export default StyleSheet.create({
     width: 130,
     justifyContent: 'flex-end',
     //resizeMode: Image.resizeMode.contain,
-    
+  },
+  containerHotSale: {
+    backgroundColor: '#FFF',
+		height: undefined,
+		width: 130,
+		borderWidth: 0.5,
+    borderColor:'#CFD8DC',
   },
   titleNote: {
     marginLeft: 5,
-    color: '#DC1D25',
+    color: 'white',
     fontStyle : 'normal',
     textAlign: 'center'    
   },
@@ -173,9 +184,10 @@ export default StyleSheet.create({
   containerRecommend: {
     backgroundColor: '#FFF',
 		height: undefined,
-		width: undefined,
+		width: width / 2 - 20,
 		borderWidth: 0.5,
     borderColor:'#CFD8DC',
+    //flex:1
  //   marginLeft: 5,
     //marginRight: 5,
     

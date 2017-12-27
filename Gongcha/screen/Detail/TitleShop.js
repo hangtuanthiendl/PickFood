@@ -15,12 +15,12 @@ export default class TitleShop extends Component {
                 <View style = {styles.divider}></View>
                 <CardItem>
                 <Icon name = 'ios-call' style={styles.iconShop}></Icon>
-                <Text note style = {styles.textShop}>0286.258.555</Text> 
+                <Text note style = {styles.textShop}>{this.props.phone}</Text> 
                 </CardItem>  
                 <View style = {styles.divider}></View>
                 <CardItem>
                 <Icon name = 'alarm' style={styles.iconShop}></Icon>
-                 <Text note> 7:00 - 9:00</Text>
+                 <Text note style = {styles.textShop}>{this.props.time}</Text>
                 </CardItem>    
                 <View style = {styles.divider}></View>
             </View>

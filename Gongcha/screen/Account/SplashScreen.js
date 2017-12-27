@@ -31,7 +31,7 @@ export default class SplashScreen extends Component {
                 (<View>
                     <ImageBackground source={require('../../Image/splash/splash.jpeg')} style={Styles.imagebackgroundSplash}>
                     <FladeInView/>
-                    <SlideAnimation style = {{width:300, height:200,backgroudColor:'red', position:'absolute'}}/>
+                    <SlideAnimation style = {{width:300, height:200, position:'absolute'}}/>
                     </ImageBackground>
                    
                 </View>)

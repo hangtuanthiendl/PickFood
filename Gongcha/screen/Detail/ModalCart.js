@@ -65,15 +65,9 @@ class ModalCart extends Component {
         GetData.removeCartItem(params.keyItemShop,this.props.infouser.uid)        
         Alert.alert(
             null,
-            'Thanh toán thành công, bạn có thể kiểm tra đơn hàng ở lịch sử đặt hàng',
+            'Thanh toán thành công, bạn có thể kiểm tra đơn hàng ở lịch sử đặt hàng và chờ đợi thông báo từ cửa hàng',
             [
-              {text: 'Có', onPress: () =>   this.props.navigation.dispatch(NavigationActions.reset({
-                index: 0,
-                actions: [
-                  NavigationActions.navigate({ routeName: 'History'})
-                ]
-              })
-            )},
+              {text: 'Có', onPress: () =>   this.props.navigation.goBack()},
             ],
             { cancelable: false }
           )
