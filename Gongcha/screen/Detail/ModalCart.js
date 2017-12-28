@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Alert,View, StyleSheet, FlatList, Image} from 'react-native';
-import { Badge,Spinner,Container, Header, Item, Input, Icon, Separator,Button, Text, Body,Title, Left, Right,Content, Card, CardItem ,Thumbnail, List,ListItem, Footer,FooterTab, Radio, CheckBox   } from 'native-base';
+import { SwipeRow,Badge,Spinner,Container, Header, Item, Input, Icon, Separator,Button, Text, Body,Title, Left, Right,Content, Card, CardItem ,Thumbnail, List,ListItem, Footer,FooterTab, Radio, CheckBox   } from 'native-base';
 import {connect} from 'react-redux'
 import GetData from '../../Sever/getData'
 import styles from './styles'
@@ -16,7 +16,8 @@ class ModalCart extends Component {
             detailCart: null,
             totalPrice: '',
             itemInfo: null,
-            dataTest: null
+            dataTest: null,
+            activeRowkey: null,
         }
     }
     componentDidMount(){
@@ -72,8 +73,43 @@ class ModalCart extends Component {
             { cancelable: false }
           )
    }
-    _renderItemCart = ({item}) => { 
+   _deleteItem(item) {
+    const {params} = this.props.navigation.state;                         
+    Alert.alert(
+        null,
+        'Bạn có chắc chắn muốn xóa ' + item.nameItem + ' không?',
+        [
+          {text: 'Có', onPress: () =>   {
+              GetData.removeItemCart(params.keyItemShop,this.props.infouser.uid, item.key)
+              GetData.getDataCart(params.keyItemShop,this.props.infouser.uid, (dataCart)=>{
+                var arrayKey = [];
+                var arrayPrice = [];
+                const reducer = (accumulator, currentValue) => accumulator + currentValue;
+                var totalPrice
+                if (dataCart != 0) {
+                    dataCart.forEach(e =>{
+                        arrayPrice.push(parseInt(e.total))
+                        arrayKey.push(e.key)
+                      })         
+                      totalPrice = arrayPrice.reduce(reducer)                   
+                }
+                this.setState({
+                    dataCart: dataCart,
+                    totalPrice: totalPrice,
+                })
+            })
+          }},
+          {text: 'Không', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        ],
+        { cancelable: false }
+      )
+   }
+    _renderItemCart = ({item, index}) => { 
         return (
+            <SwipeRow
+            disableRightSwipe={true}
+            rightOpenValue={-50}
+            body={
             <View style = {{backgroundColor: '#FFF' , flexDirection: 'row'}}>                               
             <View style = {{marginLeft: 5, flex: 1}}>
             <Text numberOfLines = {1} style ={styles.titleHotSale}>{item.nameItem +' x' + item.value + '=' + Currency.convertNumberToCurrency((item.valueProduct*item.value)) +'đ' }</Text>
@@ -84,7 +120,17 @@ class ModalCart extends Component {
               </View>
              </View>
              <Text note style = {styles.backgroundPrice1}>{'Tổng: '+Currency.convertNumberToCurrency(item.total) +'đ'}</Text>                     
-           </View>      
+           </View> 
+              }
+              right={
+                <Button danger onPress={() => this._deleteItem(item)}>
+                  <Icon active name="trash" />
+                </Button>
+              }
+            >
+                
+            </SwipeRow>
+                
         );
       }
     render() {

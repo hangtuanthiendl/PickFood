@@ -92,9 +92,9 @@ class Setting extends Component {
               <View style = {styles.containerLogo}>
                   <Title style = {{textAlign: 'center', alignSelf: 'center',  color: '#FFF'}}>Thiết lập tài khoản</Title>
               </View>
-              <TouchableNativeFeedback onPress = {() => this.props.navigation.goBack()}>
+              <Button transparent onPress = {() => this.props.navigation.goBack()}>
                     <Icon name= 'md-close' style = {{fontSize: 25,  color: '#FFF',  alignSelf: 'center'}}/>
-              </TouchableNativeFeedback>
+              </Button>
           </Header>
           <Content>
            
@@ -225,6 +225,7 @@ class Setting extends Component {
                             selectedValue={this.state.sex}
                             onValueChange={value => this.setState({ sex: value})}
                        >
+                         <Item label="------" value="------" />
                          <Item label="Nam" value="Nam" />
                          <Item label="Nữ" value="Nữ" />
                        </Picker>

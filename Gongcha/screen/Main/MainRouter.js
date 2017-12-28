@@ -152,7 +152,7 @@ export default class MainRouter extends Component {
                     </Button>
                     </Right>   
              </Header>
-                <Content  showsVerticalScrollIndicator={false}>
+                <Content showsVerticalScrollIndicator={false}>
                    {
                     this.state.itembanner && <Swiper
                      style = {styles.wrapperSwiper}
@@ -175,10 +175,6 @@ export default class MainRouter extends Component {
                   <Text style={styles.titleCategory}>Bữa Ăn Hôm Nay</Text>
                   <Image style={{height: 30, width: 30, resizeMode: 'cover', marginLeft: 5}}source ={require('../../Image/restaurant.png')}/>
                   </View>
-                   <TouchableNativeFeedback>
-                    <View style = {{flexDirection: 'row'}}>
-                    </View>
-                   </TouchableNativeFeedback>
                    </View>
                    <View style ={styles.imageshopMall}>
                    {
@@ -200,7 +196,6 @@ export default class MainRouter extends Component {
                     <Spinner color = '#e53935'/>
                     </View>
                    }
-                   
                    </View>
                     </View>
                   <View style= {styles.wraper}>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ToolbarAndroid,LayoutAnimation,View, TouchableOpacity, TextInput, Image, FlatList,StyleSheet, ScrollView,ImageBackground, TouchableHighlight} from 'react-native';
+import {Dimensions,TouchableNativeFeedback,ToolbarAndroid,LayoutAnimation,View, TouchableOpacity, TextInput, Image, FlatList,StyleSheet, ScrollView,ImageBackground, TouchableHighlight} from 'react-native';
 import styles from './styles';
 import Swiper from 'react-native-swiper';
 import GetData from '../../Sever/getData';
@@ -23,8 +23,12 @@ import {
   CollapsingToolbarLayout,
   CollapsingParallax,
 } from 'react-native-collapsing-toolbar'
-import NestedScrollView from 'react-native-nested-scroll-view'
-import { StyleProvider ,Badge,Spinner,Container, Header, Item, Input, Separator,Button, Text, Body,Title, Left, Right,Content, Card, CardItem ,Thumbnail, List,ListItem, Footer, Radio, CheckBox, Tab, Tabs,TabHeading, Form, Picker   } from 'native-base';
+import NestedScrollView from 'react-native-nested-scroll-view';
+import CollapsingToolbar from 'react-native-collapsingtoolbar';
+import { Col, Row, Grid } from "react-native-easy-grid";
+const {height, width} = Dimensions.get('window');
+
+import { StyleProvider ,Badge,Spinner,Container, Header, Item, Input, Separator,Button, Text, Body,Title, Left, Right,Content, DeckSwiper,Card, CardItem ,Thumbnail, List,ListItem, Footer, Radio, CheckBox, Tab, Tabs,TabHeading, Form, Picker   } from 'native-base';
 import configureStore from '../../Redux/Store/configStore';
 const HEADER_HEIGHT = 250
 export default class Detail extends Component {
@@ -62,7 +66,7 @@ export default class Detail extends Component {
             })   
             console.log("sadasdasda", this.state.keyshop)    
         })
-        GetData.getBanner((itembanner) => {
+        GetData.getItemMall((itembanner) => {
             this.setState({
                 itembanner: itembanner
             })
@@ -98,91 +102,74 @@ export default class Detail extends Component {
           }
     render() {
         const {navigate} = this.props.navigation;
+        console.log('asdssssss', this.state.itembanner)
         return (
-            <StyleProvider style ={getTheme(material)}>
-            <Container style = {styles.container}>
+            <Container style = {styles.container}>   
+            <Header androidStatusBarColor = 'rgb(184, 47, 64)' style = {{backgroundColor: 'rgb(184, 47, 64)', justifyContent: 'space-between'}}>
+            <View style = {styles.containerLogo}>
+                <Title style = {{textAlign: 'center', alignSelf: 'center', color: '#FFF'}}>{this.state.name}</Title>
+            </View>
+            <Button transparent onPress = {() => this.props.navigation.goBack()}>
+            <Icon name= 'md-close' style = {{fontSize: 25,  color: '#FFF',  alignSelf: 'center'}}/>
+            </Button>
+            </Header> 
+            <Content onScroll = {this._onScroll}>
+            <View>
+            <ImageBackground source={{uri: this.state.image}} style={styles.imageBackground}>
+                <LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']}  style={styles.linearGradient}>             
+                </LinearGradient>
+                </ImageBackground>  
+            <TitleShop name = {this.state.name} address = {this.state.address} phone = {this.state.phone} time =  {this.state.time} />  
+             <View style= {styles.wraper}>
+             <View style={styles.headerCateroryDetail}>
+             <View style = {{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+             <Text style={styles.viewmore}>Hình Ảnh</Text>
+             <Image style={{height: 30, width: 30, resizeMode: 'cover', marginLeft: 5}}source ={require('../../Image/picture.png')}/>
+            </View>
+            </View>
+            <View style = {{ //position:'absolute',
+            height: 300,
+            width: null,}}>
             {
-                this.state.icon && <CoordinatorLayout>
-                <AppBarLayout onOffsetChanged={this.handleOffsetChanged} style={styles.appbar}>
-                <CollapsingToolbarLayout
-                titleEnable= {true}
-                title={this.state.name}
-                contentScrimColor='#B62E41'
-                expandedTitleColor='white'
-                collapsedTitleTextColor='white'
-                expandedTitleGravity='BOTTOM'
-                scrimVisibleHeightTrigger={100}
-                scrimAnimationDuration={400}
-                expandedTitleMarginStart={25}
-                expandedTitleMarginBottom={22}
-                  scrollFlags={
-                      AppBarLayout.SCROLL_FLAG_SCROLL
-                    | AppBarLayout.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
-                    | AppBarLayout.SCROLL_FLAG_SNAP}>
-                  <CollapsingParallax parallaxMultiplier={0.6}>
-                    <View collapsable={false} style = {styles.parallaxView}>
-                    <ImageBackground source={{uri: this.state.image}} style={styles.imageBackground}>
-                    <LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']}  style={styles.linearGradient}>             
-                    </LinearGradient>
-                    </ImageBackground>
-                    </View>
-                  </CollapsingParallax>
-                  <ToolbarAndroid
-                   // titleColor = '#FFF'
-                    navIcon = {this.state.icon}
-                    onIconClicked = {() => this.props.navigation.goBack()}
-                   // actions={[{title: 'Settings'}]}
-                  />
-                </CollapsingToolbarLayout>
-              </AppBarLayout>
-              <NestedScrollView onScroll = {this._onScroll}>
-                  <TitleShop name = {this.state.name} address = {this.state.address} phone = {this.state.phone} time =  {this.state.time} />  
-                    <View style= {styles.wraper}>
-                    <View style={styles.headerCateroryDetail}>
-                    <Text style={styles.viewmore}>Hình Ảnh</Text>
-                     <TouchableHighlight>
-                     <Icon name = 'md-add-circle' style = {{fontSize: 25, color : 'rgb(168, 20, 39)'}}/>
-                     </TouchableHighlight>
-                     </View>
-                     {
-                    this.state.itembanner && <Swiper
-                     style = {styles.wrapperSwiper}
-                     dot={<View style={{backgroundColor: '#FFF', width: 10, height: 10, borderRadius: 7, marginLeft: 7, marginRight: 7}} />}
-                       activeDot={<View style={{backgroundColor: '#e53935', width: 10, height: 10, borderRadius: 7, marginLeft: 7, marginRight: 7}} />}
-                           autoplay={true}>
-                            <Image source = {{uri: this.state.itembanner[0].image}} style={styles.slide}></Image>
-                            <Image source = {{uri: this.state.itembanner[1].image}} style={styles.slide}></Image>
-                            <Image source = {{uri: this.state.itembanner[2].image}} style={styles.slide}></Image>                 
-                        </Swiper>
-                   }
-                   {
-                        !this.state.itembanner && <View style={styles.wrapperSwiper}>
-                        <Spinner color = '#e53935'/>
-                      </View>
-                   }
-                      </View>
-                      <View style ={{flex: 1 , marginTop: 5}}>
-                      <View style={styles.headerCateroryDetail}>
-                      <Text style={styles.viewmore}>Thực Đơn</Text>
-                      <TouchableHighlight>
-                      <Icon name='md-menu' style ={{fontSize: 25, color: 'rgb(168, 20, 39)'}}/>
-                      </TouchableHighlight>
-                      </View>
-                      {
-                          this.state.categoryShop === 'Thức uống' ? (<TabMenu keyItemShop = {this.state.keyshop} navigation = {this.props.navigation}/>) : (<View style={styles.loadingCategory}>
-                            <Text style = {styles.titleNull}>Chưa có thực đơn</Text>
-                            </View>)
-                      }
-                      </View>                         
-             </NestedScrollView>
-            </CoordinatorLayout>
-            }
-             {this.state.isActionButtonVisible ?
+                this.state.itembanner && <DeckSwiper
+                dataSource={this.state.itembanner}
+                    renderItem={item =>
+                    <Card>
+                        <TouchableNativeFeedback>
+                        <Image style={{ height: 300, flex: 1 }} source={{uri : item.imageItem}}/>
+                        </TouchableNativeFeedback>
+                    </Card>
+                    }
+                />
+               }
+               {
+                    !this.state.itembanner && <View style={styles.wrapperSwiper}>
+                    <Spinner color = '#e53935'/>
+                  </View>
+               }
+            </View>
+           
+               </View>
+               <View style ={{flex: 1 , marginTop: 5}}>
+               <View style={styles.headerCateroryDetail}>
+               <View style = {{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+               <Text style={styles.viewmore}>Thực đơn</Text>
+               <Image style={{height: 30, width: 30, resizeMode: 'cover', marginLeft: 5}}source ={require('../../Image/menu.png')}/>
+               </View>
+               </View>
+               {
+                   this.state.categoryShop === 'Thức uống' ? (<TabMenu keyItemShop = {this.state.keyshop} navigation = {this.props.navigation}/>) : (<View style={styles.loadingCategory}>
+                     <Text style = {styles.titleNull}>Chưa có thực đơn</Text>
+                     </View>)
+               }
+               </View>   
+            </View> 
+            </Content>  
+            {this.state.isActionButtonVisible ?
                 <ActionButton buttonColor = 'rgb(168, 20, 39)'
                  onPress = {() => this.props.navigation.navigate('ModalCart',{keyItemShop : this.state.keyshop, nameItemShop: this.state.name, addressItemShop: this.state.address})}
                 icon = { <Icon name="md-basket" style = {{fontSize: 25, color: '#FFFFFF'}} />} /> : null}
            </Container>
-            </StyleProvider>
         );
     }
 }

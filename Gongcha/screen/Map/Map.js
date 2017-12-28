@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { 
     View, TouchableOpacity,Text, StyleSheet,Switch,Dimensions,Image,TextInput,ToastAndroid
  } from 'react-native';
+ import GetData from '../../Sever/getData'
  import MapView, {Marker,Callout} from 'react-native-maps'
  import { Container, Header, DeckSwiper, Card, CardItem, Thumbnail,  Left, Body, Icon,Item, Input,Spinner } from 'native-base';
  const cards = [
@@ -63,13 +64,21 @@ import {
             places:null,
             keySearch:'Gong Cha Việt Nam',
             radius:10000,
-            typeMap:'standard'
+            typeMap:'standard',
+            itemHotShop: null,
         }
     }
     componentWillMount(){
         this.MyLocation();
         this.getPlaces();
     };
+    componentDidMount(){
+        GetData.getHotItem(5,(itemHotShop) => {
+            this.setState({
+                itemHotShop: itemHotShop
+            })
+        })
+    }
     MyLocation(){//giai quyet truoc khi tim vi tri cua ban
      navigator.geolocation.getCurrentPosition((position)=>{
          this.setState({
@@ -203,28 +212,31 @@ TypeMap(type){
                     />
                 </TouchableOpacity>
                 <View style={styles.view_card}>
-                <DeckSwiper
-                    dataSource={cards}
+                {
+                    this.state.itemHotShop && <DeckSwiper
+                    dataSource={this.state.itemHotShop}
                     renderItem={item =>
                     <Card style={styles.card}>
-                        <CardItem style={styles.card_item} button onPress={()=>{this.props.navigation.navigate('Detail_Screen',
+                        <CardItem style={styles.card_item} button onPress={()=>{this.props.navigation.navigate('Detail',
                         {
-                            m_image:item.image,
-                            m_address:item.adressfull,
-                            m_time:item.time,
-                            m_phone:item.phone,
+                            data:item.key,
                         }
                     )}}>
                            <View>
-                                <Image style={styles.image} source={item.image}>
+                                <Image style={styles.image} source={{uri : item.imageShop}}>
                                 </Image>
-                                <Text style={styles.km}>{item.km}</Text>
-                                <Text style={styles.adress}>{item.adress}</Text>
+                                <Text style={styles.adress}>{item.addressShop}</Text>
                            </View>
                         </CardItem>
                     </Card>
                     }
                  />
+                }
+                {
+                    !this.state.itemHotShop && <View style={styles.view_card}>
+                        <Spinner color = 'red'/>
+                    </View>
+                }
             </View>
                 <View style={styles.view_textinput}>
                      <View style={{flex:2}}/>

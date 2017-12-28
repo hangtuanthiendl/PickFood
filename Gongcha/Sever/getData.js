@@ -9,6 +9,9 @@ class GetData {
    static removeCartItem(key,uid){
     firebase.database().ref().child(`CartItem/${uid}/${key}`).remove();    
    }
+   static removeItemCart(key,uid, keyitem){
+    firebase.database().ref().child(`CartItem/${uid}/${key}/${keyitem}`).remove();    
+   }
   static saveDataCart (key,uid, callback) {
     //callback['infor'] = mang
     firebase.database().ref().child(`CartItem/${uid}/${key}`).push(callback);

@@ -119,9 +119,9 @@ class DetailHistory extends Component {
                     <View style = {styles.containerLogo}>
                         <Title style = {{textAlign: 'center', alignSelf: 'center', color: '#FFF'}}>{nameItem}</Title>
                     </View>
-                    <TouchableNativeFeedback onPress = {() => this.props.navigation.goBack()}>
+                    <Button transparent onPress = {() => this.props.navigation.goBack()}>
                     <Icon name= 'md-close' style = {{fontSize: 25,  color: '#FFF',  alignSelf: 'center'}}/>
-                    </TouchableNativeFeedback>
+                    </Button>
                 </Header>
                 <Content   showsVerticalScrollIndicator={false}>
                 <View style = {{ backgroundColor: '#E8E3E8'}}>

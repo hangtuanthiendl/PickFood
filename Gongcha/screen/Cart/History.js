@@ -97,9 +97,8 @@ class History extends Component {
             <Container style = {styles.container}>
                 <Header androidStatusBarColor = 'rgb(184, 47, 64)' style = {{backgroundColor: 'rgb(184, 47, 64)', justifyContent: 'space-between'}}>
                     <View style = {styles.containerLogo}>
-                        <Title style = {{textAlign: 'center', alignSelf: 'center',  color: '#FFF'}}>Order History</Title>
+                        <Title style = {{textAlign: 'center', alignSelf: 'center',  color: '#FFF'}}>Lịch sử đặt hàng</Title>
                     </View>
-                    <Icon name= 'menu' style = {{fontSize: 25, color: '#FFF', alignSelf: 'center'}}/>
                 </Header>
                 <Content   showsVerticalScrollIndicator={false}>
                     <View>

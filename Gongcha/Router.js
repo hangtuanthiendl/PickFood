@@ -23,7 +23,8 @@ import CategoryMain from './screen/Main/CategoryMain'
 import SplashScreen from './screen/Account/SplashScreen';
 import SiwperScreen from './screen/Account/SwiperScreen';
 import SearchBar from './screen/Main/SearchBar';
-import Detail_Map from './screen/Map/Detail_map'
+import Detail_Map from './screen/Map/Detail_map';
+import TabMenu from './screen/Detail/TabMenu';
 export const MainStack = StackNavigator({
     MH_Main: {
         screen: MainRouter,
@@ -176,6 +177,7 @@ export const TabBar = TabNavigator({
 }
 )
 export const Root = StackNavigator({
+    TabMenu: {screen: TabMenu},
     Tab: {screen: TabBar}, 
     Detail_Screen:{screen:Detail_Map,},
     Swiper:{screen:SiwperScreen},

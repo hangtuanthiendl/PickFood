@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Alert, Modal,StyleSheet, View, Image, TouchableOpacity,Dimensions, FlatList,ActivityIndicator, SectionList, TouchableNativeFeedback } from "react-native";
+import {Alert, Modal,StyleSheet, View, Image, TouchableOpacity,Dimensions, FlatList,ActivityIndicator, SectionList, TouchableNativeFeedback, ImageBackground } from "react-native";
 import {
     Radio,
     CheckBox,
@@ -28,100 +28,33 @@ import {
 import GetData from '../../Sever/getData';
 //import Modal from 'react-native-modal'
 import ModalShop from './ModalShop';
+import ExpandableList from 'react-native-expandable-section-flatlist';
+import NestedScrollView from 'react-native-nested-scroll-view'
 import styles from './styles';
 import _ from 'lodash';
 import Currency from '../../Util/Currency';
 import {connect} from 'react-redux';
-let data =[{
-    id: 1,
-    checked: false,
-    name: 'Gong Cha Milk Foam',
-    price: 16000
-},
-{
-    id: 2,    
-    checked: false,
-    name: 'Pudding',
-    price: 10000
-},
-{
-    id: 3,    
-    checked: false,
-    name: 'Thạch Ai-Yu',
-    price: 10000
-},
-{
-    id: 4,    
-    checked: false,
-    name: 'Thạch Trái Cây',
-    price: 10000
-},
-{
-    id: 5,    
-    checked: false,
-    name: 'Đậu Đỏ',
-    price: 10000
-},
-{
-    id: 6,    
-    checked: false,
-    name: 'Trân Châu Trắng',
-    price: 10000
-}
-,
-{
-    id: 7,    
-    checked: false,
-    name: 'Trân Châu Đen',
-    price: 10000
-}
-,
-{
-    id: 8,    
-    checked: false,
-    name: 'Hột É',
-    price: 10000
-}
-,
-{
-    id: 9,    
-    checked: false,
-    name: 'Sương Sáo',
-    price: 10000
-}
-,
-{
-    id: 10,    
-    checked: false,
-    name: 'Thạch Dừa',
-    price: 10000
-}
-,
-{
-    id: 11,    
-    checked: false,
-    name: 'Nha Đam',
-    price: 10000
-},
-{
-    id: 12,    
-    checked: false,
-    name: 'Thạch Nâu',
-    price: 10000
-},
-{
-    id: 13,    
-    checked: false,
-    name: 'Combo 2 loại hạt(bắt buộc chọn 2 loại topping khác nhau & ghi chú)',
-    price: 10000
-},
-{
-    id: 14,    
-    checked: false,
-    name: 'Combo 3 loại hạt(bắt buộc chọn 3 loại khác nhau & ghi chú)',
-    price: 10000
-}];
-class Menu extends Component {
+import LinearGradient from 'react-native-linear-gradient'
+const cards = [
+    {
+      image: require('../../Image/gongcha1.jpg'),
+    },
+    {
+      image: require('../../Image/gongcha2.jpg'),
+    },
+    {
+      image: require('../../Image/gongcha3.jpg'),
+    },
+    {
+      image: require('../../Image/gongcha4.jpg'),
+    },
+    {
+      image: require('../../Image/gongcha5.jpg'),
+    },
+    {
+      image: require('../../Image/gongcha5.jpg'),
+    },
+  ];class Menu extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -130,16 +63,7 @@ class Menu extends Component {
             keyItem:null,
             nameItem:null,
             imageItem:null,
-            priceItem:'',
-            isModalShopVisible: false,     
-            dataCheckbox : data,
-            totalPrice: null,
-            sugar: '70% Đường',
-            ice:'70% Đá',
-            sizes: 'Size M',
-            valueItem: 1,
-            itemBag: [],  
-            listItem: [],
+            priceItem:'',            
          };
         
       }
@@ -175,57 +99,62 @@ class Menu extends Component {
             { cancelable: false }
           )
      }
-      _renderMenuItem = ({item}) => {       
+      _renderMenuItem = (rowItem, rowId, sectionId) => {       
         return (
             <View>
             <View  style = {{flexDirection : 'row', backgroundColor: '#FFF', flex: 1, justifyContent:'space-between'}}>
             <View style ={{flexDirection: 'row'}}>
-            <Image style = {styles.item} source={{ uri : item.imageItem} } />
+            <Image style = {styles.item} source={{ uri : rowItem.imageItem} } />
              <View style = {styles.center}>
-             <Text  style = {styles.titleItem} numberOfLines = {1}>{item.nameItem}</Text>
-             <Text note style = {styles.backgroundPrice} numberOfLines = {1}>{Currency.convertNumberToCurrency(item.priceItem) + ' VNĐ'}</Text>
+             <Text  style = {styles.titleItem} numberOfLines = {1}>{rowItem.nameItem}</Text>
+             <Text note style = {styles.backgroundPrice} numberOfLines = {1}>{Currency.convertNumberToCurrency(rowItem.priceItem) + ' VNĐ'}</Text>
              </View>
             </View>
              <View style = {{height: undefined, width : undefined, alignSelf: 'center'}} >  
-            <TouchableNativeFeedback onPress = {()=> this.onBuyItem(item)}>
+            <TouchableNativeFeedback onPress = {()=> this.onBuyItem(rowItem)}>
             <Text note style = {styles.backgroundAdd} numberOfLines = {1}>Mua Ngay</Text>
             </TouchableNativeFeedback>
              </View>
              </View>
              <View style = {styles.divider}></View>
             </View>             
-
         );
       } 
-      _renderHeader = (headeritem) => {
+      _renderHeader = (section, sectionId) => {
+          console.log('section', section)
+          console.log('sectionId', sectionId)
           return (
-            <View style={styles.headerCategories}>
-              <Text style={styles.titleCategories}>{headeritem.section.key}</Text>
-              </View>
+            <View style = {{marginTop: 5}}>
+            <ImageBackground source = {cards[sectionId].image} style ={styles.imageitemMall1}>
+            <LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']}  style={styles.imageitemMall}>
+            <Text style ={styles.titleitemMall}>{section}</Text>
+            </LinearGradient>
+            </ImageBackground>
+            </View> 
           );
       }
-     
-     
    render() {   
+    console.log('Item Render' , this.state.dataItem)
         return (
+            <Container style = {styles.container}>
             <Content>
               {
-                  this.state.dataItem && <SectionList
-                  sections = {this.state.dataItem}
-                  renderSectionHeader = {this._renderHeader}
-                  renderItem={this._renderMenuItem} 
-                  extraData= {this.state}                                               
-                  showsVerticalScrollIndicator ={false}
-                  keyExtractor={(item) => item.key} />   
+                  this.state.dataItem && <ExpandableList
+                  dataSource={this.state.dataItem}
+                  headerKey="key"
+                  memberKey="data"
+                  renderRow={this._renderMenuItem}
+                  renderSectionHeaderX={this._renderHeader}
+                  openOptions={null}
+                />     
               }
               {
                   !this.state.dataItem && <View style={styles.loadingCategory}>
                    <Spinner color = '#e53935'/>
                 </View>        
               }                       
-            <View style={styles.divider}>
-            </View>
           </Content>
+            </Container>            
         );
     }
 }

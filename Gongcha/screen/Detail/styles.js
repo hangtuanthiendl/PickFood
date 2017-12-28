@@ -8,8 +8,29 @@ export const imageHeight = (imageWidth / 500) *330;
 const HEADER_HEIGHT = 250
 
 export default StyleSheet.create({
+  imageitemMall:{
+    height: 120,
+    width: undefined,
+    //flex: 1,
+   // resizeMode: 'cover',  
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  imageitemMall1:{
+    height: 120,
+    width: null,
+    //flex: 1,
+   // resizeMode: 'cover',  
+    //alignItems: 'center',
+   // justifyContent: 'center',
+  },
+  titleitemMall:{
+    fontSize: 15,
+    color: '#FFF',
+    fontWeight: 'bold'
+  },
     imageBackground: {
-        height: 250,
+        height: 350,
         width: null,
         flex: 1,
         justifyContent: 'space-between',
@@ -24,7 +45,7 @@ export default StyleSheet.create({
     },
     iconShop:{
         fontSize: 22,
-        color: 'grey'
+        color: 'rgb(184, 47, 64)'
     },
     loadingCategory: {
 		height: 100,
@@ -43,7 +64,9 @@ export default StyleSheet.create({
     textShop:{
         marginLeft: 5,
         alignItems: 'stretch',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        fontSize: 14,
+        color: 'grey'
     },
     divider:{
         backgroundColor: '#E0E0E0',
@@ -123,9 +146,12 @@ export default StyleSheet.create({
       container: {
         flex: 1,
         width: width,
-        height: height,
+        height: undefined,
         backgroundColor:'#F1EFF1',
     },
+    container1: {
+      backgroundColor:'#F1EFF1',
+  },
       button: {
         backgroundColor: 'lightblue',
         padding: 12,
@@ -144,7 +170,7 @@ export default StyleSheet.create({
       },
       linearGradient: {
         flex:1,
-		height: 250,
+		height: 350,
 		//position: 'absolute'
 	},
       bottomModal: {
@@ -191,6 +217,10 @@ export default StyleSheet.create({
         justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: 'rgb(168, 20, 39)'
+      },
+      containerLogo:{
+        justifyContent: 'center',
+        flexDirection: 'row',
       },
       headerModalShop:{
         backgroundColor: '#FFF',
@@ -252,8 +282,8 @@ export default StyleSheet.create({
 	    	justifyContent: 'center'
          },
      slide: {
-        alignSelf: 'stretch',
-        height: height/3.8,
+       // alignSelf: 'stretch',
+        height: null,
         width: null,
         position: 'relative',
         resizeMode: 'cover'

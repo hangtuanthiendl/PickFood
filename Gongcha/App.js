@@ -38,12 +38,11 @@ export default class App extends Component {
         return (
             <Provider store = {store}>
                 <PersistGate persistor={persistor}>   
-                 <SplashScreen>
-                 {
+                <SplashScreen>
+                {
                   !this.state.done? <Root1/> : <Root/>
-                 }
-                   </SplashScreen>      
-              
+                }
+                </SplashScreen>    
           </PersistGate>
             </Provider>
         );
