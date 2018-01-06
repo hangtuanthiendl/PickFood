@@ -70,9 +70,9 @@ import {
     }
     componentWillMount(){
         this.MyLocation();
-        this.getPlaces();
     };
     componentDidMount(){
+        this.getPlaces();
         GetData.getHotItem(5,(itemHotShop) => {
             this.setState({
                 itemHotShop: itemHotShop
@@ -154,42 +154,39 @@ import {
         this.getPlaces();
     }
 }
-i_100x(){
-this.setState({
-    radius:this.state.radius*10,
-})
-this.getPlaces();
-ToastAndroid.showWithGravity(
-'Quét bán kính: '+ this.state.radius,
-    ToastAndroid.SHORT,
-    ToastAndroid.CENTER
-  );
-}
-i_10x(){
-   this.setState({
-       radius:this.state.radius/10,
-   })
-   this.getPlaces();
-   ToastAndroid.showWithGravity(
+    i_100x(){
+    this.setState({
+        radius:this.state.radius*10,
+    })
+    this.getPlaces();
+    ToastAndroid.showWithGravity(
     'Quét bán kính: '+ this.state.radius,
         ToastAndroid.SHORT,
         ToastAndroid.CENTER
-      );
-}
-TypeMap(type){
-   if(this.state.typeMap === 'hybrid'){
-         this.setState({typeMap:'standard'})
-   }
-   if(this.state.typeMap === 'standard'){
-    this.setState({typeMap:'hybrid'})
-  }
-}
+    );
+    }
+    i_10x(){
+    this.setState({
+        radius:this.state.radius/10,
+    })
+    this.getPlaces();
+    ToastAndroid.showWithGravity(
+        'Quét bán kính: '+ this.state.radius,
+            ToastAndroid.SHORT,
+            ToastAndroid.CENTER
+        );
+    }
+    TypeMap(type){
+    if(this.state.typeMap === 'hybrid'){
+            this.setState({typeMap:'standard'})
+    }
+    if(this.state.typeMap === 'standard'){
+        this.setState({typeMap:'hybrid'})
+    }
+    }
      render() {
          return (  
              <View style={{flex:1}}>
-            
-                 {/* <Spinner color = '#e53935'/> */}
-            
                  {this.state.region.latitude ? 
                 <MapView
                     ref={(map)=>this._map = map}
@@ -250,13 +247,14 @@ TypeMap(type){
                         />    
                      </View>
                      <View style={{flex:1}}>
-                        <TouchableOpacity style={styles.go} onPress={()=>this.Go(this.state.keySearch)}>
-                            <Image  source={require('../../Image/detailmap/right-arrow.png')}/>
-                        </TouchableOpacity>
+                       
                     </View>
                      <View style={{flex:2}}/>  
                 </View>
                 <View style={styles.view_btn_radius}>
+                     <TouchableOpacity style={styles.btn_radius} onPress={()=>this.Go(this.state.keySearch)}>
+                            <Image  source={require('../../Image/detailmap/right-arrow.png')}/>
+                        </TouchableOpacity>
                     <TouchableOpacity style={styles.btn_radius} onPress={()=>{this.i_10x()}}>
                         <Text style={styles.text_radius}>/10</Text>
                     </TouchableOpacity>

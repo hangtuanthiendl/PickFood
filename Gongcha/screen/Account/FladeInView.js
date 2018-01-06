@@ -6,7 +6,7 @@ export default class FladeInView extends Component {
     constructor(props){
         super(props)
         this.state={
-            fladeAmin: new Animated.Value(-0.5),
+            fladeAmin: new Animated.Value(-0.009),
         }
     }
     componentDidMount(){
@@ -14,7 +14,7 @@ export default class FladeInView extends Component {
             this.state.fladeAmin,
             {
                 toValue:2,
-                duration:3000,
+                duration:4000,
             }
         ).start();
        
@@ -28,10 +28,10 @@ export default class FladeInView extends Component {
                     width:500, 
                     height:500,
                     opacity,
-                    marginTop:40,
+                    marginTop:100,
                     }}
                 >
-                    <ImageBackground source={require('..//../Image/splash/pickfood.png')} style={{width:500,height:500,}}/>
+                    <ImageBackground source={require('..//../Image/splash/pickfood.png')} style={{width:500,height:400,}}/>
                 </Animated.View>
             </View>
            

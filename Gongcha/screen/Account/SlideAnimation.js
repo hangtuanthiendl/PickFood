@@ -20,7 +20,7 @@ export default class SlideAnimation extends Component {
        
     }
     render(){
-        const marginTop = this.state.slideAnim;
+        const marginLeft = this.state.slideAnim;
         return(
             <View>
                 <Animated.View
