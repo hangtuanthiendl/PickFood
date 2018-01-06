@@ -10,12 +10,13 @@ export default StyleSheet.create({
   titleHotSale: {
     fontSize : 15,
     fontWeight: 'bold',
+    color: '#34495e'
   },
   titleadress: {
     fontSize: 13,
     fontStyle: 'normal',
-    color: 'grey'
-  },
+    color: '#34495e'
+    },
   imageNewShop: {
     height: 120,
     width: 120,
@@ -35,7 +36,7 @@ export default StyleSheet.create({
   },
   containerLogo:{
 		justifyContent: 'center',
-		flexDirection: 'row',
+    flexDirection: 'row',
   },
   backgroundAdd:{
     backgroundColor: 'rgb(184, 47, 64)',
@@ -69,6 +70,7 @@ renderItemHistory: {
   titledetail: {
     fontSize: 15,
     fontStyle: 'normal',
+    color: '#34495e',
   },
   infoUser: {flexDirection: 'row', marginTop: 5, marginLeft: 5, marginBottom: 5},
   backgroundPrice:{
@@ -87,7 +89,8 @@ renderItemHistory: {
  titleNull: {
   fontSize: 15,
   fontStyle: 'normal',
-  color: 'rgb(184, 47, 64)'
+  fontWeight: 'bold',
+  color: '#34495e'
  }
 
 });

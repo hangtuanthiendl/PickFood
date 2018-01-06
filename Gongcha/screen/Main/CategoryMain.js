@@ -17,11 +17,38 @@ export default class CategoryMain extends Component {
     }
     componentDidMount() { 
         const {params} = this.props.navigation.state
-        GetData.getItemByCategoryShop(params.nameItem, (itemshop) => {
-            this.setState({
-                itemshop: itemshop
+        switch(params.key) {
+            case 1:
+            GetData.getItemByCategoryShop(params.nameItem, (itemshop) => {
+                this.setState({
+                    itemshop: itemshop
+                })
             })
-        })
+            break;
+            case 2:
+            GetData.getShopItem((itemshop) => {
+                this.setState({
+                    itemshop: itemshop
+                })
+            })
+            break;
+            case 3:
+            GetData.getShopItem((itemshop) => {
+                this.setState({
+                    itemshop: itemshop.reverse()
+                })
+            })
+            break;
+            case 4:
+            GetData.getShopItem((itemshop) => {
+                this.setState({
+                    itemshop: itemshop
+                })
+            })
+            break;
+            default: break
+        }
+        
     }   
      _renderRecommend = ({item})=>{
         return (
@@ -62,13 +89,17 @@ export default class CategoryMain extends Component {
         const {params} = this.props.navigation.state;                                 
         return (
             <Container style = {styles.container}>
-                <Header androidStatusBarColor = 'rgb(184, 47, 64)' style = {{backgroundColor: 'rgb(184, 47, 64)', justifyContent: 'space-between'}}>
+                <Header androidStatusBarColor = 'rgb(184, 47, 64)' style = {{backgroundColor: 'rgb(184, 47, 64)'}}>
+                <View style= {{justifyContent: 'space-between', flexDirection: 'row', flex: 1}}>
                     <View style = {styles.containerLogo}>
-                        <Title style = {{textAlign: 'center', alignSelf: 'center', color: '#FFF'}}>{params.nameItem}</Title>
+                    <Title style = {{textAlign: 'center', alignSelf: 'center', color: '#FFF'}}>{params.nameItem}</Title>
                     </View>
-                    <TouchableNativeFeedback onPress = {() => this.props.navigation.goBack()}>
+                    <Right style = {{height: undefined, width: undefined}}>
+                    <Button transparent onPress = {() => this.props.navigation.goBack()}>
                     <Icon name= 'md-close' style = {{fontSize: 25,  color: '#FFF',  alignSelf: 'center'}}/>
-                    </TouchableNativeFeedback>
+                    </Button>
+            </Right>
+            </View>                    
                 </Header>
                 <Content   showsVerticalScrollIndicator={false}>
                 {

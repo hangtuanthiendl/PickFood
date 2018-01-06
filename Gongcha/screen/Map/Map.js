@@ -219,7 +219,7 @@ TypeMap(type){
                     <Card style={styles.card}>
                         <CardItem style={styles.card_item} button onPress={()=>{this.props.navigation.navigate('Detail',
                         {
-                            data:item.key,
+                            data:item.key,categoryShop: item.categoryShop
                         }
                     )}}>
                            <View>

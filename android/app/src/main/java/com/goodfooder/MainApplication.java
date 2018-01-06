@@ -1,4 +1,4 @@
-package com.goodfooder;
+package com.pickfood.vb.team;
 
 import android.app.Application;
 

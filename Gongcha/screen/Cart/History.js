@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, FlatList, Image,TouchableOpacity,TextInput, ScrollView,ActivityIndicator, ImageBackground, TouchableWithoutFeedback,TouchableNativeFeedback } from 'react-native';
+import { RefreshControl,View, FlatList, Image,TouchableOpacity,TextInput, ScrollView,ActivityIndicator, ImageBackground, TouchableWithoutFeedback,TouchableNativeFeedback } from 'react-native';
 import { StyleProvider,Spinner,Container, Header, Item, Input, Icon, Button, Text, Body,Title, Left, Right,Content, Card, CardItem ,Thumbnail, List,ListItem } from 'native-base';
 import styles from './styles'
 import GetData from '../../Sever/getData'
@@ -18,25 +18,34 @@ class History extends Component {
             image: null,
             address: null,  
             itemCategory: null,  
-
+            refresh: false
         }
     }
-    componentDidMount() { 
-        GetData.getHistoryCash(this.props.infouser.uid, (itemHistory) =>{
-            
-        })
+    componentWillMount() { 
+       this.onRefer();
+    }
+    onRefer=()=>{
         GetData.getHistoryCashAdd(this.props.infouser.uid, (itemHistory) =>{
             this.setState({
-                itemHistory : itemHistory
+                itemHistory : itemHistory,
+                refresh: false
             })
         })
+    }
+    onHanlerRefersh=() =>{
+        this.setState({
+            refresh: true
+        }, () => {this.onRefer()}
+    
+    )
     }
     checkState(state){
         switch(state){
             case 0: return 'Chờ xác nhận'
             case 1: return 'Đã xác nhận'
-            case 2: return 'Đã nhận hàng'
-            case 3: return 'Đã hủy'
+            case 2: return 'Đã xong'
+            case 3: return 'Đã giao hàng'
+            case 4: return 'Đã hủy'
         }
     }
     checkColor(color){
@@ -44,7 +53,8 @@ class History extends Component {
             case 0: return 'grey'
             case 1: return '#039BE5'
             case 2: return '#2ecc71'
-            case 3: return '#c0392b'
+            case 3: return '#2ecc71'
+            case 4: return '#c0392b'
         }
     }
     _renderItem = ({item})=>{
@@ -83,7 +93,7 @@ class History extends Component {
                 <View style = {styles.infoUser}>
                 <Thumbnail small source={{uri: this.props.infouser.photoURL}}/>
                 <View style = {styles.marginLeftItem}>
-                <Text>{this.props.infouser.displayName}</Text>
+                <Text style = {styles.titleNull}>{this.props.infouser.displayName}</Text>
                 <Text note style = {{color}}>{nameState}</Text>
                 </View>
                 </View>
@@ -100,8 +110,6 @@ class History extends Component {
                         <Title style = {{textAlign: 'center', alignSelf: 'center',  color: '#FFF'}}>Lịch sử đặt hàng</Title>
                     </View>
                 </Header>
-                <Content   showsVerticalScrollIndicator={false}>
-                    <View>
                         {
                             this.state.itemHistory && <FlatList
                             data = {this.state.itemHistory}
@@ -112,16 +120,15 @@ class History extends Component {
                             removeClippedSubviews={true}
                             extraData= {this.state}                             
                             showsVerticalScrollIndicator ={false}
+                            refreshing= {this.state.refresh}
+                            onRefresh = {this.onHanlerRefersh}
                             keyExtractor={(item) => item.key} />   
                         }
                         {
                             !this.state.itemHistory && <View style={styles.loadingCategory}>
                              <Text style = {styles.titleNull}>Chưa có đơn hàng nào</Text>
                           </View>        
-                        }                       
-                    </View>                                          
-                </Content>     
-                          
+                        }                                
             </Container>   
         );
     }

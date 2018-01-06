@@ -25,7 +25,8 @@ import {
   Input,
   H3,
   Item as FormItem,
-  Thumbnail
+  Thumbnail,
+  Spinner
 } from "native-base";
 
 class Search extends Component {
@@ -33,7 +34,8 @@ class Search extends Component {
 		super(props);
     this._BackHandler = this._BackHandler.bind(this)
     this.state = {
-      itemShop: null,
+      itemShop: [],
+      keyShop: null,
       searchtext: '',
       showclose: false,
       showresult: false,
@@ -52,7 +54,8 @@ class Search extends Component {
   getData(){
     GetData.getShopItem((itemShop) => {
       this.setState({
-        itemShop: itemShop
+        itemShop: itemShop,
+        keyShop : itemShop
       })
   })
   }
@@ -81,7 +84,8 @@ class Search extends Component {
         return itemData.indexOf(textData) > -1;
     })
     this.setState({
-      itemShop: newData
+      itemShop: newData,
+      keyShop : newData
     })
     console.log('Search', newData)
     console.log('Searchdata', this.state.itemShop)
@@ -96,7 +100,10 @@ class Search extends Component {
           Keyboard.dismiss()
         }}>
         <View style={styles.row1}>
-          <Text>{item}</Text>
+        <View style = {styles.rowSearch}>
+        <Icon style={{color: 'rgb(184, 47, 64)'}} name="md-alarm" />
+          <Text numberOfLines ={1} style = {styles.titleSearch}>{item}</Text>
+        </View>
           <TouchableOpacity onPress={() => this.props.dispatchSearchDelete(item)}>
             <Icon style={{color: 'rgb(184, 47, 64)'}} name="md-close" />
           </TouchableOpacity>
@@ -106,7 +113,7 @@ class Search extends Component {
   );
   _renderSearch = ({item})=>{
     return (
-      <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key})}}>
+      <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key, categoryShop: item.categoryShop})}}>
                 <View style = {{flexDirection : 'row', backgroundColor: '#FFF'}}>
                 <Image source={{uri: item.imageShop}} style={styles.imageNewShop}>
                </Image>                
@@ -149,6 +156,7 @@ class Search extends Component {
               autoFocus={true}
               value={this.state.searchtext}
               returnKeyType='search'
+              maxLength= {15}
               onSubmitEditing={() => {
                 if(this.props.search.indexOf(this.state.searchtext) === -1 && this.state.searchtext.trim() !== '')
                 this.props.dispatchSearchAdd(this.state.searchtext)
@@ -194,7 +202,7 @@ class Search extends Component {
         {
           this.state.showresult && <View>
             {
-              this.state.itemShop && <FlatList  data={this.state.itemShop}
+              this.state.itemShop.length != 0 && <FlatList  data={this.state.itemShop}
               extraData= {this.state}
               keyboardShouldPersistTaps='always'
               removeClippedSubviews={true}
@@ -202,10 +210,13 @@ class Search extends Component {
               renderItem={this._renderSearch}/>
             }
             {
-              !this.state.itemShop && <View style={styles.loadingCategory}>
-              <Text style = {styles.titleNull}>Không tìm thấy kết quả</Text>
-              </View>
+            this.state.itemShop.length === 0 && <View style = {styles.loadingCategory}>                  
+            {
+              !this.state.keyShop ? <Spinner color ='rgb(184, 47, 64)'/> : <Text style = {styles.titleNull}>Không tìm thấy kết quả</Text> 
+            }        
+            </View>
             }
+            
           </View>
         }
         </Content>

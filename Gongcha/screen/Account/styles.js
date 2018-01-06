@@ -51,7 +51,8 @@ export default StyleSheet.create({
 		flexDirection: 'row',
   },
     titleUser: {
-        textAlign: 'center', alignSelf: 'center', fontStyle: 'normal', fontSize: 13
+        textAlign: 'center', alignSelf: 'center', fontStyle: 'normal', fontSize: 13, color: '#34495e',
+
     },
     viewicon1:{
         color: '#FF6C66',

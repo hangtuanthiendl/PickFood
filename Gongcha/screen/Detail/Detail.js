@@ -16,7 +16,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Menu from './Menu';
 import TabMenu from './TabMenu';
 const UIManager = require('UIManager');
-import Icon from 'react-native-vector-icons/Ionicons'
+//import Icon from 'react-native-vector-icons/Ionicons'
 import {
   AppBarLayout,
   CoordinatorLayout,
@@ -24,14 +24,13 @@ import {
   CollapsingParallax,
 } from 'react-native-collapsing-toolbar'
 import NestedScrollView from 'react-native-nested-scroll-view';
-import CollapsingToolbar from 'react-native-collapsingtoolbar';
 import { Col, Row, Grid } from "react-native-easy-grid";
 const {height, width} = Dimensions.get('window');
-
-import { StyleProvider ,Badge,Spinner,Container, Header, Item, Input, Separator,Button, Text, Body,Title, Left, Right,Content, DeckSwiper,Card, CardItem ,Thumbnail, List,ListItem, Footer, Radio, CheckBox, Tab, Tabs,TabHeading, Form, Picker   } from 'native-base';
+import {connect} from 'react-redux';
+import { Icon,StyleProvider ,Badge,Spinner,Container, Header, Item, Input, Separator,Button, Text, Body,Title, Left, Right,Content, DeckSwiper,Card, CardItem ,Thumbnail, List,ListItem, Footer, Radio, CheckBox, Tab, Tabs,TabHeading, Form, Picker   } from 'native-base';
 import configureStore from '../../Redux/Store/configStore';
 const HEADER_HEIGHT = 250
-export default class Detail extends Component {
+class Detail extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -48,7 +47,10 @@ export default class Detail extends Component {
             isModalCartVisible: false,            
             icon: null,
             itembanner: null,
-            categoryShop: null
+            categoryShop: null,
+            itemRecShop: null,
+            dataCart: null,
+            
         }
         _listViewOffset = 1               
     }
@@ -71,9 +73,12 @@ export default class Detail extends Component {
                 itembanner: itembanner
             })
         })
-        Icon.getImageSource('md-close', 24, '#ffffff').then((source) => {
-            this.setState({ icon: source })
-          })
+        GetData.getItemByCategoryShop(params.categoryShop,(itemRecShop)=>{
+            this.setState({
+                itemRecShop: itemRecShop
+            })
+
+        })
     }
         _showModalCart = () => this.setState({ isModalCartVisible: true })
         _hideModalCart = () =>  this.setState({ isModalCartVisible: false })
@@ -100,55 +105,98 @@ export default class Detail extends Component {
             // Update your scroll position
             this._listViewOffset = currentOffset
           }
+          _renderRecommend = ({item})=>{
+            return (
+                <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key, categoryShop: item.categoryShop})}}>
+                    <View  removeClippedSubviews={true} style = {styles.containerRecommend}>
+                    <Image source={{uri: item.imageShop}} style={styles.imageRecommend}>
+                   </Image> 
+                   <View style = {{flex: 1}}>
+                   <Text numberOfLines = {1} style ={styles.titleHotSale}>{item.nameShop}</Text>
+                   <Text  numberOfLines = {1} style ={styles.titleadress}>{item.address}</Text>
+                   <View style = {{flex: 1,flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                   <View style = {{flexDirection: 'row', alignItems: 'center'}}>
+                       <Icon name = 'alarm' style ={{fontSize: 15, color: '#2ecc71',  paddingRight: 5}} />
+                       <Text  numberOfLines = {1} style ={{ alignSelf: 'center', fontSize: 10,
+                    fontStyle: 'normal'}}>{item.timeShop}</Text>
+                   </View>
+                   <View style = {{flexDirection: 'row', alignItems: 'center'}}>
+                       <Icon name = 'ios-restaurant-outline' style ={{fontSize: 15, color: '#B82F40',  paddingRight: 5}} />
+                       <Text  numberOfLines = {1} style ={{ alignSelf: 'center', fontSize: 10,
+                    fontStyle: 'normal'}}>{item.categoryShop}</Text>
+                   </View>
+                   </View>                  
+                   </View>
+                    </View>              
+                </TouchableNativeFeedback>     
+            );
+        }
+       
     render() {
         const {navigate} = this.props.navigation;
-        console.log('asdssssss', this.state.itembanner)
         return (
+            <StyleProvider style ={getTheme(material)}>    
             <Container style = {styles.container}>   
-            <Header androidStatusBarColor = 'rgb(184, 47, 64)' style = {{backgroundColor: 'rgb(184, 47, 64)', justifyContent: 'space-between'}}>
-            <View style = {styles.containerLogo}>
-                <Title style = {{textAlign: 'center', alignSelf: 'center', color: '#FFF'}}>{this.state.name}</Title>
-            </View>
-            <Button transparent onPress = {() => this.props.navigation.goBack()}>
-            <Icon name= 'md-close' style = {{fontSize: 25,  color: '#FFF',  alignSelf: 'center'}}/>
-            </Button>
+            <Header androidStatusBarColor = 'rgb(184, 47, 64)' style = {{backgroundColor: 'rgb(184, 47, 64)'}}>
+            <View style= {{justifyContent: 'space-between', flexDirection: 'row', flex: 1}}>
+                    <View style = {styles.containerLogo}>
+                        <Title style = {{textAlign: 'center', alignSelf: 'center', color: '#FFF'}}>{this.state.name}</Title>
+                    </View>
+                    <Right style = {{height: undefined, width: undefined}}>
+                    <Button transparent onPress = {() => this.props.navigation.goBack()}>
+                    <Icon name= 'md-close' style = {{fontSize: 25,  color: '#FFF',  alignSelf: 'center'}}/>
+                    </Button>
+            </Right>
+            </View> 
             </Header> 
-            <Content onScroll = {this._onScroll}>
+            <Content showsVerticalScrollIndicator={false} onScroll = {this._onScroll}>
             <View>
             <ImageBackground source={{uri: this.state.image}} style={styles.imageBackground}>
                 <LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']}  style={styles.linearGradient}>             
                 </LinearGradient>
                 </ImageBackground>  
-            <TitleShop name = {this.state.name} address = {this.state.address} phone = {this.state.phone} time =  {this.state.time} />  
              <View style= {styles.wraper}>
-             <View style={styles.headerCateroryDetail}>
-             <View style = {{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-             <Text style={styles.viewmore}>Hình Ảnh</Text>
-             <Image style={{height: 30, width: 30, resizeMode: 'cover', marginLeft: 5}}source ={require('../../Image/picture.png')}/>
+             <Tabs locked>
+             <Tab heading={ <TabHeading><Icon name="ios-restaurant-outline" /><Text>Thông tin</Text></TabHeading>}>
+            <View style= {styles.wraper}>
+            <ImageBackground source ={{uri: this.state.image}} style= {styles.wraper1}>
+            <LinearGradient  colors={['rgba(0, 0, 0, 0.5)', 'rgba(0,0,0, 0.5)', 'rgba(0,0,0, 0.3)']}  style={styles.wraper1}>
+            <TitleShop name = {this.state.name} address = {this.state.address} phone = {this.state.phone} time =  {this.state.time} />  
+             </LinearGradient> 
+            </ImageBackground>
             </View>
-            </View>
-            <View style = {{ //position:'absolute',
-            height: 300,
-            width: null,}}>
+             </Tab>
+             <Tab heading={ <TabHeading><Icon name="ios-pricetags-outline"  /><Text>Khuyến mãi</Text></TabHeading>}>
+             <View style= {styles.wraper}>
+             <ImageBackground source ={{uri: this.state.image}} style= {styles.wraper1}>
+             <LinearGradient  colors={['rgba(0, 0, 0, 0.5)', 'rgba(0,0,0, 0.5)', 'rgba(0,0,0, 0.3)']}  style={styles.wraper1}>
+             <Text style = {{color: 'white', fontSize: 20, alignSelf: 'center'}}>Chưa có chương trình khuyến mãi nào</Text>
+             </LinearGradient> 
+             </ImageBackground>            
+              </View>
+             </Tab>
+             <Tab heading={ <TabHeading><Icon name="ios-reverse-camera-outline"  /><Text>Hình ảnh</Text></TabHeading>}>
+             <View style= {styles.wraper}>
             {
-                this.state.itembanner && <DeckSwiper
-                dataSource={this.state.itembanner}
+                this.state.itemRecShop && <DeckSwiper
+                dataSource={this.state.itemRecShop}
                     renderItem={item =>
                     <Card>
                         <TouchableNativeFeedback>
-                        <Image style={{ height: 300, flex: 1 }} source={{uri : item.imageItem}}/>
+                        <Image style={{ height: 250, flex: 1 }} source={{uri : item.imageShop}}/>
                         </TouchableNativeFeedback>
                     </Card>
                     }
                 />
                }
                {
-                    !this.state.itembanner && <View style={styles.wrapperSwiper}>
+                    !this.state.itemRecShop && <View style={styles.wrapperSwiper}>
                     <Spinner color = '#e53935'/>
                   </View>
                }
             </View>
-           
+             </Tab>
+         </Tabs>
                </View>
                <View style ={{flex: 1 , marginTop: 5}}>
                <View style={styles.headerCateroryDetail}>
@@ -162,15 +210,57 @@ export default class Detail extends Component {
                      <Text style = {styles.titleNull}>Chưa có thực đơn</Text>
                      </View>)
                }
-               </View>   
+               </View>  
+               <View style ={{flex: 1 , marginTop: 5}}>
+               <View style={styles.headerCateroryDetail}>
+               <View style = {{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+               <Text style={styles.viewmore}>Cửa hàng liên quan</Text>
+               <Image style={{height: 30, width: 30, resizeMode: 'cover', marginLeft: 5}}source ={require('../../Image/recommended.png')}/>
+               </View>
+               </View>
+                    {
+                   <View  style ={styles.imageshopMall}>
+                    {
+                      this.state.itemRecShop &&   <FlatList
+                      data={this.state.itemRecShop}
+                      removeClippedSubviews={true}     
+                      contentContainerStyle={{
+                      alignItems:'center', margin:5}}       
+                      horizontal={true}
+                      ItemSeparatorComponent = {() => {return (<View style = {{width: 5}}/>)}}
+                      automaticallyAdjustContentInsets={true}                  
+                      extraData= {this.state}
+                      showsHorizontalScrollIndicator={false}
+                      keyExtractor={(item) => item.key}
+                      renderItem={this._renderRecommend}/>
+                    }
+                    {
+                     !this.state.itemRecShop && <View style={styles.wrapperSwiper}>
+                     <Spinner color = '#e53935'/>
+                     </View>
+                    }
+                    </View>
+               }
+               </View>  
             </View> 
+            
             </Content>  
             {this.state.isActionButtonVisible ?
                 <ActionButton buttonColor = 'rgb(168, 20, 39)'
                  onPress = {() => this.props.navigation.navigate('ModalCart',{keyItemShop : this.state.keyshop, nameItemShop: this.state.name, addressItemShop: this.state.address})}
-                icon = { <Icon name="md-basket" style = {{fontSize: 25, color: '#FFFFFF'}} />} /> : null}
+                 icon = {<Icon name="md-basket" style = {{fontSize: 25, color: '#FFFFFF'}} />}
+                /> : null}
            </Container>
+           </StyleProvider>
         );
     }
 }
+function mapStateToProps (state) {
+	return {
+        infouser: state.infouser,
+	}
+}
 
+export default connect(
+	mapStateToProps,
+)(Detail)

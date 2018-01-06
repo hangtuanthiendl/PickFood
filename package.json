@@ -17,7 +17,6 @@
     "react-native": "0.50.3",
     "react-native-action-button": "^2.8.3",
     "react-native-collapsing-toolbar": "^1.0.0-beta.7",
-    "react-native-collapsingtoolbar": "^1.0.3",
     "react-native-datepicker": "^1.6.0",
     "react-native-expandable-section-flatlist": "^1.0.3",
     "react-native-fbsdk": "^0.6.3",

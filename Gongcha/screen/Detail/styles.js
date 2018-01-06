@@ -8,8 +8,36 @@ export const imageHeight = (imageWidth / 500) *330;
 const HEADER_HEIGHT = 250
 
 export default StyleSheet.create({
+  imageshopMall: {
+    flex:1,
+    height: undefined, 
+    width: undefined,
+    backgroundColor: '#F1EFF1'
+    //paddingLemft: 15,
+    //alignItems: 'center',
+    //justifyContent: 'center'
+     },
+     containerRecommend: {
+      backgroundColor: '#FFF',
+      height: undefined,
+      width: width / 2 - 20,
+      borderWidth: 0.5,
+      borderColor:'#CFD8DC',
+      //flex:1
+   //   marginLeft: 5,
+      //marginRight: 5,
+      
+      //flex: 1
+    },
+    imageRecommend: {
+      height: 150,
+      width: width / 2 - 20,
+      justifyContent: 'flex-end',
+      flex: 1,
+      resizeMode: 'cover'
+    },
   imageitemMall:{
-    height: 120,
+    height: 80,
     width: undefined,
     //flex: 1,
    // resizeMode: 'cover',  
@@ -17,7 +45,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   imageitemMall1:{
-    height: 120,
+    height: 80,
     width: null,
     //flex: 1,
    // resizeMode: 'cover',  
@@ -45,7 +73,7 @@ export default StyleSheet.create({
     },
     iconShop:{
         fontSize: 22,
-        color: 'rgb(184, 47, 64)'
+        color: '#FFF'
     },
     loadingCategory: {
 		height: 100,
@@ -61,12 +89,24 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center'
     },
+    row1: {
+      flexDirection: 'row',
+      padding: 10,
+      height: 50,
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+    rowItem: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     textShop:{
         marginLeft: 5,
         alignItems: 'stretch',
         flexWrap: 'wrap',
         fontSize: 14,
-        color: 'grey'
+        color: '#FFF'
     },
     divider:{
         backgroundColor: '#E0E0E0',
@@ -137,8 +177,8 @@ export default StyleSheet.create({
         alignSelf: 'center'
      },
       item:{
-          height: 130,
-          width: 85,
+          height: 110,
+          width: 65,
           alignItems: 'center',
           justifyContent: 'center',
           resizeMode: 'cover'
@@ -198,11 +238,22 @@ export default StyleSheet.create({
           color: 'rgb(241, 96, 52)'
       },
       wraper:{
-          marginTop: 5,
-          height: undefined,
+          height: 250,
           width: undefined,
-          backgroundColor: '#FFF'
+          backgroundColor: '#FFF',
+          
       },
+      wraper1:{
+        height: 250,
+        width: null,
+       
+    },
+    imageRezo:{
+      height: 300,
+      width: null,
+      resizeMode: 'contain',
+
+  },
       headerCateroryDetail: {
         padding: 10,
         backgroundColor: '#FFF',
@@ -224,7 +275,7 @@ export default StyleSheet.create({
       },
       headerModalShop:{
         backgroundColor: '#FFF',
-        height: 140,
+        height: 110,
         justifyContent: 'space-between',
         flexDirection: 'row',
       },
@@ -268,7 +319,14 @@ export default StyleSheet.create({
       },
       titleHotSale: {
         fontSize : 15,
-        fontWeight: 'bold',
+        fontStyle: 'italic',
+        color: 'rgb(184, 47, 64)',
+        fontWeight: 'bold'
+      },
+      titleItemCart: {
+        fontSize : 15,
+        fontStyle: 'italic',
+        color: 'rgb(184, 47, 64)',
       },
       titleadress: {
         fontSize: 13,

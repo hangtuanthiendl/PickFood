@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ImageBackground,TouchableNativeFeedback, Modal, TouchableOpacity, TextInput, Alert} from 'react-native';
+import {ImageBackground,TouchableNativeFeedback, Modal, TouchableOpacity, TextInput, Alert,Dimensions} from 'react-native';
 import {Picker,Container, Content, Header, Text, View, Thumbnail,Icon,Title, Left, Body, Right, Form, Item, Input, Button} from 'native-base';
 import styles from './styles'
 import { connect } from 'react-redux'
@@ -11,6 +11,8 @@ import moment from 'moment';
 import GetData from '../../Sever/getData'
 import Spinner from '../../../native-base-theme/components/Spinner';
 const ImagePicker = require('react-native-image-picker');
+const {height, width} = Dimensions.get('window');
+
 const options = {
     title: 'Option',
     storageOptions: {
@@ -92,13 +94,14 @@ class Setting extends Component {
               <View style = {styles.containerLogo}>
                   <Title style = {{textAlign: 'center', alignSelf: 'center',  color: '#FFF'}}>Thiết lập tài khoản</Title>
               </View>
+              <Right>
               <Button transparent onPress = {() => this.props.navigation.goBack()}>
                     <Icon name= 'md-close' style = {{fontSize: 25,  color: '#FFF',  alignSelf: 'center'}}/>
               </Button>
+              </Right>
           </Header>
           <Content>
-           
-                       <ImageBackground blurRadius = {1} source = {require('../../Image/background.jpg')} style={styles.linearGradiant}>
+              <ImageBackground blurRadius = {1} source = {require('../../Image/background.jpg')} style={styles.linearGradiant}>
                     <LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']}  style={styles.header1}>             
                      <View>
                     <TouchableNativeFeedback transparent onPress = {() => this.updateProfilePhoto()}>
@@ -110,31 +113,31 @@ class Setting extends Component {
                  <View>
                      <TouchableNativeFeedback >
                      <View style = {styles.headerViewSetting}>
-                        <Text style = {{fontStyle: 'normal'}}>Email</Text>
+                        <Text style = {{fontStyle: 'normal', color: '#34495e'}}>Email</Text>
                         <Text note >{this.state.email}</Text>
                     </View>
                      </TouchableNativeFeedback>
                      <TouchableNativeFeedback onPress = {() => this.setState({isModalNameOpen : true})}>
                      <View style = {styles.headerViewSetting}>
-                        <Text style = {{fontStyle: 'normal'}}>Tên tài khoản</Text>
+                        <Text style = {{fontStyle: 'normal', color: '#34495e'}}>Tên tài khoản</Text>
                         <Text note >{this.state.name}</Text>
                     </View>
                      </TouchableNativeFeedback>
                      <TouchableNativeFeedback onPress = {() => this.setState({isModalPhoneOpen : true})}>
                      <View style = {styles.headerViewSetting}>
-                        <Text style = {{fontStyle: 'normal'}}>Điện thoại</Text>
+                        <Text style = {{fontStyle: 'normal', color: '#34495e'}}>Điện thoại</Text>
                         <Text note >{this.state.phone}</Text>
                     </View>
                      </TouchableNativeFeedback>
                      <TouchableNativeFeedback onPress = {() => this.setState({isModalSexOpen : true})}>
                      <View style = {styles.headerViewSetting}>
-                     <Text style = {{fontStyle: 'normal'}}>Giới tính</Text>
+                     <Text style = {{fontStyle: 'normal', color: '#34495e'}}>Giới tính</Text>
                      <Text note >{this.state.sex}</Text>
                  </View>
                      </TouchableNativeFeedback>
                      <TouchableNativeFeedback>
                      <View style = {styles.headerViewSetting}>
-                        <Text style = {{fontStyle: 'normal'}}>Ngày sinh</Text>
+                        <Text style = {{fontStyle: 'normal', color: '#34495e'}}>Ngày sinh</Text>
                         <DatePicker
                         style={{width: 200}}
                         date={this.state.birthday}
@@ -168,74 +171,117 @@ class Setting extends Component {
                      </TouchableNativeFeedback>
                </View>
                 </Content>
-                <Modal transparent
+                <Modal animationType = 'slide'
                         visible = {this.state.isModalPhoneOpen}     
                        onRequestClose={() => this._hideModalPhone()}>
-                       <ImageBackground  blurRadius = {10} source = {require('../../Image/backgroundAccount.jpg')} style = {styles.modal} >
-                       <View>
-                       <Item regular style={{borderColor: 'white',borderTopWidth: 0.5, borderBottomWidth:0,borderLeftWidth: 0.5,borderRightWidth: 0.5, backgroundColor: 'rgba(85, 79, 84,0.2)'}}>
+                       <Container style = {styles.container}>
+                    <Header androidStatusBarColor = 'rgb(184, 47, 64)' style = {{backgroundColor: 'rgb(184, 47, 64)'}}>
+                <View style= {{justifyContent: 'space-between', flexDirection: 'row', flex: 1}}>
+                   <View style = {styles.containerLogo}>
+                       <Title style = {{textAlign: 'center', alignSelf: 'center', color: '#FFF'}}>{'Sửa số điện thoại'}</Title>
+                   </View>
+                   <Right style = {{height: undefined, width: undefined}}>
+                   <Button transparent onPress = {() => this._hideModalPhone()}>
+                   <Icon name= 'md-create' style = {{fontSize: 25,  color: '#FFF',  alignSelf: 'center'}}/>
+                   </Button>
+                   </Right>
+                   </View> 
+           </Header> 
+            <Content  keyboardShouldPersistTaps='always' showsVerticalScrollIndicator={false}>
+            <ImageBackground  blurRadius = {10} source = {require('../../Image/backgroundAccount.jpg')} style = {{height: height, width: width}} >
+            <View style = {{alignItems: 'center', marginTop: 10}}>
+                       <Item regular style={{borderColor: 'white',borderWidth: 0.5, backgroundColor: 'rgba(85, 79, 84,0.2)'}}>
                        <Icon name="ios-call" style = {{fontSize: 27,paddingLeft: 13,color: 'rgb(184, 181, 182)'}} />
                        <Input style = {{color: 'white'}} 
                               placeholder='Số điện thoại của bạn'
                               underlineColorAndroid = 'transparent'
                               keyboardType='numeric'
                               returnKeyType='next'
+                              maxLength= {11}
+                              autoFocus= {true}
                               placeholderTextColor= '#FFF'  
                               onChangeText={(phone) => this.setState({ phone })}
                               value={this.state.phone} />
                        </Item>
-                       </View>
-                       <Button light block style ={styles.button}
-                       onPress={() => this._hideModalPhone()}>
-                   <Text>Save</Text>
-                         </Button>    
-                       </ImageBackground>
+            </View>
+            </ImageBackground>
+            </Content>     
+        </Container>                                 
                     </Modal>
-                    <Modal transparent
+                    <Modal animationType ='slide'
                         visible = {this.state.isModalNameOpen}     
                        onRequestClose={() => this._hideModalName()}>
-                       <ImageBackground  blurRadius = {10} source = {require('../../Image/backgroundAccount.jpg')} style = {styles.modal} >
-                       <View>
-                       <Item regular style={{borderColor: 'white',borderTopWidth: 0.5, borderBottomWidth:0,borderLeftWidth: 0.5,borderRightWidth: 0.5, backgroundColor: 'rgba(85, 79, 84,0.2)'}}>
-                       <Icon name="md-contact" style = {{fontSize: 27,paddingLeft: 13,color: 'rgb(184, 181, 182)'}} />
-                       <Input style = {{color: 'white'}} 
-                              placeholder='Tên của bạn'
-                              underlineColorAndroid = 'transparent'
-                              returnKeyType='next'
-                              placeholderTextColor= '#FFF'  
-                              onChangeText={(name) => this.setState({ name })}
-                              value={this.state.name} />
-                       </Item>
-                       </View>
-                       <Button light block style ={styles.button}
-                       onPress={() => this._hideModalName()}>
-                   <Text>Save</Text>
-                         </Button>    
-                       </ImageBackground>
+                       <Container style = {styles.container}>
+                    <Header androidStatusBarColor = 'rgb(184, 47, 64)' style = {{backgroundColor: 'rgb(184, 47, 64)'}}>
+                <View style= {{justifyContent: 'space-between', flexDirection: 'row', flex: 1}}>
+                   <View style = {styles.containerLogo}>
+                       <Title style = {{textAlign: 'center', alignSelf: 'center', color: '#FFF'}}>{'Sửa tên tài khoản'}</Title>
+                   </View>
+                   <Right style = {{height: undefined, width: undefined}}>
+                   <Button transparent onPress = {() => this._hideModalName()}>
+                   <Icon name= 'md-create' style = {{fontSize: 25,  color: '#FFF',  alignSelf: 'center'}}/>
+                   </Button>
+                   </Right>
+                   </View> 
+           </Header> 
+            <Content  keyboardShouldPersistTaps='always' showsVerticalScrollIndicator={false}>
+            <ImageBackground  blurRadius = {10} source = {require('../../Image/backgroundAccount.jpg')} style = {{height: height, width: width}} >
+            <View style = {{alignItems: 'center', marginTop: 10}}>
+            <Item regular style={{borderColor: 'white',borderWidth: 0.5, backgroundColor: 'rgba(85, 79, 84,0.2)'}}>
+            <Icon name="md-contact" style = {{fontSize: 27,paddingLeft: 13,color: 'rgb(184, 181, 182)'}} />
+            <Input style = {{color: 'white'}} 
+                   placeholder='Tên của bạn'
+                   underlineColorAndroid = 'transparent'
+                   returnKeyType='next'
+                   maxLength= {50}
+                   autoFocus= {true}
+                   placeholderTextColor= '#FFF'  
+                   onChangeText={(name) => this.setState({ name })}
+                   value={this.state.name} />
+            </Item>
+            </View>
+            </ImageBackground>
+            </Content>
+            </Container>
                     </Modal>
-                    <Modal transparent
+                    <Modal animationType = 'slide'
                         visible = {this.state.isModalSexOpen}     
                        onRequestClose={() => this._hideModalSex()}>
-                       <ImageBackground  blurRadius = {10} source = {require('../../Image/backgroundAccount.jpg')} style = {styles.modal} >
-                       <View>
-                       <Form style = {{backgroundColor: '#FFF'}}>
+                        <Container style = {styles.container}>
+                    <Header androidStatusBarColor = 'rgb(184, 47, 64)' style = {{backgroundColor: 'rgb(184, 47, 64)'}}>
+                <View style= {{justifyContent: 'space-between', flexDirection: 'row', flex: 1}}>
+                   <View style = {styles.containerLogo}>
+                       <Title style = {{textAlign: 'center', alignSelf: 'center', color: '#FFF'}}>{'Sửa giới tính'}</Title>
+                   </View>
+                   <Right style = {{height: undefined, width: undefined}}>
+                   <Button transparent onPress = {() => this._hideModalSex()}>
+                   <Icon name= 'md-create' style = {{fontSize: 25,  color: '#FFF',  alignSelf: 'center'}}/>
+                   </Button>
+                   </Right>
+                   </View> 
+           </Header> 
+            <Content  keyboardShouldPersistTaps='always' showsVerticalScrollIndicator={false}>
+            <ImageBackground  blurRadius = {10} source = {require('../../Image/backgroundAccount.jpg')} style = {{height: height, width: width}} >
+            <View style = {{marginTop: 10}}>
+            <Form style = {{backgroundColor: 'rgba(85, 79, 84,0.2)'}}>
                         <Picker
+                            textStyle = {{color: 'white'}}
+                            itemTextStyle = {{color : 'white'}}
+                            style ={{color: 'white'}}
                             mode="dropdown"
                             placeholder= "Select One"
                             selectedValue={this.state.sex}
                             onValueChange={value => this.setState({ sex: value})}
                        >
-                         <Item label="------" value="------" />
-                         <Item label="Nam" value="Nam" />
-                         <Item label="Nữ" value="Nữ" />
+                         <Picker.Item label="------" value="------" />
+                         <Picker.Item label="Nam" value="Nam" />
+                         <Picker.Item label="Nữ" value="Nữ" />
                        </Picker>
                      </Form>
-                       </View>
-                       <Button light block style ={styles.button}
-                       onPress={() => this._hideModalSex()}>
-                   <Text>Save</Text>
-                         </Button>    
-                       </ImageBackground>
+            </View>
+            </ImageBackground>
+            </Content>
+            </Container>
                     </Modal>
                     <ActionButton buttonColor = 'rgb(168, 20, 39)'
                     position= 'center'

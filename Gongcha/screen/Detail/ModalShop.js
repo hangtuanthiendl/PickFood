@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image,View, StatusBar , FlatList,TouchableNativeFeedback} from 'react-native';
+import { Image,View, StatusBar , FlatList,TouchableNativeFeedback,Alert} from 'react-native';
 import {RadioGroup, RadioButton} from 'react-native-flexi-radio-button'
 import { Form,Picker ,Badge,Spinner,Container, Header, Item, Input, Icon, Separator,Button, Text, Body,Title, Left, Right,Content, Card, CardItem ,Thumbnail, List,ListItem, Footer,FooterTab, Radio, CheckBox   } from 'native-base';
 import {connect} from 'react-redux';
@@ -163,14 +163,20 @@ class ModalShop extends Component {
     }
     minusItem = () =>{
         if(this.state.valueItem === 1){
-            alert('Tối thiểu 1 sản phẩm')
+            Alert.alert(
+                null,
+                'Bạn không thể mua dưới 1 sản phẩm',
+                [
+                  {text: 'Thoát', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                ],
+                { cancelable: false }
+              )
         } else{
             this.setState({
                 valueItem: this.state.valueItem - 1,
                 priceItem: (parseInt(this.state.priceItem)  - parseInt(this.state.valueProduct)).toString(),
             })
-        }
-      
+        }      
     }
     onAddtoCart=() =>{
         let callback = {
@@ -203,20 +209,21 @@ class ModalShop extends Component {
          this.props.navigation.goBack()
       
       }
-    _renderPickItem = ({data}) => {       
+    _renderPickItem = ({item}) => {       
         //const {imageItem, nameItem, priceItem} = this.props;        
         return (
-            <ListItem onPress = {() => this.onPressCheckbox(data.id)}>   
-            <Left>
-            <CheckBox checked = {data.checked} />
-                <Body>
-                <Text numberOfLines = {2}>{data.name}</Text>
-                </Body>
-            </Left>
-            <Right>
-            <Text note>{Currency.convertNumberToCurrency(data.price) + 'đ'}</Text>
-            </Right>
-             </ListItem>
+            <View style = {{backgroundColor: 'white'}}>
+            <TouchableNativeFeedback onPress = {() => this.onPressCheckbox(item.id)}>   
+                <View style = {styles.row1}>
+                <View style = {styles.rowItem} >
+                <Radio selected = {item.checked}/>
+                <Text style={{fontSize: 15, fontStyle: 'normal',  color: '#34495e',textAlign: 'center', marginLeft: 3}} numberOfLines = {2}>{item.name}</Text>
+                </View>               
+                <Text style={{fontSize: 13, fontStyle: 'normal',  color: '#34495e',textAlign: 'center'}}>{Currency.convertNumberToCurrency(item.price) + 'đ'}</Text>
+                </View>
+            </TouchableNativeFeedback>
+            <View style ={styles.divider}></View>
+            </View>            
         );
       } 
     render() {
@@ -233,47 +240,39 @@ class ModalShop extends Component {
                    </View>
                 <View style = {styles.itemBuy}>
                     <Button transparent onPress = {this.addItem}>
-                   <Icon name = 'md-add-circle' style = {{fontSize: 30, color : '#54A8DD'}}/>
+                   <Icon name = 'md-add-circle' style = {{fontSize: 25, color : '#54A8DD'}}/>
                    </Button>
                    <Text style = {{alignSelf:'center', justifyContent: 'center'}}>x{this.state.valueItem}</Text>
                    <Button transparent onPress = {this.minusItem}>
-                    <Icon name = 'md-remove-circle' style = {{fontSize: 30, color : '#e53935'}}/>
+                    <Icon name = 'md-remove-circle' style = {{fontSize: 25, color : '#e53935'}}/>
                    </Button>  
                 </View>
                </Header>
-               <Content>
+               <Content showsVerticalScrollIndicator={false}>
                <Separator bordered>
             <Text style = {styles.titleSeparator}>Thêm topping</Text>
              </Separator>
              <View>
                         {
-                            this.state.dataCheckbox && <List
-                            style = {{backgroundColor : '#FFF'}}
-                            dataArray = {this.state.dataCheckbox}
-                            renderRow={data =><ListItem onPress = {() => this.onPressCheckbox(data.id)}>   
-                            <Left>
-                            <Radio selected = {data.checked} />
-                                <Body>
-                                <Text numberOfLines = {2}>{data.name}</Text>
-                                </Body>
-                            </Left>
-                            <Right>
-                            <Text note>{Currency.convertNumberToCurrency(data.price) + 'đ'}</Text>
-                            </Right>
-                             </ListItem>} 
-                           />   
+                            this.state.dataCheckbox && <FlatList  data={this.state.dataCheckbox}
+                            extraData= {this.state}
+                            keyboardShouldPersistTaps='always'
+                            removeClippedSubviews={true}
+                            keyExtractor={(item) => item.id}
+                            renderItem={this._renderPickItem}/>
                         }
                         {
                             !this.state.dataCheckbox && <View style={styles.loadingCategory}>
                              <Spinner color = '#e53935'/>
                           </View>        
                         }                       
-                    </View> 
+             </View> 
              <Separator bordered>
                <Text style = {styles.titleSeparator}>Chọn size</Text>
              </Separator>
              <Form style = {{backgroundColor: '#FFF'}}>
                 <Picker
+                    style = {{color: '#34495e'}}
                     mode="dropdown"
                     placeholder="Select One"
                     selectedValue={this.state.sizes}
@@ -288,6 +287,7 @@ class ModalShop extends Component {
              </Separator>
              <Form style = {{backgroundColor: '#FFF'}}>
                 <Picker
+                    style = {{color: '#34495e'}}
                     mode="dropdown"
                     placeholder= "Select One"
                     selectedValue={this.state.sugar}
@@ -305,6 +305,7 @@ class ModalShop extends Component {
              </Separator>
              <Form style = {{backgroundColor: '#FFF'}}>                                       
                 <Picker
+                    style = {{color: '#34495e'}}
                     mode="dropdown"
                     placeholder="Select One"
                     selectedValue={this.state.ice}
@@ -318,7 +319,7 @@ class ModalShop extends Component {
                </Picker>
              </Form>
            </Content>
-           <Footer style = {{backgroundColor : '#ecf0f1', height: 50}}>      
+           <Footer style = {{backgroundColor : 'transparent', height: undefined}}>      
               <Button iconLeft style = {{alignSelf: 'center', justifyContent: 'space-between', backgroundColor: '#54A8DD',flexDirection: 'row'}} onPress = {this.onAddtoCart.bind(this)}>
                    <Icon name='md-basket' style = {{fontSize: 25, color: '#FFF'}}/>
                    <Text style = {{fontSize: 15, color:'#FFF'}}>Thêm vào giỏ </Text>

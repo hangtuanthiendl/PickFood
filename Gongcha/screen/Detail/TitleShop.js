@@ -17,18 +17,23 @@ export default class TitleShop extends Component {
     }
     render() {
         return (
-            <View style ={{backgroundColor : '#FFF'}}>
-                <CardItem>
+            <View style ={{backgroundColor : 'transparent'}}>
+                <CardItem style = {{backgroundColor : 'transparent'}}>
+                <Icon name = 'ios-card-outline' style={styles.iconShop}></Icon>
+                <Text    numberOfLines = {1} style = {styles.textShop}>{this.props.name}</Text>   
+                </CardItem>
+                <View style = {styles.divider}></View>
+                <CardItem style = {{backgroundColor : 'transparent'}}>
                 <Icon name = 'ios-home-outline' style={styles.iconShop}></Icon>
                 <Text    numberOfLines = {1} style = {styles.textShop}>{this.props.address}</Text>   
                 </CardItem>
                 <View style = {styles.divider}></View>
-                <CardItem button onPress = {() => this.CallMe(this.props.phone)}>
+                <CardItem style = {{backgroundColor : 'transparent'}} button onPress = {() => this.CallMe(this.props.phone)}>
                 <Icon name = 'ios-call-outline' style={styles.iconShop}></Icon>
                 <Text  style = {styles.textShop}>{this.props.phone}</Text> 
                 </CardItem>  
                 <View style = {styles.divider}></View>
-                <CardItem>
+                <CardItem style = {{backgroundColor : 'transparent'}}>
                 <Icon name = 'ios-alarm-outline' style={styles.iconShop}></Icon>
                  <Text  style = {styles.textShop}>{this.props.time}</Text>
                 </CardItem>    

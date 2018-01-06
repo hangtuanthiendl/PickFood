@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppState,View, FlatList, Image,TouchableOpacity,TextInput, ScrollView,ActivityIndicator, ImageBackground, TouchableWithoutFeedback,TouchableNativeFeedback } from 'react-native';
+import { Alert,AppState,View, FlatList, Image,TouchableOpacity,TextInput, ScrollView,ActivityIndicator, ImageBackground, TouchableWithoutFeedback,TouchableNativeFeedback } from 'react-native';
 import { StyleProvider,Spinner,Container, Header, Item, Input, Icon, Button, Text, Body,Title, Left, Right,Content, Card, CardItem ,Thumbnail, List,ListItem, Footer, FooterTab } from 'native-base';
 import styles from './styles'
 import GetData from '../../Sever/getData'
@@ -22,9 +22,13 @@ class DetailHistory extends Component {
             state: null,
             total: '',
             checkout: null, 
+            note: null,
+            sale: null,
+            number: null,
             listItemHistory: null,
             seconds: 2,
-            num: 0
+            num: 0,
+            isVisible: true,
         }
         this.handleAppStateChange = this.handleAppStateChange.bind(this);        
     }
@@ -38,7 +42,11 @@ class DetailHistory extends Component {
                 state : itemHistory.state,
                 total : itemHistory.total,
                 checkout : itemHistory.method,
-                listItemHistory: itemHistory.detail
+                sale: itemHistory.sale,
+                note: itemHistory.note,
+                number: itemHistory.number,
+                listItemHistory: itemHistory.detail,
+
             })
         })
         AppState.addEventListener('change', this.handleAppStateChange);
@@ -53,18 +61,7 @@ class DetailHistory extends Component {
         }
 }
       checkNofication(){
-        if(this.state.state === 1){
-            let date = new Date(Date.now() + (this.state.seconds * 1000));
-            PushNotification.localNotification({
-              id: '1',
-              title: 'Thông báo',
-              message: "Đơn hàng của bạn đã được xác nhận",
-              date,
-              number: 1
-            });
-            PushNotification.cancelLocalNotifications({id: '2'});
-          } else if (this.state.state === 2){
-           // this.setState({ num : this.state.num++})
+        if(this.state.state === 2){
             let date = new Date(Date.now() + (this.state.seconds * 1000));
             PushNotification.localNotification({
               id:'2',
@@ -73,8 +70,7 @@ class DetailHistory extends Component {
               date,
               number: 1
             });
-            PushNotification.cancelLocalNotifications({id: '1'});
-        }
+          } 
       }
       checkState(state){
         switch(state){
@@ -98,7 +94,7 @@ class DetailHistory extends Component {
         return (
                 <View style = {{backgroundColor: '#FFF' , flexDirection: 'row'}}>                               
                <View style = {{marginLeft: 5, flex: 1}}>
-               <Text numberOfLines = {1} style ={styles.titleHotSale}>{item.nameItem +' x' + item.value + '=' + Currency.convertNumberToCurrency((item.valueProduct*item.value)) +'đ' }</Text>
+               <Text numberOfLines = {1} style ={styles.titleNull}>{item.nameItem +' x' + item.value + '=' + Currency.convertNumberToCurrency((item.valueProduct*item.value)) +'đ' }</Text>
                <Text numberOfLines = {1} style ={styles.titleadress}>{item.ice +',' + item.size + ','+ item.sugar}</Text>
                <View>
                      {item.info != null ? (item.info.map((e, i) => <Text note key={"key"+i}
@@ -109,50 +105,77 @@ class DetailHistory extends Component {
                  </View>
         );
     }
+    onHuy(){
+        Alert.alert(
+            null,
+            'Bạn thất sự muốn hủy đơn hàng ' + this.state.idItem,
+            [
+              {text: 'Không', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+              {text: 'Có', onPress: () => {
+                  GetData.setStateCart(this.props.infouser.uid, this.state.idItem, 4)       
+              }},
+            ],
+            { cancelable: false }
+          )
+    }
     render() {
-        const {idItem , timeIn, checkout, nameItem, state, total} = this.state 
+        const {idItem , timeIn, checkout, nameItem, state, total, sale, note, number} = this.state 
         const color = this.checkColor(state)
         const nameState = this.checkState(state)
         return (
             <Container style = {styles.container}>
-                <Header androidStatusBarColor = 'rgb(184, 47, 64)' style = {{backgroundColor: 'rgb(184, 47, 64)', justifyContent: 'space-between'}}>
+                <Header androidStatusBarColor = 'rgb(184, 47, 64)' style = {{backgroundColor: 'rgb(184, 47, 64)'}}>
+                    <View style= {{justifyContent: 'space-between', flexDirection: 'row', flex: 1}}>
                     <View style = {styles.containerLogo}>
                         <Title style = {{textAlign: 'center', alignSelf: 'center', color: '#FFF'}}>{nameItem}</Title>
                     </View>
+                    <Right style = {{height: undefined, width: undefined}}>
                     <Button transparent onPress = {() => this.props.navigation.goBack()}>
                     <Icon name= 'md-close' style = {{fontSize: 25,  color: '#FFF',  alignSelf: 'center'}}/>
                     </Button>
+                    </Right>
+                    </View>            
                 </Header>
                 <Content   showsVerticalScrollIndicator={false}>
                 <View style = {{ backgroundColor: '#E8E3E8'}}>
                 <View style = {styles.renderItemHistory}>
-                <View style = {{marginLeft: 5, flexDirection: 'row'}}>
+                <View style = {{marginLeft: 5, flexDirection: 'row', flex: 1}}>
                 <View>
                 <Text style = {styles.titleinfo}>{'Mã đặt hàng: '}</Text>
                 <Text style = {styles.titleinfo}>{'Ngày đặt: '}</Text>
+                <Text style = {styles.titleinfo}>{'Mã khuyến mãi: '}</Text>
+                <Text style = {styles.titleinfo}>{'Số lượng: ' }</Text>
                 <Text style = {styles.titleinfo}>{'Thanh toán: ' }</Text>
+                <Text style = {styles.titleinfo}>{'Ghi chú: ' }</Text>
                 </View>
-                <View style = {{marginLeft: 5}}>
+                <View style = {{marginLeft: 5, flex: 1}}>
                 <Text style = {styles.titledetail}>{idItem}</Text>
                 <Text style = {styles.titledetail}>{timeIn}</Text>
+                <Text style = {styles.titledetail}>{sale}</Text>
+                <Text style = {styles.titledetail}>{number}</Text>
                 <Text style = {styles.titledetail}>{checkout}</Text>
+                <Text numberOfLines= {5} style = {styles.titledetail}>{note}</Text>
                 </View>
                 </View>
                 </View>
                 <View style = {styles.infoUser}>
                 <Thumbnail small source={{uri: this.props.infouser.photoURL}}/>
                 <View style = {styles.marginLeftItem}>
-                <Text>{this.props.infouser.displayName}</Text>
+                <Text style = {styles.titleNull}>{this.props.infouser.displayName}</Text>
                 <Text note style = {{color}}>{nameState}</Text>
                 </View>
+                {
+                    state === 0  ? <TouchableNativeFeedback onPress = {() => this.onHuy()}>
+                    <Text note style = {styles.backgroundAdd} numberOfLines = {1}>Hủy</Text>
+                    </TouchableNativeFeedback> : null
+                }
                 </View>
                 </View> 
                         {
                             this.state.listItemHistory && <FlatList
                             data = {this.state.listItemHistory}
                             renderItem={this._renderItem} 
-                            ItemSeparatorComponent = {() => {return (<View style = {{height: 5}}/>)}}
-                            
+                            ItemSeparatorComponent = {() => {return (<View style = {{height: 5}}/>)}}                            
                             removeClippedSubviews={true}
                             extraData= {this.state}                             
                             showsVerticalScrollIndicator ={false}

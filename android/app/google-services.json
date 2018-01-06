@@ -49,6 +49,50 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946298715975:android:8b4e1e70c4320e4c",
+        "android_client_info": {
+          "package_name": "com.pickfood.vb.team"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946298715975-mf90tu422q1d3o81dfmm0hmmtr74clqg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pickfood.vb.team",
+            "certificate_hash": "9576d248a7693ea9154be5c05957b03bbb5504b8"
+          }
+        },
+        {
+          "client_id": "946298715975-6uijk18nbhhu88dacc8oj7rck565lalg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp4Dpm9J75XcAz1IyovFuKrgOX_-UPhgU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946298715975-6uijk18nbhhu88dacc8oj7rck565lalg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"

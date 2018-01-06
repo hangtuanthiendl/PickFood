@@ -37,8 +37,7 @@ export default StyleSheet.create({
         height: height/3.8,
         width: null,
         position: 'relative',
-        resizeMode: 'cover'
-        
+        resizeMode: 'cover'     
      },
      wrapperSwiper1:{
       backgroundColor: '#FFF',
@@ -66,7 +65,7 @@ export default StyleSheet.create({
   },
     headerCaterory: {
       height: null,
-      padding: 10,
+      padding:  10,
       backgroundColor: '#FFF',
       flexDirection: 'row',
       borderColor: '#CFD8DC',
@@ -94,6 +93,12 @@ export default StyleSheet.create({
     fontSize: 15,
     fontStyle: 'normal',
     color: 'rgb(184, 47, 64)'
+   },
+   titleSearch: {
+    fontSize: 15,
+    fontStyle: 'normal',
+    color: '#34495e',
+    marginLeft: 3
    },
   imageshopMall: {
     flex:1,
@@ -141,13 +146,15 @@ export default StyleSheet.create({
   },
   titleNote: {
     marginLeft: 5,
-    color: 'white',
+    color: '#E82B40',
     fontStyle : 'normal',
     textAlign: 'center'    
   },
   titleHotSale: {
     fontSize : 15,
-    fontWeight: 'bold',
+    fontStyle: 'italic',
+    color: 'rgb(184, 47, 64)',
+    fontWeight: 'bold'
   },
   titleadress: {
     fontSize: 13,
@@ -212,6 +219,11 @@ row: {
   padding: 10,
   alignItems: 'center',
   justifyContent: 'space-between',
+},
+rowSearch: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
 },
 row1: {
   flexDirection: 'row',

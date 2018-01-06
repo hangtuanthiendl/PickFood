@@ -202,7 +202,8 @@ class Register extends Component {
                 <Icon name="ios-mail-outline" style = {{fontSize: 25,color: 'rgb(184, 181, 182)', alignSelf: 'center', marginLeft: 5, marginRight: 5}} />
                 <TextInput style = {{color: 'white', height: 45 , width: height/ 2.5, fontSize: 18}} 
                            placeholder='Địa chỉ Email của bạn'
-                           
+                           autoFocus={true}
+                           maxLength= {50}
                            keyboardType = 'email-address'
                            returnKeyType='next'
                            autoCapitalize= 'none'
@@ -219,6 +220,8 @@ class Register extends Component {
                            onSubmitEditing= {() => this.phoneInput.focus()}
                            ref = {(Input) => this.passwordInput = Input}
                            placeholder='Mật khẩu của bạn'
+                          // autoFocus={true}
+                           maxLength= {12}
                            underlineColorAndroid = 'transparent'
                            returnKeyType='next'
                            autoCapitalize= 'none'
@@ -234,6 +237,8 @@ class Register extends Component {
                              onSubmitEditing= {() => this.nameInput.focus()}
                              ref = {(Input) => this.phoneInput = Input}
                               placeholder='Số điện thoại của bạn'
+                            //  autoFocus={true}
+                              maxLength= {11}
                               underlineColorAndroid = 'transparent'
                               keyboardType='numeric'
                               returnKeyType='next'
@@ -250,6 +255,8 @@ class Register extends Component {
                           ref = {(Input) => this.nameInput = Input}
                           placeholder='Tên hiện thị'
                           returnKeyType='go'
+                         // autoFocus={true}
+                          maxLength= {30}
                           autoCapitalize= 'none'
                           autoCorrect = {false}
                           underlineColorAndroid = 'transparent'
@@ -283,6 +290,8 @@ class Register extends Component {
                 <Icon name="ios-mail-outline" style = {{fontSize: 25,color: 'rgb(184, 181, 182)', alignSelf: 'center', marginLeft: 5, marginRight: 5}} />
                 <TextInput style = {{color: 'white', height: 45 , width: height/ 2.5, fontSize: 18}} 
                            placeholder='Địa chỉ Email của bạn'
+                           //autoFocus={true}
+                           maxLength= {50}
                            keyboardType = 'email-address'
                            returnKeyType='next'
                            autoCapitalize= 'none'
@@ -297,7 +306,9 @@ class Register extends Component {
                 <Icon name="ios-lock-outline" style = {{fontSize: 25,color: 'rgb(184, 181, 182)', alignSelf: 'center', marginLeft: 5, marginRight: 5}} />
                 <TextInput style = {{color: 'white', height: 45, width: height/ 2.5, fontSize: 18 }} 
                            ref = {(Input) => this.passwordLoginInput = Input}
-                           placeholder='Mật khẩu của bạn'
+                           placeholder='Mật khẩu của bạn'                           
+                           //autoFocus={true}
+                           maxLength= {12}
                            underlineColorAndroid = 'transparent'
                            returnKeyType='go'
                            autoCapitalize= 'none'
@@ -346,12 +357,14 @@ class Register extends Component {
                   placeholder='Email bạn muốn đặt lại mật khẩu'
                   underlineColorAndroid = 'transparent'
                   returnKeyType='go'
+                  autoFocus={true}
+                  maxLength= {50}
                   placeholderTextColor= '#FFF'  
                   onChangeText={(email) => this.setState({ email })}
                   value={this.state.email} />
            </Item>
            </View>
-           <Button light block style ={styles.button}
+           <Button rounded light block style ={styles.button}
            onPress={() => this.onResetPassword()}>
           <Text style = {{color: 'rgb(184, 47, 64)'}}>Rest Password</Text>
              </Button>    

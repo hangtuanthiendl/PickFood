@@ -50,7 +50,7 @@ export default class MainRouter extends Component {
     }
     _renderCategory = ({item})=>{
         return (
-            <TouchableNativeFeedback onPress = {() => this.props.navigation.navigate('CategoryMain', {nameItem: item.nameItem})}>
+            <TouchableNativeFeedback onPress = {() => this.props.navigation.navigate('CategoryMain', {nameItem: item.nameItem, key: 1})}>
                 <View style = {{borderRadius: 50}}>
                 <ImageBackground source={{uri: item.imageItem}} style={styles.imageitemMall}>
                <LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']}  style={styles.imageitemMall}>
@@ -63,7 +63,7 @@ export default class MainRouter extends Component {
     }
     _renderHotSale = ({item})=>{
         return (
-            <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key})}}>
+            <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key, categoryShop: item.categoryShop})}}>
                 <View style  = {styles.containerHotSale}>
                 <ImageBackground source={{uri: item.imageShop}} style={styles.imageHotSale}>
                 <View style = {{backgroundColor : 'rgba(255, 255, 255,0.6)'}}>
@@ -71,14 +71,14 @@ export default class MainRouter extends Component {
                 </View>
                </ImageBackground> 
                <Text  numberOfLines = {1} style ={styles.titleHotSale}>{item.nameShop}</Text>
-               <Text  numberOfLines = {1} style ={styles.titleadress}>{item.addressShop}</Text>
+               <Text  numberOfLines = {1} style ={styles.titleadress}>{item.address}</Text>
                 </View>              
             </TouchableNativeFeedback>  
         );
     }
     _renderNewShop = ({item})=>{
         return (
-            <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key})}}>
+            <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key, categoryShop: item.categoryShop})}}>
                 <View style = {{flexDirection : 'row', backgroundColor: '#FFF'}}>
                 <Image source={{uri: item.imageShop}} style={styles.imageNewShop}>
                </Image>                
@@ -113,13 +113,13 @@ export default class MainRouter extends Component {
     }
     _renderRecommend = ({item})=>{
         return (
-            <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key})}}>
+            <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key, categoryShop: item.categoryShop})}}>
                 <View  removeClippedSubviews={true} style = {styles.containerRecommend}>
                 <Image source={{uri: item.imageShop}} style={styles.imageRecommend}>
                </Image> 
                <View style = {{flex: 1}}>
                <Text numberOfLines = {1} style ={styles.titleHotSale}>{item.nameShop}</Text>
-               <Text  numberOfLines = {1} style ={styles.titleadress}>{item.addressShop}</Text>
+               <Text  numberOfLines = {1} style ={styles.titleadress}>{item.address}</Text>
                <View style = {{flex: 1,flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                <View style = {{flexDirection: 'row', alignItems: 'center'}}>
                    <Icon name = 'alarm' style ={{fontSize: 15, color: '#2ecc71',  paddingRight: 5}} />
@@ -142,15 +142,18 @@ export default class MainRouter extends Component {
         console.log(this.state.itemCategory)
         return (
             <Container style = {styles.container}>
-                <Header searchBar rounded androidStatusBarColor = 'transparent' style = {{backgroundColor: 'rgb(184, 47, 64)',alignItems: 'center'}}>
-                <Left style ={{flexDirection: 'row', alignItems: 'center'}}>
-                    <Title style ={{paddingLeft: 10, color: '#FFF'}}>Pick Food</Title>        
-                </Left>
+                <Header  androidStatusBarColor = 'transparent' style = {{backgroundColor: 'rgb(184, 47, 64)'}}>
+                <View style= {{justifyContent: 'space-between', flexDirection: 'row', flex: 1}}>
+                <View style = {styles.containerLogo}>
+                    <Title style = {{textAlign: 'center', alignSelf: 'center', color: '#FFF'}}>Pick Food</Title>
+                </View>
                 <Right>
                 <Button transparent onPress = {() => this.props.navigation.navigate('SearchBar')}>
                     <Icon name= 'ios-search' style ={{fontSize: 27,color: '#FFF'}}/>
                     </Button>
-                    </Right>   
+                </Right> 
+                </View> 
+                  
              </Header>
                 <Content showsVerticalScrollIndicator={false}>
                    {
@@ -161,7 +164,9 @@ export default class MainRouter extends Component {
                            autoplay={true}>
                             <Image source = {{uri: this.state.itembanner[0].image}} style={styles.slide}></Image>
                             <Image source = {{uri: this.state.itembanner[1].image}} style={styles.slide}></Image>
-                            <Image source = {{uri: this.state.itembanner[2].image}} style={styles.slide}></Image>                 
+                            <Image source = {{uri: this.state.itembanner[2].image}} style={styles.slide}></Image>  
+                            <Image source = {{uri: this.state.itembanner[3].image}} style={styles.slide}></Image>                 
+               
                         </Swiper>
                    }
                    {
@@ -204,7 +209,7 @@ export default class MainRouter extends Component {
                   <Text style={styles.titleCategory}>Hot Sale</Text>
                   <Image style={{height: 35, width: 35, resizeMode: 'cover', marginLeft: 5}}source ={require('../../Image/sale.png')}/>
                   </View>
-                   <TouchableNativeFeedback>
+                   <TouchableNativeFeedback onPress= {() => this.props.navigation.navigate('CategoryMain', {nameItem: 'Hot Sale', key: 2})}>
                     <View style = {{flexDirection: 'row'}}>
                     <Text style={styles.viewmore} note>Xem thêm</Text>
                     <Icon name = 'ios-arrow-forward' style = {{fontSize: 20, color : 'rgb(168, 20, 39)', marginLeft:2, alignSelf: 'center'}}/>
@@ -241,6 +246,7 @@ export default class MainRouter extends Component {
                             <Image source = {{uri: this.state.itembanner[0].image}} style={styles.slide1}></Image>
                             <Image source = {{uri: this.state.itembanner[1].image}} style={styles.slide1}></Image>
                             <Image source = {{uri: this.state.itembanner[2].image}} style={styles.slide1}></Image>                 
+                            <Image source = {{uri: this.state.itembanner[3].image}} style={styles.slide1}></Image>                 
                         </Swiper>
                    }
                    {
@@ -255,7 +261,7 @@ export default class MainRouter extends Component {
                   <Text style={styles.titleCategory}>New Shop</Text>
                   <Image style={{height: 35, width: 35, resizeMode: 'cover', marginLeft: 5}}source ={require('../../Image/new.png')}/>
                   </View>
-                   <TouchableNativeFeedback>
+                   <TouchableNativeFeedback onPress = {() => this.props.navigation.navigate('CategoryMain', {nameItem: 'New Shop', key: 3})}>
                     <View style = {{flexDirection: 'row'}}>
                     <Text style={styles.viewmore} note>Xem thêm</Text>
                     <Icon name = 'ios-arrow-forward' style = {{fontSize: 20, color : 'rgb(168, 20, 39)', marginLeft:2, alignSelf: 'center'}}/>
@@ -285,8 +291,11 @@ export default class MainRouter extends Component {
                     </View>
                     <View style= {styles.wraper}>
                   <View style={styles.headerCaterory}>
+                  <View style = {{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                   <Text style={styles.titleCategory}>Gợi ý hôm nay</Text>
-                   <TouchableNativeFeedback>
+                  <Image style={{height: 35, width: 35, resizeMode: 'cover', marginLeft: 5}}source ={require('../../Image/recommended.png')}/>
+                  </View>                  
+                   <TouchableNativeFeedback onPress = {() => this.props.navigation.navigate('CategoryMain', {nameItem: 'Gợi ý hôm nay', key: 4})}>
                     <View style = {{flexDirection: 'row'}}>
                     <Text style={styles.viewmore} note>Xem thêm</Text>
                     <Icon name = 'ios-arrow-forward' style = {{fontSize: 20, color : 'rgb(168, 20, 39)', marginLeft:2, alignSelf: 'center'}}/>

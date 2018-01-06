@@ -2,9 +2,9 @@ import firebase from 'react-native-firebase';
 
 
 class GetData {
-  static setStateCart (keyshop,uid, id) {
+  static setStateCart (uid, id,state) {
     //callback['infor'] = mang
-    firebase.database().ref().child(`Cash/${uid}/${keyshop}/${id}/state`).set(1);
+    firebase.database().ref().child(`Cash/${uid}/${id}/state`).set(state);
    }   
    static removeCartItem(key,uid){
     firebase.database().ref().child(`CartItem/${uid}/${key}`).remove();    
@@ -145,6 +145,7 @@ class GetData {
         
        }) 
     }
+    
     static getBanner(callback){
         firebase.database().ref('Banner').once('value', (snap) => {
         let items = [];
