@@ -13,7 +13,8 @@ export default class MainRouter extends Component {
     constructor(props){
         super(props)
         this.state = {
-            itembanner: null,
+            itembannerheader: null,
+            itembannerbody: null,
             itemCategory:null,
             itemshop: null,
             itemHotShop: null,
@@ -22,9 +23,14 @@ export default class MainRouter extends Component {
         }
     }
     componentDidMount() { 
-        GetData.getBanner((itembanner) => {
+        GetData.getBannerHeader((itembannerheader) => {
             this.setState({
-                itembanner: itembanner
+                itembannerheader: itembannerheader
+            })
+        })
+        GetData.getBannerBody((itembannerbody) => {
+            this.setState({
+                itembannerbody: itembannerbody
             })
         })
         GetData.getItemMall((itemCategory)=>{
@@ -157,20 +163,20 @@ export default class MainRouter extends Component {
              </Header>
                 <Content showsVerticalScrollIndicator={false}>
                    {
-                    this.state.itembanner && <Swiper
+                    this.state.itembannerheader && <Swiper
                      style = {styles.wrapperSwiper}
                      dot={<View style={{backgroundColor: '#FFF', width: 10, height: 10, borderRadius: 7, marginLeft: 7, marginRight: 7}} />}
                        activeDot={<View style={{backgroundColor: '#e53935', width: 10, height: 10, borderRadius: 7, marginLeft: 7, marginRight: 7}} />}
                            autoplay={true}>
-                            <Image source = {{uri: this.state.itembanner[0].image}} style={styles.slide}></Image>
-                            <Image source = {{uri: this.state.itembanner[1].image}} style={styles.slide}></Image>
-                            <Image source = {{uri: this.state.itembanner[2].image}} style={styles.slide}></Image>  
-                            <Image source = {{uri: this.state.itembanner[3].image}} style={styles.slide}></Image>                 
+                            <Image source = {{uri: this.state.itembannerheader[0].image}} style={styles.slide}></Image>
+                            <Image source = {{uri: this.state.itembannerheader[1].image}} style={styles.slide}></Image>
+                            <Image source = {{uri: this.state.itembannerheader[2].image}} style={styles.slide}></Image>  
+                            <Image source = {{uri: this.state.itembannerheader[3].image}} style={styles.slide}></Image>                 
                
                         </Swiper>
                    }
                    {
-                        !this.state.itembanner && <View style={styles.wrapperSwiper}>
+                        !this.state.itembannerheader && <View style={styles.wrapperSwiper}>
                         <Spinner color = '#e53935'/>
                       </View>
                    }
@@ -238,19 +244,18 @@ export default class MainRouter extends Component {
                    }
                    </View>
                    {
-                    this.state.itembanner && <Swiper
+                    this.state.itembannerbody && <Swiper
                      style = {styles.wrapperSwiper1}
                      dot={<View style={{backgroundColor: '#FFF', width: 10, height: 10, borderRadius: 7, marginLeft: 7, marginRight: 7}} />}
                        activeDot={<View style={{backgroundColor: '#e53935', width: 10, height: 10, borderRadius: 7, marginLeft: 7, marginRight: 7}} />}
                            autoplay={true}>
-                            <Image source = {{uri: this.state.itembanner[0].image}} style={styles.slide1}></Image>
-                            <Image source = {{uri: this.state.itembanner[1].image}} style={styles.slide1}></Image>
-                            <Image source = {{uri: this.state.itembanner[2].image}} style={styles.slide1}></Image>                 
-                            <Image source = {{uri: this.state.itembanner[3].image}} style={styles.slide1}></Image>                 
+                            <Image source = {{uri: this.state.itembannerbody[0].image}} style={styles.slide1}></Image>
+                            <Image source = {{uri: this.state.itembannerbody[1].image}} style={styles.slide1}></Image>
+                            <Image source = {{uri: this.state.itembannerbody[2].image}} style={styles.slide1}></Image>                 
                         </Swiper>
                    }
                    {
-                        !this.state.itembanner && <View style={styles.wrapperSwiper}>
+                        !this.state.itembannerbody && <View style={styles.wrapperSwiper}>
                         <Spinner color = '#e53935'/>
                       </View>
                    }

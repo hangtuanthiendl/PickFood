@@ -57,20 +57,39 @@ class ModalCart extends Component {
     onCash = () =>{
         const {params} = this.props.navigation.state;                         
         let now = new Date()
-        let callback = {
-            total: this.state.totalPrice,
-            nameShop: params.nameItemShop,
-            addressShop: params.addressItemShop,            
-            keyShop: params.keyItemShop,
-            state: 0,
-            timein : moment(now).format("DD/MM/YYYY hh:mm:ss"),
-            timeout : moment(now).format("DD/MM/YYYY hh:mm:ss"),            
-            detail: this.state.dataCart,
-            method: this.state.method,
-            sale: this.state.sale,
-            note: this.state.note,
-            number : this.state.dataCart.length.toString()
+        let callback = null
+        if (this.state.note === '' || this.state.note === 'Bạn cần ghi chú những gì?'){
+            callback = {
+                total: this.state.totalPrice,
+                nameShop: params.nameItemShop,
+                addressShop: params.addressItemShop,            
+                keyShop: params.keyItemShop,
+                state: 0,
+                timein : moment(now).format("DD/MM/YYYY hh:mm:ss"),
+                timeout : moment(now).format("DD/MM/YYYY hh:mm:ss"),            
+                detail: this.state.dataCart,
+                method: this.state.method,
+                sale: this.state.sale,
+                note: 'Không có',
+                number : this.state.dataCart.length.toString()
+            }
+        } else {
+            callback = {
+                total: this.state.totalPrice,
+                nameShop: params.nameItemShop,
+                addressShop: params.addressItemShop,            
+                keyShop: params.keyItemShop,
+                state: 0,
+                timein : moment(now).format("DD/MM/YYYY hh:mm:ss"),
+                timeout : moment(now).format("DD/MM/YYYY hh:mm:ss"),            
+                detail: this.state.dataCart,
+                method: this.state.method,
+                sale: this.state.sale,
+                note: this.state.note,
+                number : this.state.dataCart.length.toString()
+            }
         }
+          
         GetData.saveDataCash(this.props.infouser.uid, callback)
         GetData.removeCartItem(params.keyItemShop,this.props.infouser.uid)        
         Alert.alert(

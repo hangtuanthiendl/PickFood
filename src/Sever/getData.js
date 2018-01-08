@@ -146,8 +146,8 @@ class GetData {
        }) 
     }
     
-    static getBanner(callback){
-        firebase.database().ref('Banner').once('value', (snap) => {
+    static getBannerHeader(callback){
+        firebase.database().ref('BannerHeader').once('value', (snap) => {
         let items = [];
         snap.forEach((child) => {
           items.push({
@@ -157,6 +157,17 @@ class GetData {
         callback(items)
       })
     }
+    static getBannerBody(callback){
+      firebase.database().ref('BannerBody').once('value', (snap) => {
+      let items = [];
+      snap.forEach((child) => {
+        items.push({
+          image: child.val(),
+        });
+      });
+      callback(items)
+    })
+  }
     static setCategory(callback){
       firebase.database().ref().child('Category').set(callback);
     }
@@ -233,11 +244,14 @@ class GetData {
     static pushShop(shopinfo){
         firebase.database().ref().child('Shop').push(shopinfo)
     }
+    static pushMenuItem(shopinfo){
+      firebase.database().ref().child('MenuItem').push(shopinfo)
+  }
     static pushMenu(menuinfo){
         firebase.database().ref().child("Mall").push(menuinfo)
     }
     static setBanner(bannerInfo){
-        firebase.database().ref().child('Banner').set(bannerInfo)
+        firebase.database().ref().child('BannerHeader').set(bannerInfo)
     }
     static getShopItem (callback) {
         firebase.database().ref('Shop').once('value', (snap) => {
@@ -245,6 +259,17 @@ class GetData {
           snap.forEach((child) => {
             let item = child.val()
             item['key'] = child.key
+            items.push(item);
+          });
+          callback(items)
+        })
+      }
+      static getMenuItems (callback) {
+        firebase.database().ref('MenuItem').once('value', (snap) => {
+          let items = [];
+          snap.forEach((child) => {
+            let item = child.val()
+            item['id'] = child.key
             items.push(item);
           });
           callback(items)

@@ -99,7 +99,7 @@ class ModalShop extends Component {
             nameItem: params.nameItem,
             imageItem: params.imageItem,
             priceItem: params.priceItem,
-            dataCheckbox : data,
+            dataCheckbox : null,
             totalPrice: null,
             sugar: '70% Đường',
             ice:'30% Đá',
@@ -110,6 +110,11 @@ class ModalShop extends Component {
          };
     }
     componentDidMount(){
+        GetData.getMenuItems((dataCheckbox) => {
+            this.setState({
+                dataCheckbox : dataCheckbox
+            })
+        })
         console.log('asdasds', this.props.inforitemshop)
     }
     onPressCheckbox(id){
@@ -201,13 +206,12 @@ class ModalShop extends Component {
             keyItemShop: null,
             itemBag: null,
             listItem: null,
-            dataCheckbox: data,
+            dataCheckbox: null,
             sizes: 'Size M',
             sugar: '70% Đường',
             ice : '30% Đá'
          })
-         this.props.navigation.goBack()
-      
+         this.props.navigation.goBack() 
       }
     _renderPickItem = ({item}) => {       
         //const {imageItem, nameItem, priceItem} = this.props;        
@@ -219,7 +223,7 @@ class ModalShop extends Component {
                 <Radio selected = {item.checked}/>
                 <Text style={{fontSize: 15, fontStyle: 'normal',  color: '#34495e',textAlign: 'center', marginLeft: 3}} numberOfLines = {2}>{item.name}</Text>
                 </View>               
-                <Text style={{fontSize: 13, fontStyle: 'normal',  color: '#34495e',textAlign: 'center'}}>{Currency.convertNumberToCurrency(item.price) + 'đ'}</Text>
+                <Text style={{fontSize: 13, fontStyle: 'normal',  color: '#34495e',textAlign: 'center'}}>{Currency.convertNumberToCurrency(parseInt(item.price)) + 'đ'}</Text>
                 </View>
             </TouchableNativeFeedback>
             <View style ={styles.divider}></View>
