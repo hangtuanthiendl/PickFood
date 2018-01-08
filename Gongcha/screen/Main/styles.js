@@ -129,7 +129,7 @@ export default StyleSheet.create({
     flex: 1,
     width: width,
     height: height,
-    backgroundColor:'#FFF',
+    backgroundColor:'white',
   },
   imageHotSale: {
     height: 160,
@@ -146,7 +146,7 @@ export default StyleSheet.create({
   },
   titleNote: {
     marginLeft: 5,
-    color: '#E82B40',
+    color: '#FFF',
     fontStyle : 'normal',
     textAlign: 'center'    
   },
@@ -154,16 +154,19 @@ export default StyleSheet.create({
     fontSize : 15,
     fontStyle: 'italic',
     color: 'rgb(184, 47, 64)',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginLeft:5,
   },
   titleadress: {
     fontSize: 13,
     fontStyle: 'normal',
-    color: 'grey'
+    color: 'grey',
+    marginLeft:5,
   },
   imageNewShop: {
     height: 120,
     width: 120,
+    borderRadius:60,
     resizeMode: 'cover',
   },
   linearNewShop:{

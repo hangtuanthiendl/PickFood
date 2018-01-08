@@ -66,7 +66,7 @@ export default class MainRouter extends Component {
             <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key, categoryShop: item.categoryShop})}}>
                 <View style  = {styles.containerHotSale}>
                 <ImageBackground source={{uri: item.imageShop}} style={styles.imageHotSale}>
-                <View style = {{backgroundColor : 'rgba(255, 255, 255,0.6)'}}>
+                <View style = {{backgroundColor : '#27262657'}}>
                     <Text numberOfLines ={1} style = {styles.titleNote}>{item.dealShop}</Text>
                 </View>
                </ImageBackground> 
@@ -79,13 +79,13 @@ export default class MainRouter extends Component {
     _renderNewShop = ({item})=>{
         return (
             <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key, categoryShop: item.categoryShop})}}>
-                <View style = {{flexDirection : 'row', backgroundColor: '#FFF'}}>
+                <View style = {{flexDirection : 'row', backgroundColor: '#FFF',borderRadius:20}}>
                 <Image source={{uri: item.imageShop}} style={styles.imageNewShop}>
                </Image>                
                <View style = {{marginLeft: 5, flex: 1, justifyContent:'center'}}>
                <Text numberOfLines = {1} style ={styles.titleHotSale}>{item.nameShop}</Text>
                <Text  numberOfLines = {1} style ={styles.titleadress}>{item.addressShop}</Text>
-               <View style = {{width : 70}}> 
+               <View style = {{width : 70,marginLeft:5}}> 
                 <StarRating
                     disabled={true}
                     maxStars={5}
@@ -96,13 +96,13 @@ export default class MainRouter extends Component {
                 </View>
                 <View style = {{flex: 1,flexDirection: 'row', justifyContent: 'space-between'}}>
                <View style = {{flexDirection: 'row', alignItems: 'center'}}>
-                   <Icon name = 'alarm' style ={{fontSize: 15, color: '#2ecc71',  paddingRight: 5}} />
+                   <Icon name = 'alarm' style ={{fontSize: 15, color: '#2ecc71',  paddingRight: 5,marginLeft:5}} />
                    <Text  numberOfLines = {1} style ={{ alignSelf: 'center', fontSize: 13,
                 fontStyle: 'normal'}}>{item.timeShop}</Text>
                </View>
                <View style = {{flexDirection: 'row', alignItems: 'center'}}>
                    <Icon name = 'ios-restaurant-outline' style ={{fontSize: 15, color: '#B82F40',  paddingRight: 5}} />
-                   <Text  numberOfLines = {1} style ={{ alignSelf: 'center', fontSize: 13,
+                   <Text  numberOfLines = {1} style ={{ alignSelf: 'center', fontSize: 13, marginRight:10,
                 fontStyle: 'normal'}}>{item.categoryShop}</Text>
                </View>
                </View>
