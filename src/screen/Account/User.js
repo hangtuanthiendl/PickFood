@@ -88,7 +88,7 @@ class User extends Component {
          </TouchableNativeFeedback>
           </View>
         </View>
-        <TouchableNativeFeedback>
+        <TouchableNativeFeedback >
          <View style={styles.headerCateroryDetail}>
         <View style = {styles.row}>
         <Icon name = 'ios-heart' style = {styles.viewicon1}/>

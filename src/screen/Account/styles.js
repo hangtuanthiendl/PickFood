@@ -17,6 +17,7 @@ export default StyleSheet.create({
         backgroundColor: '#FFF'
     },
     headerCateroryDetail: {
+        height:60,
         padding: 10,
         backgroundColor: '#FFF',
         flexDirection: 'row',

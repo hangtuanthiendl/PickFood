@@ -52,7 +52,7 @@ const cards = [
       image: require('../../Image/gongcha5.jpg'),
     },
     {
-      image: require('../../Image/gongcha5.jpg'),
+      image: require('../../Image/gongcha1.jpg'),
     },
   ];class Menu extends Component {
     constructor(props) {

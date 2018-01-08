@@ -85,7 +85,7 @@ export default class MainRouter extends Component {
     _renderNewShop = ({item})=>{
         return (
             <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key, categoryShop: item.categoryShop})}}>
-                <View style = {{flexDirection : 'row', backgroundColor: '#FFF',borderRadius:20}}>
+                <View style = {{flexDirection : 'row', backgroundColor: '#FFF',borderRadius:2}}>
                 <Image source={{uri: item.imageShop}} style={styles.imageNewShop}>
                </Image>                
                <View style = {{marginLeft: 5, flex: 1, justifyContent:'center'}}>

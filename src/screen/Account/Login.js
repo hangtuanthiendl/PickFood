@@ -73,7 +73,7 @@ class Login extends Component {
 				})		                   
                     })   
 	  .catch((error) => {
-		  	console.log('vu an cut hehe',error);
+		  	console.log('hehe',error);
             alert(error);
 			this.setState ({
 					isLoading: false
