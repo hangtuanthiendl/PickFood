@@ -205,6 +205,9 @@ class Search extends Component {
               this.state.itemShop.length != 0 && <FlatList  data={this.state.itemShop}
               extraData= {this.state}
               keyboardShouldPersistTaps='always'
+              contentContainerStyle={{
+                margin: 5}}   
+              ItemSeparatorComponent = {() => {return (<View style = {{height: 5}}/>)}}
               removeClippedSubviews={true}
               keyExtractor={(item) => item.key}
               renderItem={this._renderSearch}/>

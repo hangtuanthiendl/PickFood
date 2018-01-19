@@ -20,6 +20,7 @@ export default class MainRouter extends Component {
             itemHotShop: null,
             itemNewShop:null,
             itemRecShop: null,
+            loading: false,
         }
     }
     componentDidMount() { 
@@ -119,7 +120,7 @@ export default class MainRouter extends Component {
     }
     _renderRecommend = ({item})=>{
         return (
-            <TouchableNativeFeedback onPress = {() => {this.props.navigation.navigate('Detail', {data : item.key, categoryShop: item.categoryShop})}}>
+            <TouchableNativeFeedback onPress ={() => this.props.navigation.navigate('Detail', {data : item.key, categoryShop: item.categoryShop})}>
                 <View  removeClippedSubviews={true} style = {styles.containerRecommend}>
                 <Image source={{uri: item.imageShop}} style={styles.imageRecommend}>
                </Image> 

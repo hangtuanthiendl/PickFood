@@ -166,7 +166,7 @@ export default StyleSheet.create({
   imageNewShop: {
     height: 120,
     width: 120,
-    borderRadius:60,
+   // borderRadius:60,
     resizeMode: 'cover',
   },
   linearNewShop:{
